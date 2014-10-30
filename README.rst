@@ -265,4 +265,4 @@ insert a log message
 (convenience method) 
 ::
 
-   mysql> call log(entity_name, message) 
+   mysql> call log(entity_name, message)
