@@ -1,0 +1,57 @@
+select STY as SemanticType, count(*) as cnt 
+from MGSTY group by SemanticType order by cnt desc; 
+..
+
+    
+    | SemanticType                              | count |
+    -----------------------------------------------------
+    | Pharmacologic Substance                   | 99865 |
+    | Finding                                   | 83130 |
+    | Organic Chemical                          | 70479 |
+    | Disease or Syndrome                       | 43001 | /Disease/
+    | Neoplastic Process                        | 15813 | 
+    | Amino Acid, Peptide, or Protein           |  9140 | 
+    | Congenital Abnormality                    |  5980 | /GeneticAbnormality
+    | Pathologic Function                       |  5258 | /PathologicFunction
+    | Steroid                                   |  3849 | 
+    | Sign or Symptom                           |  2809 | /Symptoms/
+    | Nucleic Acid, Nucleoside, or Nucleotide   |  2595 |
+    | Immunologic Factor                        |  2564 |
+    | Carbohydrate                              |  2470 |
+    | Mental or Behavioral Dysfunction          |  2412 |
+    | Biologically Active Substance             |  1936 |
+    | Cell or Molecular Dysfunction             |  1691 |
+    | Lipid                                     |  1662 |
+    | Anatomical Abnormality                    |  1576 |
+    | Hormone                                   |  1310 |
+    | Inorganic Chemical                        |  1130 |
+    | Indicator, Reagent, or Diagnostic Aid     |  1088 |
+    | Organophosphorus Compound                 |  1070 |
+    | Molecular Function                        |   796 | /MolecularFunction
+    | Hazardous or Poisonous Substance          |   586 |
+    | Eicosanoid                                |   494 |
+    | Acquired Abnormality                      |   471 |
+    | Enzyme                                    |   439 |
+    | Vitamin                                   |   400 |
+    | Biomedical or Dental Material             |   320 |
+    | Clinical Drug                             |   183 |
+    | Injury or Poisoning                       |   147 |
+    | Antibiotic                                |   129 |
+    | Element, Ion, or Isotope                  |   119 |
+    | Neuroreactive Substance or Biogenic Amine |   111 |
+    | Laboratory or Test Result                 |    88 |
+    | Cell                                      |    64 |
+    | Functional Concept                        |    46 |
+    | Clinical Attribute                        |    41 |
+    | Experimental Model of Disease             |    26 |
+    | Gene or Genome                            |    23 |
+    | Cell Function                             |    22 |
+    | Plant                                     |    21 |
+    | Social Behavior                           |    21 |
+    | Therapeutic or Preventive Procedure       |    20 |
+    | Quantitative Concept                      |    17 |
+    | Food                                      |    16 |
+    | Diagnostic Procedure                      |    13 |
+    | Substance                                 |    13 |
+    | Mental Process                            |    11 |
+    | Genetic Function                          |    11 |

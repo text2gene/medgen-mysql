@@ -1,0 +1,41 @@
+! echo ======================================================
+! echo "MedGen = "
+! echo "Medical Genetics = "
+! echo "           Genetic  Testing Reference      [GTR]"
+! echo "         + Mapped datasources              [UMLS]"
+! echo "         + Genetics Home    Reference      [GHR]"
+! echo "         + GeneReviews"
+! echo "         + Human Phenotype Ontology        [HPO]"
+! echo "         + Clinical Variants               [ClinVar]"
+! echo "         + Unified Medical Language System [UMLS]"
+! echo          
+! echo ======================================================
+! echo ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/README.html
+
+       ! mkdir -p medgen/mirror 
+       cd medgen/mirror
+
+! echo =================================================
+! echo "Medical Genetics [MedGen]"
+! echo =================================================
+
+WGET_CMD="wget -c -m -nH --cut-dirs=100"
+MEDGEN_BASE_URL="ftp://ftp.ncbi.nlm.nih.gov/pub"
+
+$WGET_CMD $MEDGEN_BASE_URL/medgen/README.html
+$WGET_CMD -r -A *.gz $MEDGEN_BASE_URL/medgen/
+
+! echo =================================================
+! echo "Clinical Genetics [ClinGen]"
+! echo =================================================
+
+CLINGEN_BASE_URL="ftp://ftp.ncbi.nlm.nih.gov/pub/dbVar/clingen/"
+
+$WGET_CMD $CLINGEN_BASE_URL/ClinGen_gene_curation_list.tsv
+$WGET_CMD $CLINGEN_BASE_URL/ClinGen_region_curation_list.tsv
+
+! echo =================================================
+
+! echo "////////////////////////////////////////////"
+! echo "[ MedGen download complete ]" 
+! echo "////////////////////////////////////////////"
