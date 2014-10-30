@@ -30,7 +30,7 @@ echo "TODAY is $TODAY"
 echo "BATCH is $BATCH"
 echo 
 echo =================================================
-echo "CHECK url file inputs for lftp..."
+echo "CHECK url file inputs for wget..."
 
 if [ $# -eq 0 ]
   then
@@ -49,7 +49,7 @@ for urls in $*; do
     fi            
 
     # cp $urls $BATCH/. 
-    echo "MIRROR urls with lftp..."
-    lftp -f $urls 
+    echo "MIRROR urls with wget..."
+    source $urls 
 
 done

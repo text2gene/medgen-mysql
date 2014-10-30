@@ -1,0 +1,50 @@
+! echo =================================================
+! echo "Clinical Variants (ClinVar)"
+! echo
+! echo "Includes: " 
+! echo "   variant summaries"
+! echo "   gene specific summaries" 
+! echo =================================================
+! echo 
+! echo ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/README.txt
+
+WGET_CMD="wget -m -nH --cut-dirs=1"
+BASE_URL="ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar"
+
+        ! mkdir -p clinvar/mirror 
+        cd clinvar/mirror
+       
+$WGET_CMD $BASE_URL/README.txt 
+! echo =================================================
+! echo 
+! echo "////////////////////////////////////////////"
+! echo "Clinical Genetics gene curation list" 
+
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/dbVar/clingen/ClinGen_gene_curation_list.tsv
+
+! echo "////////////////////////////////////////////"
+! echo "Disease Names" 
+
+$WGET_CMD $BASE_URL/disease_names 
+
+! echo "////////////////////////////////////////////"
+! echo "Gene Condition Source" 
+
+$WGET_CMD $BASE_URL/gene_condition_source_id
+
+! echo "////////////////////////////////////////////"
+! echo "Variant Summaries" 
+
+$BASE_TAB_DELIM_URL="ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited"
+
+$WGET_CMD $BASE_TAB_DELIM_URL/variant_summary* 
+
+! echo "////////////////////////////////////////////"
+! echo "Gene Summaries" 
+
+$WGET_CMD $BASE_TAB_DELIM_URL/gene_specific_summary*
+
+! echo "////////////////////////////////////////////"
+! echo "HGVS tagged molecular consequences" 
+
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/supplements/molecular_consequences.txt

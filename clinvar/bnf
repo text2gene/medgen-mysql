@@ -1,0 +1,63 @@
+clinvar::= standard_terms tables readme 
+
+standard_terms::= disease_names  condition_source_id population_group
+tables::= gene_specific_summary variant_summary standard_terms
+readme::="ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/README.txt" 
+
+gene_specific_summary::= Symbol  GeneID   Submissions  Alleles
+
+variant_summary::=AlleleID variant_type variant_name GeneID GeneSymbol ClinicalSignificance RS_snp dbvar_nsv RCVaccession TestedInGTR PhenotypeIDs Origin Assembly Chromosome Start Stop Cytogenetic ReviewStatus HGVS_c HGVS_p NumberSubmitters Last EvaluatedGuidelines OtherIDs
+
+AlleleID::="integer value as stored in the AlleleID field in ClinVar"
+variant_type::="character, the type of variation"
+variant_name::="character, the preferred name for the variation" 
+GeneID::="integer, GeneID in NCBI's Gene database" 
+GeneSymbol::="character, comma-separated list of GeneIDs overlapping the variation" 
+ClinicalSignificance::="character, comma-separated list of values of clinical significance reported for this variation" 
+RS_snp::="integer, rs# in dbSNP" 
+dbvar_nsv::="character, the NSV identifier for the region in dbVar" 
+RCVaccession::="character, list of RCV accessions that report this variant"
+TestedInGTR::="character, Y/N for Yes/No if there is a test registerd as specific to this variation in the NIH Genetic Testing Registry (GTR)" 
+PhenotypeIDs::="character, list of db names and identifers for phenotype(s) reported for this variant" 
+Origin::="character, list of all allelic origins for this variation" 
+Assembly::="character, name of the assembly on which locations are baed" 
+Chromosome::="character, chromosomal location" 
+Start::="integer, starting location, in pter->qter orientation" 
+Stop::="integer, end location, in pter->qter orientation" 
+Cytogenetic::="character, ISCN band" 
+ReviewStatus::="character, highest review status for reporting this measure" 
+HGVS_c::="character, RefSeq cDNA-based HGVS expression" 
+HGVS_p::="character, RefSeq protein-based HGVS expression" 
+NumberSubmitters::="integer, number of submissions with this variant" 
+LastEvaluated::="datetime, the latest time any submitter reported clinical significance" 
+Guidelines::="character, ACMG only right now, for the reporting of incidental variation in a Gene (NOTE: if ACMG, not a specific to the allele but to the Gene)" 
+OtherIDs::="character, list of other identifiers or sources of information about this Gene" 
+
+disease_names::=DiseaseName  SourceName ConceptID SourceID DiseaseMIM LastUpdated
+
+DiseaseName::="Full name of the condition"
+SourceName::="UMLS vocabulary, NCBI curation, Office of Rare Disease, etc"
+ConceptID::="If C#, then UMLS else if CN# then NCBI-based processing" 
+SourceID::=ID SourceName
+DiseaseMIM::="OMIM condition"
+LastUpdated::="Last modified by NCBI staff"
+   
+clinvar_condition_source_id::=GeneID  GeneSymbol ConceptID  DiseaseName SourceName SourceID DiseaseMIM LastUpdated
+
+GeneID::="NCBI GeneID"
+GeneSymbol::="Preferred symbol corresponding to GeneID"
+   
+population_group::=AfricanAmerican | AmericanIndian_AlaskaNative | AshkenaziJew | Causasians | Chinese | EuropeanCaucasoid | HispanicAmericans | NativeHawaiian__OtherPacificIslander | SouthEastAsian | MixedEthnicGroup | none | unspecified
+
+AfricanAmerican::=medgen C0085756
+AmericanIndian_AlaskaNative::=medgen C1515945
+AshkenaziJew::=medgen C0337704
+Causasians::=medgen C0043157
+Chinese::=medgen C0152035
+EuropeanCaucasoid::=medgen C0682087
+HispanicAmericans::=medgen C0019576
+NativeHawaiian__OtherPacificIslander::=Medgen C1513907
+SouthEastAsian::=medgen C0238697
+MixedEthnicGroup::=medgen C0682086
+none
+unspecified
