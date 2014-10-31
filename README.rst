@@ -1,13 +1,27 @@
-=======================
-NCBI-data-mirrors
-=======================
+============
+medgen-mysql
+============
 This package provides mirror access for NLM National Library of Medicine sources, including
 
 - `NCBI Medical Genetics linked sources`_
 - `PubMed annotated content`_
 - `UMLS linked concepts`_
 
+This package handles the download of all relevant files from each data store and the creation 
+of user-local databases in *MySQL only*. 
+
 ###########################################################################################
+
+Requirements
+============
+
+Medgen-mysql downloads are automated via Makefile and run entirely within bash scripts.
+Thus the requirements are small::
+
+  Unix, Linux, or OS X
+  bash
+  wget
+  mysql
 
 MedGen links
 =========================================

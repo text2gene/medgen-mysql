@@ -1,0 +1,38 @@
+! echo ================================================================
+! echo " PUBMED OpenAccess Papers, metadata, and user engagement logs"
+! echo =================================================================
+
+WGET_CMD="wget -c -m -nH --cut-dirs=100"
+BASE_URL="ftp://ftp.ncbi.nlm.nih.gov"
+
+$WGET_CMD $BASE_URL/pubmed
+
+! echo "////////////////////////////////////////////"
+! echo "PubMed and PMC lists (OpenAccess mostly)"
+
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/file_list.txt
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/PMC-ids.csv.gz
+
+! echo "////////////////////////////////////////////"
+! echo "PubMed all directory contents updated daily"
+
+$WGET_CMD $BASE_URL/repository/OMIM/pubmed_cited
+$WGET_CMD $BASE_URL/pub/pmc
+
+! echo "////////////////////////////////////////////"
+! echo " Alert notifications for open access papers with filter"
+
+! echo wget http://library.mssm.edu/reference/pdfs/fieldsearch.pdf
+! echo "http://www.ncbi.nlm.nih.gov/pmc/?term=%22open+access%22[filter]" ### TODO
+
+
+! echo "////////////////////////////////////////////"
+! echo "PubMed user search behavior through log analysis"
+
+$WGET_CMD -O pubmed_user_logs.sample.txt http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/LogStudy/sample.txt
+
+#TODO: prompt to download these? 2GB+
+################################################################################
+#### get -c http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/LogStudy/march08.tar ####
+#### get -c http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/LogStudy/march09.tar ####
+#################################################################################
