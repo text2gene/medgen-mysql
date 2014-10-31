@@ -24,6 +24,7 @@ MEDGEN_BASE_URL="ftp://ftp.ncbi.nlm.nih.gov/pub"
 
 $WGET_CMD $MEDGEN_BASE_URL/medgen/README.html
 $WGET_CMD -r -A *.gz $MEDGEN_BASE_URL/medgen/
+$WGET_CMD -r -A *.txt $MEDGEN_BASE_URL/medgen/
 
 ! echo =================================================
 ! echo "Clinical Genetics [ClinGen]"

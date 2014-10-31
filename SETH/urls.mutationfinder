@@ -10,4 +10,6 @@ WGET_CMD="wget -c -m -nH --cut-dirs=100"
 
 $WGET_CMD http://mutationfinder.sourceforge.net/JBCB07_supp_material.tar.gz
 $WGET_CMD http://mutationfinder.sourceforge.net/PSB08_supp_material.tar.gz
-$WGET_CMD -A "*.*" http://sourceforge.net/projects/bionlp-corpora/files/ProteinResidue/
+
+# TODO for Andy:
+# $WGET_CMD -A "*.*" http://sourceforge.net/projects/bionlp-corpora/files/ProteinResidue/
