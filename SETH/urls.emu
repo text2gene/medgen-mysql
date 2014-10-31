@@ -1,0 +1,13 @@
+! echo "////////////////////////////////////////////"
+! echo "SETH: emu"
+! echo ""
+! echo "////////////////////////////////////////////"
+
+! mkdir -p SETH/mirror
+cd SETH/mirror
+
+WGET_CMD="wget -c -m -nH --cut-dirs=100"
+
+$WGET_CMD -A.txt http://bioinf.umbc.edu/EMU/ftp/
+$WGET_CMD -A.pm http://bioinf.umbc.edu/EMU/ftp/
+$WGET_CMD -A.pl http://bioinf.umbc.edu/EMU/ftp/
