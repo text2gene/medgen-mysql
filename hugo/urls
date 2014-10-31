@@ -1,0 +1,32 @@
+! echo ====================================================
+! echo "HUGO Gene Naming Convention (also known as HGNC)  " 
+! echo =====================================================
+! echo 
+! echo "FROM http://www.genenames.org/cgi-bin/download" 
+
+       ! mkdir -p hugo/mirror 
+       cd hugo/mirror
+
+! echo "////////////////////////////////////////////"
+! echo "hugo2entrez (HGNC to ncbi ENTREZ)"
+
+WGET_CMD="wget -c -m -nH --cut-dirs=100"
+
+$WGET_CMD -O hugo2entrez.txt http://tinyurl.com/q4664qk 
+
+! echo "////////////////////////////////////////////"
+! echo "hugo2pubmed (HGNC PubMed )" 
+
+$WGET_CMD -O hugo2pubmed.txt http://tinyurl.com/o4292zy
+
+! echo "////////////////////////////////////////////"
+! echo "hugo2entrez2omim (HGNC to ncbi ENTREZ to OMIM id)"
+
+$WGET_CMD -O hugo2entrez2omim.txt http://tinyurl.com/m3qnc42
+
+! echo "////////////////////////////////////////////"
+! echo "hugo_info (HGNC standard annotations) "
+
+$WGET_CMD -O hugo_info.txt http://tinyurl.com/nefdx9z  
+
+! echo "////////////////////////////////////////////"
