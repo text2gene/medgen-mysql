@@ -30,7 +30,7 @@ create table PMC (
   Page		       text, 
   DOI		       text, 
   PMCID		       varchar(20) null, 
-  PMID		       int(10) null, 
+  PMID		       int(10) unsigned null, 
   ManuscriptID	       text null, 
   ReleaseDate	       text null
 )
