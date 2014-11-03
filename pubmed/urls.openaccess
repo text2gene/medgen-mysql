@@ -5,6 +5,9 @@
 WGET_CMD="wget -c -m -nH --cut-dirs=100"
 BASE_URL="ftp://ftp.ncbi.nlm.nih.gov"
 
+       ! mkdir -p pubmed/mirror 
+       cd pubmed/mirror
+
 $WGET_CMD $BASE_URL/pubmed
 
 ! echo "////////////////////////////////////////////"
