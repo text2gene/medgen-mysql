@@ -16,7 +16,7 @@
 drop table if exists mutation2pubtator; 
 
 create table mutation2pubtator(
-       PMID        integer unsigned null, 
+       PMID        int(10) unsigned null, 
        Components  varchar(200), 
        Mentions    Text not null
 )
@@ -69,7 +69,7 @@ ENGINE=InnoDB DEFAULT CHARSET=utf8;
 drop table if exists chemical2pubtator; 
 
 create table chemical2pubtator(
-       PMID      varchar(10) not null, 
+       PMID      int(10) unsigned not null, 
        MeshID    varchar(100), 
        Mentions  Text 
 )
@@ -80,8 +80,9 @@ ENGINE=InnoDB DEFAULT CHARSET=utf8;
 --
 drop table if exists species2pubtator;
 create table species2pubtator(
-       PMID      varchar(10) not null,
+       PMID      int(10) unsigned not null, 
        TaxID     varchar(10),
        Mentions  Text 
 )
 Engine = InnoDB;
+

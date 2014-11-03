@@ -170,7 +170,7 @@ create table medgen_pubmed(
        UID varchar(10) not null, 
        CUI char(8) NOT NULL,
        NAME varchar(1000) not null, 
-       PMID varchar(10) not null 
+       PMID int(10) unsigned 
 ) 
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

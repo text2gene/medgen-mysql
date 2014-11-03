@@ -4,7 +4,6 @@ call create_index('gene2pubmed','tax_id');
 call create_index('gene2pubmed','GeneID'); 
 call create_index('gene2pubmed','PMID'); 
 
-call create_index('mim2gene_medgen','PMID');
 call create_index('mim2gene_medgen','MIM');
 call create_index('mim2gene_medgen','GeneID'); 
 call create_index('mim2gene_medgen','MedGenCUI'); 
