@@ -16,11 +16,7 @@ WORK=$DATASET
 interpolate_file_config "templates/create_database"           > $WORK/create_database.sql
 interpolate_file_config "templates/create_logger.sql"        >> $WORK/create_database.sql 
 interpolate_file_config "templates/create_memory.sql"        >> $WORK/create_database.sql  
-interpolate_file_config "templates/create_user"               > $WORK/create_user.sql
-interpolate_file_config "templates/drop_user"                 > $WORK/drop_user.sql 
 
-echo "MySQL: attempting to create DATASET=$DATASET as YOU=$USER" 
-mysql -u $USER -p             < $WORK/create_database.sql
-
-echo "MySQL: attempting to create DATASET=$DATASET as YOU=$USER" 
-mysql -u $USER -p -D $DATASET < $WORK/create_tables.sql
+echo "MySQL: attempting to create DATASET=$DATASET" 
+mysql -u medgen -pmedgen < $WORK/create_database.sql
+mysql -u medgen -pmedgen -D $DATASET < $WORK/create_tables.sql
