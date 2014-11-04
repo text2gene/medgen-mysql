@@ -17,28 +17,28 @@ clinvar: FORCE
 	./load_database.sh clinvar
 	./index_database.sh clinvar
 
-GTR:
+GTR: FORCE
 	./mirror.sh GTR/urls
 	./unpack.sh GTR
 	./create_database.sh GTR
 	./load_database.sh GTR
 	./index_database.sh GTR
 
-gene:
+gene: FORCE
 	./mirror.sh gene/urls
 	./unpack.sh gene
 	./create_database.sh gene
 	./load_database.sh gene
 	./index_database.sh gene
 
-hugo:
+hugo: FORCE
 	./mirror.sh hugo/urls
 	./unpack.sh hugo
 	./create_database.sh hugo
 	./load_database.sh hugo
 	./index_database.sh hugo
 
-LSDB:
+LSDB: FORCE
 	./mirror.sh LSDB/urls
 	./mirror.sh LSDB/urls.lovd
 	./unpack.sh LSDB
@@ -46,14 +46,14 @@ LSDB:
 	./load_database.sh LSDB
 	./index_database.sh LSDB
 
-medgen:
+medgen: FORCE
 	./mirror.sh medgen/urls
 	./unpack.sh medgen
 	./create_database.sh medgen
 	./load_database.sh medgen
 	./index_database.sh medgen
 
-pubmed:
+pubmed: FORCE
 	./mirror.sh pubmed/urls.pmc
 	./mirror.sh pubmed/urls.openaccess
 	./mirror.sh pubmed/urls.medline
@@ -62,7 +62,7 @@ pubmed:
 	./load_database.sh pubmed
 	./index_database.sh pubmed
 
-PubTator:
+PubTator: FORCE
 	./mirror.sh PubTator/urls
 	./mirror.sh PubTator/urls.tmvar
 	./unpack.sh PubTator
@@ -70,7 +70,7 @@ PubTator:
 	./load_database.sh PubTator
 	./index_database.sh PubTator
 
-SETH:
+SETH: FORCE
 	./mirror.sh SETH/urls.emu
 	./mirror.sh SETH/urls.mutationfinder
 	./unpack.sh SETH
@@ -78,8 +78,5 @@ SETH:
 	./load_database.sh SETH
 	./index_database.sh SETH
 
-#clean:  FORCE
-#	rm -rf ${VE_DIR}
-#	rm -f logs/*
-
 .PHONY:  FORCE help GTR GTR gene hugo LSDB medgen PubTator SETH 
+
