@@ -1,0 +1,42 @@
+###############################################################
+#
+# LOVD Open Variant DB
+#
+###############################################################
+# MANUALLY LOAD DATA FROM WEBSITE. Not hard.
+#
+# LOVD Variant Database only exports from web browser right now
+###############################################################
+
+! echo "////////////////////////////////////////////"
+! echo "README"
+! echo http://en.wikipedia.org/wiki/Leiden_Open_Variation_Database
+
+! echo "////////////////////////////////////////////"
+! echo "ABCC6 - ATP-binding cassette, sub-family C (CFTR/MRP), member 6"
+
+# http://www.ncbi.nlm.nih.gov/lovd/variants.php?action=view_all&select_db=ABCC6
+# http://www.ncbi.nlm.nih.gov/lovd/variants_statistics.php?select_db=ABCC6
+
+! echo "////////////////////////////////////////////"
+! echo " (FAS) TNF receptor superfamily, member 6 "
+
+# http://www.ncbi.nlm.nih.gov/lovd/variants.php?action=view_all&select_db=FAS
+# http://www.ncbi.nlm.nih.gov/lovd/variants_statistics.php?select_db=FAS
+
+! echo "////////////////////////////////////////////"
+! echo "(IL2RG) interleukin 2 receptor, gamma"
+
+# http://www.ncbi.nlm.nih.gov/lovd/variants.php?action=view_all&select_db=IL2RG
+# http://www.ncbi.nlm.nih.gov/lovd/variants_statistics.php?select_db=IL2RG
+
+! echo "////////////////////////////////////////////"
+! echo "(OCRL) oculocerebrorenal syndrome of Lowe"
+
+# http://www.ncbi.nlm.nih.gov/lovd/variants.php?action=view_all&select_db=OCRL
+# http://www.ncbi.nlm.nih.gov/lovd/variants_statistics.php?select_db=OCRL
+
+! echo "////////////////////////////////////////////"
+
+# http://chromium.liacs.nl/LOVD2/cancer/variants.php?action=search_all&select_db=BRCA1
+# http://chromium.liacs.nl/LOVD2/cancer/variants.php?action=search_all&select_db=BRCA2

@@ -1,0 +1,23 @@
+! echo "////////////////////////////////////////////"
+! echo "### CGD: Clinical Genomics Database ###" 
+
+! wget http://research.nhgri.nih.gov/CGD/download/txt/CGD.txt.gz
+
+! echo "////////////////////////////////////////////"
+! echo "### PhenCode ###" 
+
+! wget  http://globin.bx.psu.edu/phencode/otherLinks.html
+
+! wget http://research.nhgri.nih.gov/CGD/download/txt/CGD.txt.gz
+! wget http://phencode.bx.psu.edu/dist/phencode/database/gvSrc.txt
+! wget http://phencode.bx.psu.edu/dist/phencode/database/linkBuilder.txt
+! wget http://phencode.bx.psu.edu/dist/phencode/database/srcDetails.txt
+
+! wget http://phencode.bx.psu.edu/dist/phencode/database/gvLink.txt
+! wget http://phencode.bx.psu.edu/dist/phencode/database/gvPosHg18.txt
+! wget http://phencode.bx.psu.edu/dist/phencode/database/gvPosHg19.txt
+
+! wget http://phencode.bx.psu.edu/dist/phencode/database/tables.txt
+! wget http://phencode.bx.psu.edu/dist/phencode/database/tables.sql
+
+! echo "////////////////////////////////////////////"
