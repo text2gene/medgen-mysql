@@ -92,7 +92,7 @@ begin
 	-- prepare stmt from @idx; execute stmt;
 	-- call log(tablename, 'Engine=INNODB utf8');
 
-	select concat('alter table ', tablename, ' convert to CHARSET utf8 collate utf8_unicode_ci') as idx; 
+	select concat('alter table ', tablename, ' convert to CHARSET utf8 collate utf8_unicode_ci') into @idx; 
 	prepare stmt from @idx; execute stmt;
 	
 	call log(tablename, 'utf8_unicode_ci');

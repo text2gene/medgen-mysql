@@ -1,4 +1,8 @@
-CREATE DATABASE IF NOT EXISTS medgen CHARACTER SET utf8 COLLATE utf8_unicode_ci;-- MySQL application logging procedures 
+CREATE DATABASE IF NOT EXISTS medgen CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+use medgen; 
+
+-- MySQL application logging procedures 
 -- use DATASET; 
 
 create table if not exists README
@@ -80,7 +84,7 @@ CREATE TABLE log
   event_time   timestamp    default now(),
   entity_name  varchar(100) NOT NULL,
   message      varchar(100) NULL,
-  DATASET      varchar(10)  null
+  DATASET      varchar(20)  null
 );
 
 ALTER TABLE log add idx smallint UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY;
@@ -195,9 +199,9 @@ begin
   TABLE_NAME,
   TABLE_ROWS,
   concat( round( TABLE_ROWS / ( 1000 *1000 ) , 2 ) , '' )  million,
-  DATA_LENGTH,
   concat( round( data_length / ( 1024 *1024 ) , 2 ) , 'M' )  data_MB,
-  concat( round( index_length / ( 1024 *1024 ) , 2 ) , 'M' ) index_MB
+  concat( round( index_length / ( 1024 *1024 ) , 2 ) , 'M' ) index_MB, 
+  TABLE_COLLATION
   from
   information_schema.TABLES
   where
@@ -238,6 +242,18 @@ begin
 end//
 delimiter ;
 
+drop procedure if exists freqdist;  
+delimiter //
+create procedure freqdist( tablename varchar(100), colname varchar(100), coldistinct varchar(100))
+begin
+	select concat('select ',  colname, ',' ,'count(distinct ', coldistinct,' ) as cnt', ' from ', tablename, ' group by ' , colname, ' order by cnt desc') into @sql_cnt; 
+	select @sql_cnt; 	
+
+	prepare stmt from @sql_cnt;   execute stmt;
+end//
+delimiter ;
+
+
 drop procedure if exists create_index;
 delimiter //
 create procedure create_index( tablename varchar(100), indexcols varchar(100) )
@@ -258,14 +274,11 @@ drop procedure if exists utf8_unicode;
 delimiter //
 create procedure utf8_unicode( tablename varchar(100))
 begin
-	call log(tablename, indexcols);	
+	-- select concat('alter table ', tablename, ' Engine=INNODB default CHARSET=utf8') as idx; 
+	-- prepare stmt from @idx; execute stmt;
+	-- call log(tablename, 'Engine=INNODB utf8');
 
-	select concat(' alter table ', tablename, ' Engine=INNODB default CHARSET=utf8') as idx; 
-	prepare stmt from @idx; execute stmt;
-	
-	call log(tablename, 'Engine=INNODB utf8');
-
-	select concat(' alter table ', tablename, ' convert to CHARSET utf8 collate utf8_unicode_ci') as idx; 
+	select concat('alter table ', tablename, ' convert to CHARSET utf8 collate utf8_unicode_ci') into @idx; 
 	prepare stmt from @idx; execute stmt;
 	
 	call log(tablename, 'utf8_unicode_ci');

@@ -6,8 +6,9 @@ drop table if exists MERGED;
 CREATE TABLE MERGED (
        CUI   char(8) NOT NULL,
        toCUI char(8) NOT NULL
-) 
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+); 
+
+call utf8_unicode('MERGED'); 
 
 -- file: MGCONSO.RRF 
 -- 	 Concepts related to medical genetics 
@@ -28,8 +29,8 @@ CREATE TABLE MGCONSO (
        CODE      varchar(100) 	NOT NULL,
        STR       text 	       	NOT NULL,
        SUPPRESS  char(1)   	NOT NULL
-) 
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+); 
+call utf8_unicode('MGCONSO'); 
 
 -- file: MGDEF.RRF 
 -- 	 Definitions of medical concepts and their sources 
@@ -43,8 +44,9 @@ create table MGDEF(
   DEF text NOT NULL,
   SAB varchar(50) NOT NULL,
   SUPPRESS char(1) NOT NULL
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+); 
+
+call utf8_unicode('MGDEF'); 
 
 --  file: MGREL.RRF 
 --  	  Relationships between concepts, concept can be 
@@ -81,8 +83,9 @@ create table MGREL(
   KEY X_MRREL_CUI2 (CUI2),
   KEY X_MRREL_AUI2 (AUI2),
   KEY X_MRREL_SAB (SAB) 
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+); 
+
+call utf8_unicode('MGREL'); 
 
 drop table if exists MGREL;  -- TODO: UMLS link 
 
@@ -98,8 +101,9 @@ create table MGREL(
   SAB varchar(40) NOT NULL,
   SL varchar(40) NOT NULL,
   SUPPRESS char(1) NOT NULL
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+); 
+
+call utf8_unicode('MGREL'); 
 
 -- file: MGSAT.RRF 
 -- 	 Attributes of Medical Genetics Concepts ( Links in UMLS ) 
@@ -125,9 +129,9 @@ create table MGSAT(
   KEY X_MRSAT_METAUI (METAUI),
   KEY X_MRSAT_SAB (SAB),
   KEY X_MRSAT_ATN (ATN)
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+); 
 
+call utf8_unicode('MGSAT'); 
 
 -- file: MGSTY.RRF 
 -- 	 Semantic types for Medical Genetics Concepts ( Links in UMLS ) 
@@ -144,9 +148,9 @@ create table MGSTY(
   PRIMARY KEY (ATUI),
   KEY X_MRSTY_CUI (CUI),
   KEY X_MRSTY_STY (STY)
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+); 
 
+call utf8_unicode('MGSTY'); 
 
 --  file: NAMES
 --  	  Names and summary data for concepts 
@@ -158,8 +162,9 @@ create table NAMES(
   name   varchar(1000) not null, 
   source varchar(20)   not null, 
   SUPPRESS char(1) NOT NULL
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+); 
+
+call utf8_unicode('NAMES'); 
 
 --  file: medgen_pubmed
 --  	  Pubmed references to medgen concepts 
@@ -171,8 +176,9 @@ create table medgen_pubmed(
        CUI char(8) NOT NULL,
        NAME varchar(1000) not null, 
        PMID int(10) unsigned 
-) 
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
+
+call utf8_unicode('medgen_pubmed'); 
 
 --  file: MedGen_HPO_Mapping.txt 
 --  	  HPO references to medgen concepts 
@@ -186,8 +192,9 @@ create table medgen_hpo(
        MedGenStr text           not null, 
        MedGenStr_SAB            varchar(20) not null, 
        STY varchar(50)          not null
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+); 
+
+call utf8_unicode('medgen_hpo'); 
 
 --  file: MedGen_HPO_OMIM_Mapping.txt
 --  	  MedGen processing of HPO and OMIM terms uniformly 
@@ -223,5 +230,6 @@ create table medgen_hpo_omim(
        MedGen_source  varchar(20) null, 
        -- semantic type 
        STY varchar(50) NOT NULL
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
+
+call utf8_unicode('medgen_hpo_omim'); 

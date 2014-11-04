@@ -16,14 +16,6 @@ create table gene_condition_source_id(
        LastModified    varchar(20)
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8; 
-
-alter table gene_condition_source_id add index (GeneID);
-alter table gene_condition_source_id add index (Symbol);
-alter table gene_condition_source_id add index (ConceptID);
-alter table gene_condition_source_id add index (DiseaseName);
-alter table gene_condition_source_id add index (SourceName);
-alter table gene_condition_source_id add index (SourceID);
-alter table gene_condition_source_id add index (DiseaseMIM);
 -- end
 -- ###################################
 -- begin
@@ -41,11 +33,6 @@ create table disease_names(
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8; 
 
-alter table disease_names add index (DiseaseName);
-alter table disease_names add index (SourceName);
-alter table disease_names add index (SourceID);
-alter table disease_names add index (DiseaseMIM);
-
 -- end
 -- ###################################
 -- begin
@@ -60,9 +47,6 @@ create table gene_specific_summary (
   Alleles      integer  not null 
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8; 
-
-alter table gene_specific_summary add index (GeneID);
-alter table gene_specific_summary add index (Symbol);
 
 -- end
 -- ###################################
@@ -100,15 +84,6 @@ create table variant_summary (
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8; 
 
-alter table variant_summary add index (GeneID);
-alter table variant_summary add index (Symbol);
-alter table variant_summary add index (variant_type);
-alter table variant_summary add index (AlleleID);
-alter table variant_summary add index (rs);
-alter table variant_summary add index (TestedInGTR);
-alter table variant_summary add index (HGVS_c); 
-alter table variant_summary add index (HGVS_p); 
-
 call log('create_tables','done');
 
 -- end 
@@ -134,8 +109,6 @@ create table clingen_gene_curation_list
        	triplosense_desc   text
 )
 Engine=InnoDB;
-
-call create_index('clingen_gene_curation_list','GeneID'); 
 
 call log('ClinGen gene_curation_list','done'); 
 -- ###################################

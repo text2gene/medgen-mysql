@@ -35,7 +35,7 @@ $WGET_CMD $BASE_URL/gene_condition_source_id
 ! echo "////////////////////////////////////////////"
 ! echo "Variant Summaries" 
 
-$BASE_TAB_DELIM_URL="ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited"
+BASE_TAB_DELIM_URL="ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited"
 
 $WGET_CMD $BASE_TAB_DELIM_URL/variant_summary* 
 

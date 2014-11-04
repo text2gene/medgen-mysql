@@ -12,7 +12,7 @@ source  $dbconfig
 
 require $DATASET  "which dataset?" 
 
-interpolate_file_config "templates/load"    > $DATASET/load.sh 
+interpolate_file_config "templates/load"  > $DATASET/load.sh
 cat $DATASET/load_tables                 >> $DATASET/load.sh 
 
 pushd . 

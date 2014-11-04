@@ -1,10 +1,10 @@
 # standard terms 
-#load_table tsv disease_names disease_names
-#load_table tsv gene_condition_source_id gene_condition_source_id
+load_table tsv disease_names disease_names
+load_table tsv gene_condition_source_id gene_condition_source_id
 
 # clinvar summaries  
-#load_table tsv variant_summary variant_summary.txt
-#load_table tsv gene_specific_summary gene_specific_summary.txt
+load_table tsv variant_summary variant_summary.txt
+load_table tsv gene_specific_summary gene_specific_summary.txt
 
 # clingen summaries 
 load_table tsv  clingen_gene_curation_list  ClinGen_gene_curation_list.tsv  7
