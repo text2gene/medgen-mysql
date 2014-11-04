@@ -14,8 +14,9 @@ create table gene_condition_source_id(
        SourceID        varchar(50),
        DiseaseMIM      varchar(20),
        LastModified    varchar(20)
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+);
+call utf8_unicode('gene_condition_source_id'); 
+
 -- end
 -- ###################################
 -- begin
@@ -30,8 +31,9 @@ create table disease_names(
      SourceID        varchar(50),
      DiseaseMIM      varchar(20),
      LastModified    varchar(20)
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+);
+
+call utf8_unicode('disease_names'); 
 
 -- end
 -- ###################################
@@ -45,8 +47,9 @@ create table gene_specific_summary (
   GeneID       integer  not null,   
   Submissions  integer  not null, 	
   Alleles      integer  not null 
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+);
+
+call utf8_unicode('gene_specific_summary'); 
 
 -- end
 -- ###################################
@@ -81,8 +84,8 @@ create table variant_summary (
        LastEvaluated     text, 
        Guidelines        text, 
        OtherIDs          text 
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+);
+call utf8_unicode('variant_summary'); 
 
 call log('create_tables','done');
 
@@ -107,8 +110,8 @@ create table clingen_gene_curation_list
        	haplo_insuf_pmid3  text,
        	triplosense_score  text, 
        	triplosense_desc   text
-)
-Engine=InnoDB;
+); 
+call utf8_unicode('clingen_gene_curation_list');
 
 call log('ClinGen gene_curation_list','done'); 
 -- ###################################
