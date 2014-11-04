@@ -22,9 +22,10 @@ create table gene_info(
        Nomen_status varchar(20), 	
        GeneOther    text, 
        LastModified varchar(10)
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+);
+call utf8_unicode('gene_info');
 -- end
+
 
 -- begin 
 call log('gene2pubmed','gene2pubmed.gz'); 
@@ -34,8 +35,8 @@ create table gene2pubmed(
        tax_id int(5)   unsigned, 
        GeneID int(10)  unsigned, 
        PMID   int(10)  unsigned
-) 
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+);
+call utf8_unicode('gene2pubmed');
 -- end
 
 -- begin
@@ -48,8 +49,8 @@ create table mim2gene_medgen(
        MIM_type varchar(20), 
        MIM_vocab varchar(20), 
        MedGenCUI varchar(20)
-) 
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+); 
+call utf8_unicode('clingen_gene_curation_list');
 
 -- end
 -- begin
@@ -65,8 +66,8 @@ create table gene2go(
        GO_term varchar(200), 
        PUBMEDS   text, 
        Category varchar(20) 
-) 
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+); 
+call utf8_unicode('gene2go');
 
 -- end
 -- begin
@@ -81,9 +82,8 @@ create table gene_group(
        relationship text null, 
        tax_id_other int(5)  unsigned, 
        GeneID_other int(10)  unsigned
-) 
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
-
+); 
+call utf8_unicode('gene_group');
 
 -- end
 -- begin
@@ -96,15 +96,17 @@ create table gene_history(
        GeneID_old int(10)  unsigned, 
        Symbol_old varchar(25)  null, 
        date_old varchar(10)  null
-) 
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+); 
+call utf8_unicode('gene_history');
 
 -- end
 -- begin
 call log('gene2accession', 'gene2accession.gz'); 
 
--- TODO: uta??? gene2ensembl.gz 
--- TODO: uta??? gene2refseq.gz 
+-- TODO: how to stay consitent with UTA? 
+-- https://pypi.python.org/pypi/uta 
+-- gene2ensembl.gz 
+-- gene2refseq.gz 
 
 -- gene2accession
 -- ==============
@@ -141,10 +143,8 @@ create table gene2accession(
        assembly	    	    varchar(20), 
        peptide_acc_ver	    varchar(20), 
        peptide_acc_gi	    varchar(20)
-) 
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
-
-alter table gene2accession add index (tax_id); 
+); 
+call utf8_unicode('gene2accession');
 
 -- end
 -- begin
@@ -153,8 +153,8 @@ call log('stopwords_gene','stopwords_gene');
 drop table if exists stopwords_gene; 
 create table stopwords_gene(
        stopword text
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+); 
+call utf8_unicode('stopwords_gene');
 
 -- end
 -- begin
@@ -167,12 +167,12 @@ create table generifs_basic(
        pubmeds  text, 
        LastModified varchar(20),
        GeneRIF  text 
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+);
+call utf8_unicode('generifs_basic');
 
 -- end
 -- begin
-call log('interactions','interactions.gz'); 
+-- call log('interactions','interactions.gz'); 
 
 -- @TODO: ?interaction_sources? 
 
