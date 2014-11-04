@@ -89,7 +89,7 @@ function load_table()
     echo 
     echo "-- begin table"
 
-    interpolate_file "../example/load_table" "@@@TABLE" $TABLE | \
+    interpolate_file "../templates/load_table" "@@@TABLE" $TABLE | \
 	interpolate "@@@FILE"   mirror/$FILE | \
 	interpolate "@@@SEP"    $SEP  | \
 	interpolate "@@@SKIP"   $SKIP | \
@@ -108,7 +108,7 @@ function create_table_from()
     require  $SQL_TABLE  "table name?"
     require  $SQL_WHERE  "where condition?" 
 
-    interpolate_file "../example/create_table_from" "@@@TABLE" $SQL_TABLE | \
+    interpolate_file "../templates/create_table_from" "@@@TABLE" $SQL_TABLE | \
 	interpolate "@@@WHERE"   $SQL_WHERE
 }
 
@@ -124,7 +124,7 @@ function create_index()
     require  $SQL_TABLE  "table name?"
     require  $SQL_INDEX  "index column?" 
 
-    interpolate_file "../example/create_index" "@@@TABLE" $SQL_TABLE | \
+    interpolate_file "../templates/create_index" "@@@TABLE" $SQL_TABLE | \
 	interpolate "@@@INDEX"   $SQL_INDEX
 }
 
@@ -142,7 +142,7 @@ function show_usage()
     require  $SQL_TABLE  " table name ? "
     require  $SQL_BY     " group by   ? " 
 
-    interpolate_file "../example/show_usage" "@@@TABLE" $SQL_TABLE | \
+    interpolate_file "../templates/show_usage" "@@@TABLE" $SQL_TABLE | \
 	interpolate "@@@BY"     $SQL_BY    | \
 	interpolate "@@@CNT"    $SQL_CNT
 }
