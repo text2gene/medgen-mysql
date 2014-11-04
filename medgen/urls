@@ -23,6 +23,8 @@ WGET_CMD="wget -c -m -nH --cut-dirs=100"
 MEDGEN_BASE_URL="ftp://ftp.ncbi.nlm.nih.gov/pub"
 
 $WGET_CMD $MEDGEN_BASE_URL/medgen/README.html
+$WGET_CMD $MEDGEN_BASE_URL/medgen/presentations/Conditions_Phenotypes.pptx
+
 $WGET_CMD -r -A *.gz $MEDGEN_BASE_URL/medgen/
 $WGET_CMD -r -A *.txt $MEDGEN_BASE_URL/medgen/
 
