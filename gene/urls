@@ -84,7 +84,7 @@ $WGET_CMD $BASE_URL/mim2gene_medgen
 ! echo "////////////////////////////////////////////"
 ! echo "Gene Refence In Function (GeneRIF)"
 
-$WGET_CMD $GENERIF_BASE_URL="ftp://ftp.ncbi.nlm.nih.gov/gene/GeneRIF"
+GENERIF_BASE_URL="ftp://ftp.ncbi.nlm.nih.gov/gene/GeneRIF"
 
 $WGET_CMD $GENERIF_BASE_URL/generifs_basic.gz
 $WGET_CMD $GENERIF_BASE_URL/interactions.gz
