@@ -50,7 +50,7 @@ create table mim2gene_medgen(
        MIM_vocab varchar(20), 
        MedGenCUI varchar(20)
 ); 
-call utf8_unicode('clingen_gene_curation_list');
+call utf8_unicode('mim2gene_medgen');
 
 -- end
 -- begin
