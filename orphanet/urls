@@ -1,0 +1,33 @@
+! echo ====================================================
+! echo "OrphaNet rare disease curation"
+! echo =====================================================
+! echo
+       ! mkdir -p orphanet/mirror
+       lcd orphanet/mirror
+
+! echo "////////////////////////////////////////////" 
+! echo ====================================================
+! echo "Orphanet Catalogs for Industry and Academia"
+! echo "NOTE: copyright compliance is up to you, the user"
+! echo =====================================================
+
+  wget http://www.orphadata.org/cgi-bin/docs/CataloguePdt-Academia.pdf
+  wget http://www.orphadata.org/cgi-bin/docs/CataloguePdt-Industry.pdf
+
+! echo "////////////////////////////////////////////"
+! echo ====================================================
+! echo "Orphanet XML Downloads"
+! echo =====================================================
+
+  wget http://www.orphadata.org/data/xml/en_product1.xml -o cross_ref.1.xml
+  wget http://www.orphadata.org/data/xml/en_product2.xml -o epidemiological.2.xml
+  wget http://www.orphadata.org/data/xml/en_product3_156.xml -o rare_diseases.3.xml
+
+  wget http://www.orphadata.org/data/xml/en_product4.xml -o clinical_signs.4.xml
+  wget http://www.orphadata.org/data/xml/en_product5.xml -o thesaurus.5.xml
+  wget http://www.orphadata.org/data/xml/en_product6.xml -o genes.6.xml
+
+! echo "////////////////////////////////////////////"
+
+
+

@@ -1,4 +1,4 @@
-call log('create_index.sql','NCBI Entrez Gene'); 
+call log('create_index.sql','HUGO Gene Naming Convention'); 
 
 call create_index('hugo2pubmed','hgnc'); 
 call create_index('hugo2pubmed','Symbol'); 

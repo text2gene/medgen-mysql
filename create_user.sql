@@ -18,3 +18,4 @@ grant all privileges on GTR.*          to 'medgen'@'%' with grant option;
 grant all privileges on gene.*         to 'medgen'@'%' with grant option; 
 grant all privileges on hugo.*         to 'medgen'@'%' with grant option; 
 grant all privileges on GeneReviews.*  to 'medgen'@'%' with grant option; 
+grant all privileges on GO.*           to 'medgen'@'%' with grant option; 
