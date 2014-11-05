@@ -11,6 +11,7 @@ help:
 	@echo "  Type make setup to install ${PKG_NAME} into the virtualenv"
 
 clinvar: FORCE
+	# working / complete.
 	-./mirror.sh clinvar/urls
 	./unpack.sh clinvar
 	./create_database.sh clinvar
@@ -18,6 +19,7 @@ clinvar: FORCE
 	./index_database.sh clinvar
 
 GTR: FORCE
+	# working / complete.
 	-./mirror.sh GTR/urls
 	./unpack.sh GTR
 	./create_database.sh GTR
@@ -25,6 +27,7 @@ GTR: FORCE
 	./index_database.sh GTR
 
 gene: FORCE
+	# testing
 	-./mirror.sh gene/urls
 	./unpack.sh gene
 	./create_database.sh gene
@@ -32,6 +35,7 @@ gene: FORCE
 	./index_database.sh gene
 
 hugo: FORCE
+	# testing
 	-./mirror.sh hugo/urls
 	./unpack.sh hugo
 	./create_database.sh hugo
@@ -39,7 +43,7 @@ hugo: FORCE
 	./index_database.sh hugo
 
 LSDB: FORCE
-	# done (no DB -- copyright issues)
+	# working / complete. (no DB -- copyright issues)
 	-./mirror.sh LSDB/urls
 	-./mirror.sh LSDB/urls.lovd
 
