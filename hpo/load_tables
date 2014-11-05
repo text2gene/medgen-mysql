@@ -6,4 +6,4 @@ echo
 echo "######################################" 
 
 . db.config 
-$mysql_dataset < MYHPO_10_2014.sql
+$mysql_dataset < mirror/MYHPO_10_2014.sql

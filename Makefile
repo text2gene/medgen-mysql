@@ -15,7 +15,7 @@ user: FORCE
 	./create_user.sh
 
 clinvar: FORCE
-	# working / complete.
+	# complete.
 	-./mirror.sh clinvar/urls
 	./unpack.sh clinvar
 	./create_database.sh clinvar
@@ -23,7 +23,7 @@ clinvar: FORCE
 	./index_database.sh clinvar
 
 GTR: FORCE
-	# working / complete.
+	# complete.
 	-./mirror.sh GTR/urls
 	./unpack.sh GTR
 	./create_database.sh GTR
@@ -39,7 +39,7 @@ gene: FORCE
 	./index_database.sh gene
 
 GeneReviews: FORCE
-	# working / complete.
+	# complete.
 	-./mirror.sh GeneReviews/urls
 	./unpack.sh GeneReviews
 	./create_database.sh GeneReviews
@@ -47,12 +47,12 @@ GeneReviews: FORCE
 	./index_database.sh GeneReviews
 	
 hpo: FORCE
-	# testing
+	# complete
 	-./mirror.sh hpo/urls
 	./unpack.sh hpo
 	./create_database.sh hpo
 	./load_database.sh hpo
-	./index_database.sh hpo
+	# ./index_database.sh hpo (already indexed) 
 
 hugo: FORCE
 	# testing
@@ -63,12 +63,12 @@ hugo: FORCE
 	./index_database.sh hugo
 
 LSDB: FORCE
-	# working / complete. (no DB -- copyright issues)
+	# complete. (no DB -- copyright issues)
 	-./mirror.sh LSDB/urls
 	-./mirror.sh LSDB/urls.lovd
 
 medgen: FORCE
-	# working / complete.
+	# complete.
 	-./mirror.sh medgen/urls
 	./unpack.sh medgen
 	./create_database.sh medgen
