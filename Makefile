@@ -47,12 +47,12 @@ GeneReviews: FORCE
 	./index_database.sh GeneReviews
 	
 hpo: FORCE
-	# testing
+	# working
 	-./mirror.sh hpo/urls
 	./unpack.sh hpo
 	./create_database.sh hpo
 	./load_database.sh hpo
-	./index_database.sh hpo
+	# ./index_database.sh hpo (already indexed) 
 
 hugo: FORCE
 	# testing
