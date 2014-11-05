@@ -76,10 +76,11 @@ medgen: FORCE
 	./index_database.sh medgen
 
 orphanet: FORCE
-	# download-only.
+	# complete (download-only).
 	-./mirror.sh orphanet/urls
 
 PersonalGenomes: FORCE
+	# testing
 	-./mirror.sh PersonalGenomes/urls
 	./unpack.sh PersonalGenomes
 	./create_database.sh PersonalGenomes

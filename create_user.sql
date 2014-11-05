@@ -11,6 +11,7 @@ grant all privileges on hpo.*          to 'medgen'@'%' with grant option;
 grant all privileges on hugo.*         to 'medgen'@'%' with grant option; 
 grant all privileges on medgen.*       to 'medgen'@'%' with grant option; 
 grant all privileges on orphanet.*     to 'medgen'@'%' with grant option; 
+grant all privileges on PersonalGenomes.* to 'medgen'@'%' with grant option; 
 grant all privileges on pubmed.*       to 'medgen'@'%' with grant option; 
 grant all privileges on PubTator.*     to 'medgen'@'%' with grant option; 
 grant all privileges on SETH.*         to 'medgen'@'%' with grant option; 
