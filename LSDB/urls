@@ -1,23 +1,28 @@
 ! echo "////////////////////////////////////////////"
 ! echo "### CGD: Clinical Genomics Database ###" 
 
-! wget http://research.nhgri.nih.gov/CGD/download/txt/CGD.txt.gz
+WGET_CMD="wget -nv -c -m -nH --cut-dirs=100 -R '*html*'"
+
+!   mkdir -p LSDB/mirror
+    cd LSDB/mirror
 
 ! echo "////////////////////////////////////////////"
 ! echo "### PhenCode ###" 
 
-! wget  http://globin.bx.psu.edu/phencode/otherLinks.html
+wget -c -nv http://globin.bx.psu.edu/phencode/otherLinks.html
 
-! wget http://research.nhgri.nih.gov/CGD/download/txt/CGD.txt.gz
-! wget http://phencode.bx.psu.edu/dist/phencode/database/gvSrc.txt
-! wget http://phencode.bx.psu.edu/dist/phencode/database/linkBuilder.txt
-! wget http://phencode.bx.psu.edu/dist/phencode/database/srcDetails.txt
+$WGET_CMD http://research.nhgri.nih.gov/CGD/download/txt/CGD.txt.gz
 
-! wget http://phencode.bx.psu.edu/dist/phencode/database/gvLink.txt
-! wget http://phencode.bx.psu.edu/dist/phencode/database/gvPosHg18.txt
-! wget http://phencode.bx.psu.edu/dist/phencode/database/gvPosHg19.txt
+$WGET_CMD http://research.nhgri.nih.gov/CGD/download/txt/CGD.txt.gz
+$WGET_CMD http://phencode.bx.psu.edu/dist/phencode/database/gvSrc.txt
+$WGET_CMD http://phencode.bx.psu.edu/dist/phencode/database/linkBuilder.txt
+$WGET_CMD http://phencode.bx.psu.edu/dist/phencode/database/srcDetails.txt
 
-! wget http://phencode.bx.psu.edu/dist/phencode/database/tables.txt
-! wget http://phencode.bx.psu.edu/dist/phencode/database/tables.sql
+$WGET_CMD http://phencode.bx.psu.edu/dist/phencode/database/gvLink.txt
+$WGET_CMD http://phencode.bx.psu.edu/dist/phencode/database/gvPosHg18.txt
+$WGET_CMD http://phencode.bx.psu.edu/dist/phencode/database/gvPosHg19.txt
+
+$WGET_CMD http://phencode.bx.psu.edu/dist/phencode/database/tables.txt
+$WGET_CMD http://phencode.bx.psu.edu/dist/phencode/database/tables.sql
 
 ! echo "////////////////////////////////////////////"
