@@ -76,8 +76,8 @@ medgen: FORCE
 	./index_database.sh medgen
 
 orphanet: FORCE
-	# urls not converted to wget yet.
-	echo "not done yet!"
+	# download-only.
+	-./mirror.sh orphanet/urls
 
 pubmed: FORCE
 	# testing
