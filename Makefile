@@ -8,7 +8,8 @@ PKG_NAME:=medgen-mysql
 _:=$(shell mkdir -p logs)
 
 help:
-	@echo "  Type make setup to install ${PKG_NAME} into the virtualenv"
+	@echo "  Type make <database> to download, unpack, create mysql store for each individual DB."
+	@echo "  (for example: make clinvar)"
 
 clinvar: FORCE
 	# working / complete.
@@ -34,6 +35,10 @@ gene: FORCE
 	./load_database.sh gene
 	./index_database.sh gene
 
+hpo: FORCE
+	# testing
+	-./mirror.sh hpo/urls
+
 hugo: FORCE
 	# testing
 	-./mirror.sh hugo/urls
@@ -48,12 +53,16 @@ LSDB: FORCE
 	-./mirror.sh LSDB/urls.lovd
 
 medgen: FORCE
-	# testing
+	# working / complete.
 	-./mirror.sh medgen/urls
 	./unpack.sh medgen
 	./create_database.sh medgen
 	./load_database.sh medgen
 	./index_database.sh medgen
+
+orphanet: FORCE
+	# urls not converted to wget yet.
+	echo "not done yet!"
 
 pubmed: FORCE
 	# testing
