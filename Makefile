@@ -11,6 +11,9 @@ help:
 	@echo "  Type make <database> to download, unpack, create mysql store for each individual DB."
 	@echo "  (for example: make clinvar)"
 
+user: FORCE
+	./create_user.sh
+
 clinvar: FORCE
 	# working / complete.
 	-./mirror.sh clinvar/urls
@@ -28,12 +31,21 @@ GTR: FORCE
 	./index_database.sh GTR
 
 gene: FORCE
-	# testing
+	# 
 	-./mirror.sh gene/urls
 	./unpack.sh gene
 	./create_database.sh gene
 	./load_database.sh gene
 	./index_database.sh gene
+
+GeneReviews: FORCE
+	# working / complete.
+	-./mirror.sh GeneReviews/urls
+	./unpack.sh GeneReviews
+	./create_database.sh GeneReviews
+	./load_database.sh GeneReviews
+	./index_database.sh GeneReviews
+	
 
 hpo: FORCE
 	# testing
