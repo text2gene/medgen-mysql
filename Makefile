@@ -39,6 +39,7 @@ hugo: FORCE
 	./index_database.sh hugo
 
 LSDB: FORCE
+	# testing
 	-./mirror.sh LSDB/urls
 	-./mirror.sh LSDB/urls.lovd
 	./unpack.sh LSDB
@@ -47,6 +48,7 @@ LSDB: FORCE
 	./index_database.sh LSDB
 
 medgen: FORCE
+	# testing
 	-./mirror.sh medgen/urls
 	./unpack.sh medgen
 	./create_database.sh medgen
@@ -54,6 +56,7 @@ medgen: FORCE
 	./index_database.sh medgen
 
 pubmed: FORCE
+	# testing
 	-./mirror.sh pubmed/urls.pmc
 	-./mirror.sh pubmed/urls.openaccess
 	-./mirror.sh pubmed/urls.medline
@@ -63,6 +66,7 @@ pubmed: FORCE
 	./index_database.sh pubmed
 
 PubTator: FORCE
+	# testing
 	-./mirror.sh PubTator/urls
 	-./mirror.sh PubTator/urls.tmvar
 	./unpack.sh PubTator
@@ -71,12 +75,14 @@ PubTator: FORCE
 	./index_database.sh PubTator
 
 SETH: FORCE
+	# blocked
 	-./mirror.sh SETH/urls.emu
 	-./mirror.sh SETH/urls.mutationfinder
-	./unpack.sh SETH
-	./create_database.sh SETH
-	./load_database.sh SETH
-	./index_database.sh SETH
+	# TODO for sasha (turn these on when ready)
+	#./unpack.sh SETH
+	#./create_database.sh SETH
+	#./load_database.sh SETH
+	#./index_database.sh SETH
 
 .PHONY:  FORCE help GTR GTR gene hugo LSDB medgen PubTator SETH 
 
