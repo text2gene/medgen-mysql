@@ -1,5 +1,3 @@
-### rsync --stats -chavzP 1-compute:/locus/data/mirrors/human-phenotype-ontology.org . ### 
-
 ! echo =================================================
 ! echo "HPO: Human Phenotype Ontology"
 ! echo =================================================
@@ -8,15 +6,23 @@
     cd hpo/mirror
 
 WGET_CMD="wget -c -m -nH --cut-dirs=100"
+
 BASE_URL_ONTOLOGIES="http://compbio.charite.de/hudson/job/hpo/lastStableBuild/artifact/ontology/release"
 BASE_URL_ANNOTATIONS="http://compbio.charite.de/hudson/job/hpo.annotations/lastStableBuild/artifact/misc"
 BASE_URL_MAPPINGS="http://compbio.charite.de/svn/hpo/trunk/src/"
 
 ! echo "////////////////////////////////////////////"
+! echo "HPO MySQL Database dump " 
+
+$WGET_CMD http://compbio.charite.de/hudson/job/hpo.annotations.monthly/lastStableBuild/artifact/annotation/MYHPO_10_2014.sql
+
+! echo "////////////////////////////////////////////"
 ! echo "HPO-data " 
 
-$WGET_CMD $BASE_URL_ONTOLOGIES/hp.obo
-$WGET_CMD $BASE_URL_ONTOLOGIES/human-phenotype-ontology_xp.obo
+# TODO:AndyMC
+#
+# $WGET_CMD $BASE_URL_ONTOLOGIES/hp.obo
+# $WGET_CMD $BASE_URL_ONTOLOGIES/human-phenotype-ontology_xp.obo
 $WGET_CMD $BASE_URL_ONTOLOGIES/hp-reasoner-report.txt
 
 ! echo "////////////////////////////////////////////"
@@ -46,3 +52,7 @@ $WGET_CMD $BASE_URL_MAPPINGS/mappings/onet_hpo.tsv
 #$WGET_CMD $BASE_URL_MAPPINGS/mappings/medraMapping.tsv 
 
 ! echo =================================================
+
+! echo "//////////////////////////////////////////////////"
+! echo "[ HPO Human Phenotype Ontology download complete ]"
+! echo "//////////////////////////////////////////////////"
