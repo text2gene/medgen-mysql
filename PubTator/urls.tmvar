@@ -4,7 +4,7 @@
 ! echo "pubTator --> (tmVar , DNorm , Medic) "
 ! echo ==============================================================================
 
-WGET_CMD="wget -c -m -nH --cut-dirs=100"
+WGET_CMD="wget -nv -c -m -nH --cut-dirs=100"
 
 ! mkdir -p PubTator/mirror
 cd PubTator/mirror

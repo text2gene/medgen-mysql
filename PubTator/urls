@@ -2,7 +2,7 @@
 ! echo "PubTator: human and machine generated variant annotations" 
 ! echo ===========================================================
 
-WGET_CMD="wget -c -m -nH --cut-dirs=100"
+WGET_CMD="wget -nv -c -m -nH --cut-dirs=100"
 BASE_URL="ftp://ftp.ncbi.nlm.nih.gov/pub/lu/PubTator"
 
 ! mkdir -p PubTator/mirror

@@ -79,6 +79,13 @@ orphanet: FORCE
 	# download-only.
 	-./mirror.sh orphanet/urls
 
+PersonalGenomes: FORCE
+	-./mirror.sh PersonalGenomes/urls
+	./unpack.sh PersonalGenomes
+	./create_database.sh PersonalGenomes
+	./load_database.sh PersonalGenomes
+	./index_database.sh PersonalGenomes
+
 pubmed: FORCE
 	# testing
 	-./mirror.sh pubmed/urls.pmc
