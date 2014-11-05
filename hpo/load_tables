@@ -1,0 +1,9 @@
+echo "######################################" 
+echo "[ HPO Human Phenotype Ontology]" 
+echo 
+echo " Loading HPO provided database export " 
+echo 
+echo "######################################" 
+
+. db.config 
+$mysql_dataset < MYHPO_10_2014.sql
