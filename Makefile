@@ -35,6 +35,15 @@ gene: FORCE
 	./load_database.sh gene
 	./index_database.sh gene
 
+GeneReviews: FORCE
+	# testing
+	-./mirror.sh GeneReviews/urls
+	./unpack.sh GeneReviews
+	./create_database.sh GeneReviews
+	./load_database.sh GeneReviews
+	./index_database.sh GeneReviews
+	
+
 hpo: FORCE
 	# testing
 	-./mirror.sh hpo/urls

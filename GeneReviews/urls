@@ -1,0 +1,17 @@
+! echo =================================================
+! echo "Gene Reviews" 
+
+WGET_CMD="wget -c -m -nH --cut-dirs=100"
+BASE_URL="ftp://ftp.ncbi.nlm.nih.gov/pub"
+
+      ! mkdir -p GeneReviews/mirror
+       cd GeneReviews/mirror
+
+! echo =================================================
+
+$WGET_CMD $BASE_URL/GeneReviews
+
+! echo =================================================
+! echo "[GeneReviews download complete]" 
+! echo =================================================
+
