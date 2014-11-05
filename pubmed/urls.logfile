@@ -1,0 +1,22 @@
+! echo ==========================================================================
+! echo " PubMed user search behavior (restults of study by pubmed researchers) "
+! echo ===========================================================================
+
+WGET_CMD="wget -c -m -nH --cut-dirs=100"
+BASE_URL="ftp://ftp.ncbi.nlm.nih.gov"
+
+       ! mkdir -p pubmed/mirror 
+       cd pubmed/mirror
+
+$WGET_CMD $BASE_URL/pubmed
+
+! echo "////////////////////////////////////////////"
+
+$WGET_CMD -O pubmed_user_logs.sample.txt http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/LogStudy/sample.txt
+
+$WGET_CMD http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/LogStudy/march08.tar
+$WGET_CMD http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/LogStudy/march09.tar
+
+! echo "////////////////////////////////////////////"
+! echo "[ pubmed logfile study download complete ]"
+! echo "////////////////////////////////////////////"
