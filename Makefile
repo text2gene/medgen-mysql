@@ -108,5 +108,13 @@ SETH: FORCE
 	#./load_database.sh SETH
 	#./index_database.sh SETH
 
+#umls: FORCE
+	#TODO 
+#	-./mirror.sh umls/urls
+#	./unpack.sh umls
+#	./create_database.sh umls
+#	./load_database.sh umls
+#	./index_database.sh umls
+	
 .PHONY:  FORCE help GTR GTR gene hugo LSDB medgen PubTator SETH 
 
