@@ -7,28 +7,42 @@
        ! mkdir -p hugo/mirror 
        cd hugo/mirror
 
+! echo ""
+! echo "Since these are CGI requests, content will be re-downloaded"
+! echo "even if your existing mirror is up to date."
+! echo ""
 ! echo "////////////////////////////////////////////"
 ! echo "hugo2entrez (HGNC to ncbi ENTREZ)"
 
-WGET_CMD="wget -c -m -nH --cut-dirs=100"
+WGET_CMD="wget -c -nH --cut-dirs=100"
+
+# TODO: implement own url-shortener using chr: https://pypi.python.org/pypi/chr/2.1.1
+#
+# With our own url-shortener, we can cache results so that people don't end up 
+# re-downloading from these CGI requests when there have been no changes.
+#
 
 $WGET_CMD -O hugo2entrez.txt http://tinyurl.com/q4664qk 
 
+! echo ""
 ! echo "////////////////////////////////////////////"
 ! echo "hugo2pubmed (HGNC PubMed )" 
 
-$WGET_CMD -O hugo2pubmed.txt "http://www.genenames.org/cgi-bin/download?col=gd_hgnc_id;col=gd_app_sym;col=gd_app_name;col=gd_status;col=gd_pub_eg_id;col=gd_pubmed_ids;status=Approved;status=Entry%20Withdrawn;status_opt=2;where=;order_by=gd_app_sym_sort;format=text;limit=;hgnc_dbtag=on;submit=submit"
+$WGET_CMD -O hugo2pubmed.txt http://tinyurl.com/o4292zy
 
-#$WGET_CMD -O hugo2pubmed.txt http://tinyurl.com/o4292zy
-
+! echo ""
 ! echo "////////////////////////////////////////////"
 ! echo "hugo2entrez2omim (HGNC to ncbi ENTREZ to OMIM id)"
 
 $WGET_CMD -O hugo2entrez2omim.txt http://tinyurl.com/m3qnc42
 
+! echo ""
 ! echo "////////////////////////////////////////////"
 ! echo "hugo_info (HGNC standard annotations) "
 
 $WGET_CMD -O hugo_info.txt http://tinyurl.com/nefdx9z  
 
+! echo ""
+! echo "hugo mirror complete."
+! echo ""
 ! echo "////////////////////////////////////////////"
