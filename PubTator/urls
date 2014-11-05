@@ -12,7 +12,8 @@ cd PubTator/mirror
 ! echo "Each NCBI Annotator produces 2Pubtator output tables"
 
 $WGET_CMD $BASE_URL/readme.txt
-$WGET_CMD -A *2pubtator* $BASE_URL/
+#$WGET_CMD -A *2pubtator* $BASE_URL/
+$WGET_CMD -A "*.gz" $BASE_URL/
 
 ! echo ===========================================================
 
