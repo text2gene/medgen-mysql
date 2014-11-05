@@ -38,3 +38,6 @@ $WGET_CMD http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/pub/tmVar/corpus.zip
 $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/lu/LabeledIn
 
 ! echo ==============================================================================
+! echo " /////////////////////////////////////////////////// "
+! echo " [tmVar Text Mine Variant tools download complete ]  "
+! echo " /////////////////////////////////////////////////// "

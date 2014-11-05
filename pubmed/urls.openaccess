@@ -11,12 +11,6 @@ BASE_URL="ftp://ftp.ncbi.nlm.nih.gov"
 $WGET_CMD $BASE_URL/pubmed
 
 ! echo "////////////////////////////////////////////"
-! echo "PubMed and PMC lists (OpenAccess mostly)"
-
-$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/file_list.txt
-$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/PMC-ids.csv.gz
-
-! echo "////////////////////////////////////////////"
 ! echo "PubMed all directory contents updated daily"
 
 $WGET_CMD $BASE_URL/repository/OMIM/pubmed_cited
@@ -27,7 +21,6 @@ $WGET_CMD $BASE_URL/pub/pmc
 
 ! echo wget http://library.mssm.edu/reference/pdfs/fieldsearch.pdf
 ! echo "http://www.ncbi.nlm.nih.gov/pmc/?term=%22open+access%22[filter]" ### TODO
-
 
 ! echo "////////////////////////////////////////////"
 ! echo "PubMed user search behavior through log analysis"

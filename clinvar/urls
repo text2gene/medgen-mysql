@@ -48,3 +48,7 @@ $WGET_CMD $BASE_TAB_DELIM_URL/gene_specific_summary*
 ! echo "HGVS tagged molecular consequences" 
 
 $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/supplements/molecular_consequences.txt
+
+! echo "////////////////////////////////////////////"
+! echo "[ clinvar download complete ]"
+! echo "////////////////////////////////////////////"

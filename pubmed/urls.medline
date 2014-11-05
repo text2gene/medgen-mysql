@@ -9,11 +9,27 @@ WGET_CMD="wget -c -m -nH --cut-dirs=100"
        ! mkdir -p pubmed/mirror 
        cd pubmed/mirror
 
-! echo =================================================
+! echo =================================================================================
+! echo SAMPLE DATA 
 
-# IP restriction -- if 404, it means your IP address isn't explicitly accepted by nlmdata.
+       $WGET_CMD -A.gz ftp://ftp.nlm.nih.gov/nlmdata/sample/medline/
+
+! echo =================================================================================
+! echo 
+! echo " NOTICE: This download is huge ( > 10GB+) and could take a while...." 
+! echo 
+! echo " To download MEDLINE: " 
+! echo " Register your IP with the US National Library of Medicine (PubMed)" 
+! echo 
+! echo http://www.nlm.nih.gov/databases/journal.html
+! echo =================================================================================
+
 # TODO: parse return from the following wget, display friendly message if 404.
 
 $WGET_CMD -A.gz ftp://ftp.nlm.nih.gov/nlmdata/.medleasebaseline/gz/
 
-! echo =================================================
+! echo =================================================================================
+
+! echo "////////////////////////////////////////////"
+! echo "[pubmed medline download complete ]"
+! echo "////////////////////////////////////////////"

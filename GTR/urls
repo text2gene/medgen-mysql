@@ -15,7 +15,7 @@ $WGET_CMD $BASE_URL/test_condition_gene.txt
 $WGET_CMD $BASE_URL/test_version.gz 
 $WGET_CMD $BASE_URL/labs_tests_by_country.txt
 
-! echo "////////////////////////////////////////////"
-! echo "[ GTR download complete ]" 
-! echo "////////////////////////////////////////////"
+! echo "////////////////////////////////////////////////////"
+! echo "[ GTR Genetic Testing Registry download complete ]" 
+! echo "////////////////////////////////////////////////////"
 

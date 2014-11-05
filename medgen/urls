@@ -39,6 +39,6 @@ $WGET_CMD $CLINGEN_BASE_URL/ClinGen_region_curation_list.tsv
 
 ! echo =================================================
 
-! echo "////////////////////////////////////////////"
-! echo "[ MedGen download complete ]" 
-! echo "////////////////////////////////////////////"
+! echo "/////////////////////////////////////////////////"
+! echo "[NCBI Medical Genetics medgen download complete]" 
+! echo "//////////////////////////////////////////////////"

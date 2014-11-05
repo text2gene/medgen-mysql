@@ -13,3 +13,7 @@ $WGET_CMD http://mutationfinder.sourceforge.net/PSB08_supp_material.tar.gz
 
 # TODO for Andy:
 # $WGET_CMD -A "*.*" http://sourceforge.net/projects/bionlp-corpora/files/ProteinResidue/
+
+! echo "////////////////////////////////////////////////"
+! echo "[ SETH MutationFinder tools download complete  ]"
+! echo "////////////////////////////////////////////////"
