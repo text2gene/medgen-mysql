@@ -98,9 +98,9 @@ pubmed: FORCE
 	./index_database.sh pubmed
 
 PubTator: FORCE
-	# testing
+	# testing -- tmvar needs work.
 	-./mirror.sh PubTator/urls
-	-./mirror.sh PubTator/urls.tmvar
+	#-./mirror.sh PubTator/urls.tmvar
 	./unpack.sh PubTator
 	./create_database.sh PubTator
 	./load_database.sh PubTator
