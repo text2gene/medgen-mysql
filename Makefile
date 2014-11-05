@@ -46,7 +46,6 @@ GeneReviews: FORCE
 	./load_database.sh GeneReviews
 	./index_database.sh GeneReviews
 	
-
 hpo: FORCE
 	# testing
 	-./mirror.sh hpo/urls
