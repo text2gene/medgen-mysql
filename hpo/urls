@@ -4,40 +4,45 @@
 ! echo "HPO: Human Phenotype Ontology"
 ! echo =================================================
 
-! mkdir -p hpo/mirror
-lcd hpo/mirror
+    ! mkdir -p hpo/mirror
+    cd hpo/mirror
+
+WGET_CMD="wget -c -m -nH --cut-dirs=100"
+BASE_URL_ONTOLOGIES="http://compbio.charite.de/hudson/job/hpo/lastStableBuild/artifact/ontology/release"
+BASE_URL_ANNOTATIONS="http://compbio.charite.de/hudson/job/hpo.annotations/lastStableBuild/artifact/misc"
+BASE_URL_MAPPINGS="http://compbio.charite.de/svn/hpo/trunk/src/"
 
 ! echo "////////////////////////////////////////////"
 ! echo "HPO-data " 
 
-get -c http://compbio.charite.de/hudson/job/hpo/lastStableBuild/artifact/ontology/release/hp.obo
-get -c http://compbio.charite.de/hudson/job/hpo/lastStableBuild/artifact/ontology/human-phenotype-ontology_xp.obo
-get -c http://compbio.charite.de/hudson/job/hpo/lastStableBuild/artifact/ontology/release/hp-reasoner-report.txt
+$WGET_CMD $BASE_URL_ONTOLOGIES/hp.obo
+$WGET_CMD $BASE_URL_ONTOLOGIES/human-phenotype-ontology_xp.obo
+$WGET_CMD $BASE_URL_ONTOLOGIES/hp-reasoner-report.txt
 
 ! echo "////////////////////////////////////////////"
 ! echo "HPO Annotations" 
 
-get -c  http://compbio.charite.de/hudson/job/hpo.annotations/lastStableBuild/artifact/misc/curator-statistics.tab
-get -c  http://compbio.charite.de/hudson/job/hpo.annotations/lastStableBuild/artifact/misc/negative_phenotype_annotation.tab 
-get -c  http://compbio.charite.de/hudson/job/hpo.annotations/lastStableBuild/artifact/misc/phenotype_annotation.tab 
-get -c  http://compbio.charite.de/hudson/job/hpo.annotations/lastStableBuild/artifact/misc/phenotype_annotation_hpoteam.tab 
+$WGET_CMD $BASE_URL_ANNOTATIONS/curator-statistics.tab
+$WGET_CMD $BASE_URL_ANNOTATIONS/negative_phenotype_annotation.tab 
+$WGET_CMD $BASE_URL_ANNOTATIONS/phenotype_annotation.tab 
+$WGET_CMD $BASE_URL_ANNOTATIONS/phenotype_annotation_hpoteam.tab 
 
 ! echo "////////////////////////////////////////////"
 
 ! echo " HPO mappings to UMLS"
 
-get -c http://compbio.charite.de/svn/hpo/trunk/src/mappings/term2umls.out 
+$WGET_CMD $BASE_URL_MAPPINGS/mappings/term2umls.out 
 
 ! echo "////////////////////////////////////////////"
 ! echo "HPO database schema" 
 
-get -c http://compbio.charite.de/svn/hpo/trunk/src/misc/hpo_db_schema.pdf
+$WGET_CMD $BASE_URL_MAPPINGS/misc/hpo_db_schema.pdf
 
 ! echo "////////////////////////////////////////////"
 ! echo "HPO Mappings (disease specific) " 
 
-get -c http://compbio.charite.de/svn/hpo/trunk/src/mappings/LDDB2HPO-v2.csv
-get -c http://compbio.charite.de/svn/hpo/trunk/src/mappings/onet_hpo.tsv
-#get -c http://compbio.charite.de/svn/hpo/trunk/src/mappings/medraMapping.tsv 
+$WGET_CMD $BASE_URL_MAPPINGS/mappings/LDDB2HPO-v2.csv
+$WGET_CMD $BASE_URL_MAPPINGS/mappings/onet_hpo.tsv
+#$WGET_CMD $BASE_URL_MAPPINGS/mappings/medraMapping.tsv 
 
 ! echo =================================================
