@@ -21,7 +21,7 @@ for f in `find $DATASET | grep gz$`;
 do
   ls $f
   STEM=$(basename "${f}" .gz)  
-  gunzip -c "${f}" > $DATASET/mirror/"${STEM}"
+  gunzip -cq "${f}" > $DATASET/mirror/"${STEM}"
 done
 
 # unzip 
@@ -35,5 +35,3 @@ for tar in `find $DATASET | grep "tar$"`;
 do
     tar -xvf $tar -C $DATASET/mirror/. 
 done
-
-
