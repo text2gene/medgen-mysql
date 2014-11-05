@@ -39,13 +39,9 @@ hugo: FORCE
 	./index_database.sh hugo
 
 LSDB: FORCE
-	# testing
+	# done (no DB -- copyright issues)
 	-./mirror.sh LSDB/urls
 	-./mirror.sh LSDB/urls.lovd
-	./unpack.sh LSDB
-	./create_database.sh LSDB
-	./load_database.sh LSDB
-	./index_database.sh LSDB
 
 medgen: FORCE
 	# testing
