@@ -1,0 +1,43 @@
+! echo =================================================
+! echo "GO Gene Ontology" 
+! echo 
+! echo "mysql dump updated daily" 
+! echo =================================================
+! echo 
+! echo http://www.geneontology.org/GO.downloads.ontology.shtml
+
+mkdir -p GO/mirror 
+cd GO/mirror
+
+! echo =================================================
+
+WGET_CMD="wget -c -m -nH --cut-dirs=100"
+
+! echo "////////////////////////////////////////////"
+! echo "GO terms (termdb)" 
+! echo 
+! echo "ontologies, definitions and mappings to other DBS" 
+       
+       $WGET_CMD http://archive.geneontology.org/latest-termdb/go_daily-termdb-tables.tar.gz 
+
+! echo "////////////////////////////////////////////"
+! echo "GO associations (assocdb)" 
+! echo
+! echo "all manual and automatically annotated gene products"
+  
+	$WGET_CMD http://archive.geneontology.org/latest-lite/go_20141025-assocdb-tables.tar.gz
+
+! echo "////////////////////////////////////////////"
+! echo "GO sequences (seqdb)" 
+! echo
+! echo "link between a gene product and a biological sequence"
+
+       $WGET_CMD http://archive.geneontology.org/latest-lite/go_20141025-seqdb-tables.tar.gz
+
+! echo =================================================
+! echo 
+
+! echo "///////////////////////////////////////////////////////"
+! echo "[ GO download complete: Gene Ontology daily mysqldump ]" 
+! echo "///////////////////////////////////////////////////////"
+
