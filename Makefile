@@ -31,7 +31,7 @@ GTR: FORCE
 	./index_database.sh GTR
 
 gene: FORCE
-	# 
+	# testing
 	-./mirror.sh gene/urls
 	./unpack.sh gene
 	./create_database.sh gene
@@ -46,10 +46,13 @@ GeneReviews: FORCE
 	./load_database.sh GeneReviews
 	./index_database.sh GeneReviews
 	
-
 hpo: FORCE
 	# testing
 	-./mirror.sh hpo/urls
+	./unpack.sh hpo
+	./create_database.sh hpo
+	./load_database.sh hpo
+	./index_database.sh hpo
 
 hugo: FORCE
 	# testing
