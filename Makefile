@@ -47,7 +47,7 @@ GeneReviews: FORCE
 	./index_database.sh GeneReviews
 	
 hpo: FORCE
-	# complete
+	# complete.
 	-./mirror.sh hpo/urls
 	./unpack.sh hpo
 	./create_database.sh hpo
@@ -55,7 +55,7 @@ hpo: FORCE
 	# ./index_database.sh hpo (already indexed) 
 
 hugo: FORCE
-	# testing
+	# complete.
 	-./mirror.sh hugo/urls
 	./unpack.sh hugo
 	./create_database.sh hugo
