@@ -80,7 +80,7 @@ orphanet: FORCE
 	-./mirror.sh orphanet/urls
 
 PersonalGenomes: FORCE
-	# testing
+	# complete.
 	-./mirror.sh PersonalGenomes/urls
 	./unpack.sh PersonalGenomes
 	./create_database.sh PersonalGenomes
