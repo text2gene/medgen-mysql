@@ -32,14 +32,14 @@ create table          view_concept (
   SourceVocab         varchar(40)  , 
   TermType            varchar(40)  , 
   SourceCode          varchar(100) , 
-  Name                text, 
-  Suppress            char(1) ) 
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+  Name                varchar(255) , 
+  Suppress            char(1));
 
 insert into view_concept select * from MGCONSO; 
 
-alter table view_concept add index (ConceptID); 
-alter table view_concept add index (SourceVocab); 
+call utf8_unicode('view_concept'); 
+call create_index('view_concept','ConceptID');
+call create_index('view_concept','SourceVocab');
 
 call log('view_concept', 'done');
 -- ################################################################
@@ -52,8 +52,9 @@ select CUI as ConceptID,
        SAB as SourceVocab
 from MGDEF; 
 
-alter table view_concept_def add index (ConceptID); 
-alter table view_concept_def add index (SourceVocab); 
+call utf8_unicode('view_concept_def'); 
+call create_index('view_concept_def','ConceptID');
+call create_index('view_concept_def','SourceVocab');
 
 call log('view_concept_def', 'done');
 -- ################################################################
@@ -69,16 +70,18 @@ create table           view_concept_child
   ChildID            char(8)     not null, 
   ChildAttrID        varchar(9)  not null, 
   SourceVocab        varchar(40) not null 
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+); 
+
+call utf8_unicode('view_concept_child'); 
 
 insert into view_concept_child ( ConceptID, ConceptAttrID, ChildID, ChildAttrID, SourceVocab)       
 select distinct CUI1, AUI1, CUI2, AUI2, SL from MGREL where REL = 'CHD'; 
 
-alter table view_concept_child add index (ConceptID); 
-alter table view_concept_child add index (ChildID); 
-alter table view_concept_child add index (SemanticType); 
-alter table view_concept_child add index (ChildSemanticType); 
+call create_index('view_concept_child','SourceVocab');
+call create_index('view_concept_child','ConceptID');
+call create_index('view_concept_child','SemanticType');
+call create_index('view_concept_child','ChildID');
+call create_index('view_concept_child','ChildSemanticType');
 
 update view_concept_child Tree, MGSTY sem 
 set    Tree.SemanticType = sem.STY 
@@ -91,4 +94,3 @@ where  ChildID = sem.CUI ;
 call log('view_concept_child', 'done');
 -- ################################################################
 call log('view_concept_hierarchy.sql', 'END'); 
-
