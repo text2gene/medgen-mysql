@@ -7,10 +7,11 @@ CREATE TABLE           view_medgen_uid
 select distinct        UID as MedGenUID, 
        		       CUI as ConceptID from medgen_pubmed; 
 
+call utf8_unicode('view_medgen_uid'); 
 
-alter table view_medgen_uid ENGINE=InnoDB DEFAULT CHARSET=utf8; 
-alter table view_medgen_uid add index (MedGenUID); 
-alter table view_medgen_uid add index (ConceptID); 
+call create_index('view_medgen_uid','MedGenUID');
+call create_index('view_medgen_uid','ConceptID');
+
 -- ###################################################
 call log('view_medgen_uid', 'end');
 

@@ -28,8 +28,7 @@ CREATE TABLE           view_disease_subtype
 (
   Disease   char(8) not null, 
   Subtype   char(8) not null
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+); 
 
 call utf8_unicode('view_disease_subtype'); 
 call utf8_unicode('view_disease_preferred'); 

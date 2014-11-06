@@ -21,10 +21,12 @@ where    concept.ISPREF   = 'Y'   and
  	 concept.CUI      = prefer.CUI  and 
  	 concept.CUI      = semantic.CUI  ; 
 
-alter table view_concept_preferred add index ( ConceptID ); 
+call utf8_unicode('view_concept_preferred'); 
+call create_index('view_concept_preferred','ConceptID');
 
 -- ################################################################
 call log('view_disease_preferred', 'ncbi preferred disease names');
+
 drop table if exists view_disease_preferred; 
 
 create table view_disease_preferred like view_concept_preferred; 
@@ -34,7 +36,6 @@ insert into view_disease_preferred
 select distinct SemanticType,SourceVocab,ConceptID, Name 
 from view_concept_preferred
 where SemanticType = 'Disease or Syndrome'; 
-
 
 call log('view_preferred.sql', 'done.');
 -- ################################################################
