@@ -6,8 +6,8 @@ export TODAY="$(date +%F)"
 export BATCH="$TODAY" 
 
 ####################
-DB_USER=umls 
-DB_PASS=umls
+DB_USER=medgen 
+DB_PASS=medgen
 DB_HOST="localhost" 
 DB_PORT="3306"  
 #DB_LOCK="--skip-lock-tables"
