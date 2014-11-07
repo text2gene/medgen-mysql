@@ -13,6 +13,10 @@ call create_index('disease_names','SourceName');
 call create_index('disease_names','SourceID');
 call create_index('disease_names','DiseaseMIM');
 
+call create_index('molecular_consequences', 'hgvs_text'); 
+call create_index('molecular_consequences', 'SequenceOntologyID'); 
+call create_index('molecular_consequences', 'Value');
+
 call create_index('gene_specific_summary','GeneID');
 call create_index('gene_specific_summary','Symbol');
 

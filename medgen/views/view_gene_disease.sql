@@ -2,7 +2,7 @@ use medgen;
 
 call log('view_gene_disease.sql', 'begin');
 
-desc gene_condition_source_id; 
+desc clinvar.gene_condition_source_id; 
 -- +-------------+------------------+------+-----+---------+-------+
 -- | Field       | Type             | Null | Key | Default | Extra |
 -- +-------------+------------------+------+-----+---------+-------+
@@ -34,7 +34,7 @@ CREATE TABLE         view_gene_disease
 call utf8_unicode('view_gene_disease'); 
 
 insert  into  view_gene_disease 
-select * from gene_condition_source_id; 
+select * from clinvar.gene_condition_source_id; 
 
 alter table view_gene_disease add column SemanticType varchar(50) default null; 
 alter table view_gene_disease add column cnt_semtype  smallint    default -1; 

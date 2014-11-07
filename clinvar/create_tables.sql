@@ -87,7 +87,19 @@ create table variant_summary (
 );
 call utf8_unicode('variant_summary'); 
 
-call log('create_tables','done');
+-- end 
+-- ###################################
+-- begin 
+
+drop table if exists molecular_consequences; 
+
+create table molecular_consequences
+(
+       hgvs_text          varchar(100) not null,
+       SequenceOntologyID varchar(20)  not null, 
+       Value              varchar(100) not null 
+); 
+call utf8_unicode('variant_summary'); 
 
 -- end 
 -- ###################################
@@ -116,3 +128,6 @@ call utf8_unicode('clingen_gene_curation_list');
 call log('ClinGen gene_curation_list','done'); 
 -- ###################################
 call log('ClinGen gene_curation_list','done'); 
+
+
+call log('create_tables.sql','done');
