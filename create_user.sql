@@ -15,7 +15,10 @@ grant all privileges on orphanet.*     to 'medgen'@'%' with grant option;
 grant all privileges on pubmed.*       to 'medgen'@'%' with grant option; 
 grant all privileges on umls.*         to 'medgen'@'%' with grant option; 
 
--- MedGen is able to link to these sources, but it is not essential
-grant all privileges on PubTator.*     to 'medgen'@'%' with grant option; 
-grant all privileges on SETH.*         to 'medgen'@'%' with grant option; 
+-- MedGen is able to link to Human Genetic Variation Society (HGVS) formatted datasources
+-- http://www.hgvs.org/mutnomen
+grant all privileges on hgvs.*            to 'medgen'@'%' with grant option;
+grant all privileges on hgvsquery.*       to 'medgen'@'%' with grant option;
+grant all privileges on PubTator.*        to 'medgen'@'%' with grant option; 
+grant all privileges on SETH.*            to 'medgen'@'%' with grant option; 
 grant all privileges on PersonalGenomes.* to 'medgen'@'%' with grant option; 
