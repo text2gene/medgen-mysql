@@ -33,25 +33,37 @@ Initial Setup
 
 Clone this repository using Mercurial::
 
-  hg clone ssh://hg@bitbucket.org/invitae/medgen-mysql
-  cd medgen-mysql
+```
+#!bash
+
+hg clone ssh://hg@bitbucket.org/invitae/medgen-mysql
+cd medgen-mysql
+```
 
 The first time you use this repository, you must run the database scripts that create
 a mysql user that will be able to load the medgen databases::
 
-  make user
+```
+#!bash
+
+make user
+```
 
 (Note that MySQL must be running and you must have the ability to use the "root" superuser.)
 
 Making Databases
 ================
 
-`make <dbname>`
+```
+#!bash
+
+make <dbname>
+```
 
 The Makefile in the root of the medgen-mysql directory provides ability to `make <dbname>`
 for each supported database.  (See below for complete list.)
 
-For each database desired, type `make <dbname>` to complete all of the tasks associated
+For each database desired, type ```make <dbname>``` to complete all of the tasks associated
 with downloading, extracting, and inputting to MySQL these particular sources.
 
 For example, `make clinvar` will complete the following steps::
@@ -63,12 +75,12 @@ For example, `make clinvar` will complete the following steps::
   ./index_database.sh clinvar
 
 All of the above steps can be run individually on the command line, so if you only want
-to run the download script, run `./mirror.sh <dbname>/urls`, which puts downloaded content
-into `<dbname>/mirror`.
+to run the download script, run ```./mirror.sh <dbname>/urls```, which puts downloaded content
+into ```<dbname>/mirror```.
 
-Note that already-downloaded files will not be re-downloaded, as long as `wget` is 
+Note that already-downloaded files will not be re-downloaded, as long as wget is 
 convinced that the remote and local files are identical.  If these files are not identical,
-`wget` will redownload this particular file.
+wget will redownload this particular file.
 
 This conservative updating means that you can schedule regular updates of your medical
 genetics databases without overusing your connection.
