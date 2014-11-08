@@ -47,7 +47,7 @@ GeneReviews: FORCE
 	./index_database.sh GeneReviews
 	
 hpo: FORCE
-	# complete
+	# complete.
 	-./mirror.sh hpo/urls
 	./unpack.sh hpo
 	./create_database.sh hpo
@@ -55,7 +55,7 @@ hpo: FORCE
 	# ./index_database.sh hpo (already indexed) 
 
 hugo: FORCE
-	# testing
+	# complete.
 	-./mirror.sh hugo/urls
 	./unpack.sh hugo
 	./create_database.sh hugo
@@ -80,7 +80,7 @@ orphanet: FORCE
 	-./mirror.sh orphanet/urls
 
 PersonalGenomes: FORCE
-	# testing
+	# complete.
 	-./mirror.sh PersonalGenomes/urls
 	./unpack.sh PersonalGenomes
 	./create_database.sh PersonalGenomes
@@ -98,9 +98,9 @@ pubmed: FORCE
 	./index_database.sh pubmed
 
 PubTator: FORCE
-	# testing
+	# testing -- tmvar needs work.
 	-./mirror.sh PubTator/urls
-	-./mirror.sh PubTator/urls.tmvar
+	#-./mirror.sh PubTator/urls.tmvar
 	./unpack.sh PubTator
 	./create_database.sh PubTator
 	./load_database.sh PubTator

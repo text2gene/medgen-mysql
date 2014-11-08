@@ -2,7 +2,7 @@ use medgen;
 
 call log('view_gene_disease.sql', 'begin');
 
-desc gene_condition_source_id; 
+desc clinvar.gene_condition_source_id; 
 -- +-------------+------------------+------+-----+---------+-------+
 -- | Field       | Type             | Null | Key | Default | Extra |
 -- +-------------+------------------+------+-----+---------+-------+
@@ -29,18 +29,19 @@ CREATE TABLE         view_gene_disease
   SourceCode  varchar(50)    not null, 
   DiseaseMIM  varchar(10)        null, 
   LastUpdated Text               null
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8;	 
+); 
+
+call utf8_unicode('view_gene_disease'); 
 
 insert  into  view_gene_disease 
-select * from gene_condition_source_id; 
+select * from clinvar.gene_condition_source_id; 
 
 alter table view_gene_disease add column SemanticType varchar(50) default null; 
 alter table view_gene_disease add column cnt_semtype  smallint    default -1; 
 
-alter table view_gene_disease add index (GeneID); 
-alter table view_gene_disease add index (ConceptID); 
-alter table view_gene_disease add index (DiseaseMIM); 
+call create_index('view_gene_disease', 'GeneID'); 
+call create_index('view_gene_disease', 'ConceptID'); 
+call create_index('view_gene_disease', 'DiseaseMIM'); 
 
 -- #####################################################
 call log('view_gene_disease','set SemanticType'); 
@@ -61,11 +62,12 @@ where   G.ConceptID        = C.ConceptID;
 -- #####################################################
 call log('view_gene_disease','Disese:SemanticType'); 
 
-select SemanticType, count(*) as cnt 
-from view_gene_disease 
-GROUP BY SemanticType order by cnt desc; 
+-- SELECT   SemanticType, count(*) as cnt 
+-- FROM     view_gene_disease 
+-- GROUP BY SemanticType order by cnt desc; 
 
-mysql> select cnt_semtype, count(*) from view_concept_usage group by cnt_semtype; 
+-- select cnt_semtype, count(*) from view_concept_usage 
+-- group by cnt_semtype order by cnt_semtype desc; 
 -- +---------------+----------+
 -- | cnt_semtype | count(*) |
 -- +---------------+----------+

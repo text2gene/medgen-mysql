@@ -41,6 +41,5 @@ $mysql_dataset < view_gene_disease.sql
 echo "5. MedGen:HPO (HPO Human Phenotypes) "
 $mysql_dataset < view_medgen_hpo.sql 
 
-
 echo "7. Molecular Consequences " 
 $mysql_dataset < view_molecular_consequences.sql

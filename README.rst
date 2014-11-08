@@ -106,22 +106,11 @@ Gene
 :GeneReviews:
    Gene Reviews
 
-:hgnc:
-   HGNC official Gene Names
+:hugo:
+   Hugo Gene Naming Convention (GeneNames.org)
 
 :GO: 
    Gene Ontology / Gene Function 
-
-:dbsnp:
-   dbSNP HGVS coordinate mappings
-
-:eqtl:
-   Functional confirmation of variant effects
-
-:gapplus:
-   Genotypes and Phenotypes (dbGAP) "plus" pack
-
-|
 
 PubMed annotated content
 ===========================
@@ -139,8 +128,6 @@ PubMed annotated content
 :pubmed:
    Open Access Metadata
 
-
-|
 
 UMLS linked concepts
 ====================
