@@ -10,6 +10,8 @@ This package provides mirror access for NLM National Library of Medicine sources
 This package handles the download of all relevant files from each data store and the creation 
 of user-local databases in **MySQL only**. 
 
+medgen-mysql is a free and open source library provided by Invitae under the [Apache 2.0 License](http://www.apache.org/licenses/), a copy of which is included within the repository.
+
 ###########################################################################################
 
 Requirements
