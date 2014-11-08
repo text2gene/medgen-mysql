@@ -48,6 +48,14 @@ a mysql user that will be able to load the medgen databases::
 Making Databases
 ================
 
+``make all``
+
+If you want every database downloaded and installed, simply run ``make all``.  Done.
+
+Note that due to the size of some of these databases, it could take days to run everything
+the first time. Successive runs will take far less time since only newer files will be 
+downloaded to your local mirror.
+
 ``make <dbname>``
 
 The Makefile in the root of the medgen-mysql directory provides ability to ``make <dbname>``
