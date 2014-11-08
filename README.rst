@@ -1,27 +1,81 @@
 ============
 medgen-mysql
 ============
-This package provides mirror access for NLM National Library of Medicine sources, including
+This package provides mirror access for NLM National Library of Medicine sources, which currently includes:
 
 - `NCBI Medical Genetics linked sources`_
 - `PubMed annotated content`_
 - `UMLS linked concepts`_
 
 This package handles the download of all relevant files from each data store and the creation 
-of user-local databases in *MySQL only*. 
+of user-local databases in **MySQL only**. 
 
 ###########################################################################################
 
 Requirements
 ============
 
+Any Unix-like operating system (including OS X) will run medgen-mysql.
+
 Medgen-mysql downloads are automated via Makefile and run entirely within bash scripts.
 Thus the requirements are small::
 
-  Unix, Linux, or OS X
   bash
   wget
   mysql
+
+It's possible to use this repository for downloading purposes only. See "How To" for details.
+
+###########################################################################################
+
+Initial Setup
+=============
+
+Clone this repository using Mercurial::
+
+  hg clone ssh://hg@bitbucket.org/invitae/medgen-mysql
+  cd medgen-mysql
+
+The first time you use this repository, you must run the database scripts that create
+a mysql user that will be able to load the medgen databases::
+
+  make user
+
+(Note that MySQL must be running and you must have the ability to use the "root" superuser.)
+
+Making Databases
+================
+
+`make <dbname>`
+
+The Makefile in the root of the medgen-mysql directory provides ability to `make <dbname>`
+for each supported database.  (See below for complete list.)
+
+For each database desired, type `make <dbname>` to complete all of the tasks associated
+with downloading, extracting, and inputting to MySQL these particular sources.
+
+For example, `make clinvar` will complete the following steps::
+
+  ./mirror.sh clinvar/urls
+  ./unpack.sh clinvar
+  ./create_database.sh clinvar
+  ./load_database.sh clinvar
+  ./index_database.sh clinvar
+
+All of the above steps can be run individually on the command line, so if you only want
+to run the download script, run `./mirror.sh <dbname>/urls`, which puts downloaded content
+into `<dbname>/mirror`.
+
+Note that already-downloaded files will not be re-downloaded, as long as `wget` is 
+convinced that the remote and local files are identical.  If these files are not identical,
+`wget` will redownload this particular file.
+
+This conservative updating means that you can schedule regular updates of your medical
+genetics databases without overusing your connection.
+
+Note also that datasets vary widely in how much disk space they require. Some datasets are 
+EXTREMELY LARGE.  Pubmed in particular will run you up to 50GB.
+
 
 MedGen links
 =========================================
