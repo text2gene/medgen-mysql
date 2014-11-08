@@ -123,6 +123,20 @@ SETH: FORCE
 #	./create_database.sh umls
 #	./load_database.sh umls
 #	./index_database.sh umls
+#
+
+all: FORCE
+	-make clinvar
+	-make GTR
+	-make GeneReviews
+	-make hugo
+	-make LSDB
+	-make medgen
+	-make orphanet
+	-make PersonalGenomes
+	-make pubmed
+	-make PubTator
+	-make SETH
 	
-.PHONY:  FORCE help GTR GTR gene hugo LSDB medgen PubTator SETH 
+.PHONY:  FORCE help user all clinvar GTR gene GeneReviews hugo LSDB medgen orphanet PersonalGenomes pubmed PubTator SETH 
 
