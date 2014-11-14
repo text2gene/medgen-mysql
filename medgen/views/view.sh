@@ -35,11 +35,8 @@ $mysql_dataset < view_concept_hierarchy.sql
 echo "4. Disease:Subtypes " 
 $mysql_dataset < view_disease_subtype.sql 
 
-echo "4. Disease:Gene "
-$mysql_dataset < view_gene_disease.sql 
-
 echo "5. MedGen:HPO (HPO Human Phenotypes) "
 $mysql_dataset < view_medgen_hpo.sql 
 
-echo "7. Molecular Consequences " 
-$mysql_dataset < view_molecular_consequences.sql
+echo "7. PubMed references" 
+$mysql_dataset < view_pubmed.sql

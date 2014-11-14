@@ -1,15 +1,17 @@
-call log('view_pubmed.sql', 'begin...'); 
+call log('view_pubmed.sql', 'begin'); 
 
 -- ###################################################
 call log('view_pubmed', 'PMID count');
 
 drop table if exists view_pubmed;
+
 create table view_pubmed
 select PMID, count(*) as cnt 
 from   medgen_pubmed
 group by PMID order by cnt desc; 
 
-alter table view_pubmed add index (PMID);
+call utf8_unicode('view_pubmed'); 
+call create_index('view_pubmed', 'PMID'); 
 
 call log('view_pubmed', 'done'); 
 
@@ -28,7 +30,8 @@ select   CUI as ConceptID, count(*) as TF
 from     medgen_pubmed 
 group by CUI order by TF desc;
 
-alter table view_pubmed_concept add index (ConceptID);
+call utf8_unicode('view_pubmed_concept'); 
+call create_index('view_pubmed_concept', 'ConceptID'); 
 
 call log('view_pubmed_concept', 'done');
 
@@ -44,7 +47,9 @@ select distinct PUBMED.TF, Prefer.* from
 where  
        PUBMED.ConceptID = Prefer.ConceptID; 
 
+call utf8_unicode('view_pubmed_concept_preferred'); 
 call create_index('view_pubmed_concept_preferred', 'ConceptID'); 
+
 -- 
 -- end 
 
