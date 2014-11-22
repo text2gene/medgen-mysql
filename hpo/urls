@@ -15,6 +15,12 @@ BASE_URL_MAPPINGS="http://compbio.charite.de/svn/hpo/trunk/src/"
 ! echo "HPO MySQL Database dump " 
 
 $WGET_CMD http://compbio.charite.de/hudson/job/hpo.annotations.monthly/lastStableBuild/artifact/annotation/MYHPO_10_2014.sql
+$WGET_CMD http://compbio.charite.de/svn/hpo/trunk/src/misc/hpo_db_schema.pdf
+
+! echo "////////////////////////////////////////////"
+! echo "HPO Montly stable artifacts " 
+
+$WGET_CMD http://compbio.charite.de/hudson/job/hpo.annotations.monthly/lastStableBuild/artifact/*zip*/archive.zip
 
 ! echo "////////////////////////////////////////////"
 ! echo "HPO-data " 
@@ -28,7 +34,6 @@ $WGET_CMD $BASE_URL_ONTOLOGIES/hp-reasoner-report.txt
 ! echo "////////////////////////////////////////////"
 ! echo "HPO Annotations" 
 
-$WGET_CMD $BASE_URL_ANNOTATIONS/curator-statistics.tab
 $WGET_CMD $BASE_URL_ANNOTATIONS/negative_phenotype_annotation.tab 
 $WGET_CMD $BASE_URL_ANNOTATIONS/phenotype_annotation.tab 
 $WGET_CMD $BASE_URL_ANNOTATIONS/phenotype_annotation_hpoteam.tab 
