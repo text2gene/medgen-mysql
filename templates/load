@@ -15,7 +15,5 @@ $mysql_dataset -e "call log('DATABASE()','load')"
 
 echo ======================================================
 
-chmod +x *.sh 
-
 $mysql_dataset -e "call log('load_tables','refresh')" 
 

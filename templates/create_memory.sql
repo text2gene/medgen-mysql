@@ -36,14 +36,6 @@ begin
 end//
 delimiter ;
 
--- drop function  if exists freq;
-
--- delimiter //
--- create function freq( tablename varchar(100), colname varchar(100))
--- returns varchar(1000) 
--- 	return  concat('select ',  colname, ',' ,'count(*) as cnt', ' from ', tablename, ' group by ' , colname, ' order by cnt desc');//
--- delimiter ;
-
 drop procedure if exists freq;  
 
 delimiter //
@@ -88,10 +80,6 @@ drop procedure if exists utf8_unicode;
 delimiter //
 create procedure utf8_unicode( tablename varchar(100))
 begin
-	-- select concat('alter table ', tablename, ' Engine=INNODB default CHARSET=utf8') as idx; 
-	-- prepare stmt from @idx; execute stmt;
-	-- call log(tablename, 'Engine=INNODB utf8');
-
 	select concat('alter table ', tablename, ' convert to CHARSET utf8 collate utf8_unicode_ci') into @idx; 
 	prepare stmt from @idx; execute stmt;
 	
