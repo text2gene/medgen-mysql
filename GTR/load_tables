@@ -2,6 +2,11 @@ load_table tsv test_condition_gene      test_condition_gene.txt
 load_table tsv test_version             test_version
 load_table tsv labs_tests_by_country    labs_tests_by_country.txt 
 
+sed -e 's/Human Phenotype Ontology://g' mirror/Mode_of_inheritance.txt > mirror/mode_of_inheritance
+
+load_table tsv mode_of_inheritance mode_of_inheritance 
+
+
 # load_table tsv tests_by_method_category tests_by_method_category.txt 
 
 # load_table tsv  Allele_origin    Allele_origin.txt

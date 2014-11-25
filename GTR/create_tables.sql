@@ -2,9 +2,6 @@
 -- 
 --  ftp.ncbi.nlm.nih.gov/pub/GTR/_README.html
 -- 
--- 
---  "import public data!" 
---  "Amazon:/locus/data/mirrors/ftp.ncbi.nlm.nih.gov/pub/GTR"
 
 call log('test_condition_gene','refresh'); 
 -- 
@@ -19,15 +16,8 @@ create table test_condition_gene(
        MIM_number         varchar(20), 
        umls_name     	  varchar(1000), 
        gene_or_SNOMED_CT_ID varchar(20)
-) 
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
-
-alter table test_condition_gene add index (GeneTestsID); 
-alter table test_condition_gene add index (test_type); 
-alter table test_condition_gene add index (GTR_identifier);
-alter table test_condition_gene add index (MIM_number); 
-alter table test_condition_gene add index (concept_type); 
-alter table test_condition_gene add index (concept_type, gene_or_SNOMED_CT_ID); 
+); 
+call utf8_unicode('test_condition_gene'); 
 -- end
 
 -- begin 
@@ -65,7 +55,8 @@ create table         test_version(
 	lab_currStat             smallint null,    
 	lab_pubStat              smallint null,    
 	test_create_date         smallint null
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+); 
+call utf8_unicode('test_version'); 
 -- end 
 
 -- begin
@@ -87,8 +78,7 @@ create table tests_by_method_category(
        WithClinicalTestsUSA   	    int, 
        WithResearchTests   	    int,
        WithResearchTestsUSA   	    int
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+); 
 -- end 
 
 
@@ -106,5 +96,18 @@ create table labs_tests_by_country(
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8; 
 -- end
+
+-- begin 
+call log('mode_of_inheritance', 'refresh'); 
+
+drop table if exists mode_of_inheritance; 
+
+create table mode_of_inheritance(
+     HPO_name  varchar(100), 
+     HPO_ID    varchar(10)
+); 
+
+call utf8_unicode('mode_of_inheritance'); 
+-- end 
 
 call log('create_tables','done'); 
