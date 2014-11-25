@@ -45,15 +45,10 @@ $WGET_CMD $BASE_URL_ANNOTATIONS/phenotype_annotation_hpoteam.tab
 $WGET_CMD $BASE_URL_MAPPINGS/mappings/term2umls.out 
 
 ! echo "////////////////////////////////////////////"
-! echo "HPO database schema" 
-
-$WGET_CMD $BASE_URL_MAPPINGS/misc/hpo_db_schema.pdf
-
-! echo "////////////////////////////////////////////"
 ! echo "HPO Mappings (disease specific) " 
 
-$WGET_CMD $BASE_URL_MAPPINGS/mappings/LDDB2HPO-v2.csv
-$WGET_CMD $BASE_URL_MAPPINGS/mappings/onet_hpo.tsv
+$WGET_CMD  $BASE_URL_MAPPINGS/mappings/LDDB2HPO-v2.csv
+$WGET_CMD  $BASE_URL_MAPPINGS/mappings/onet_hpo.tsv
 #$WGET_CMD $BASE_URL_MAPPINGS/mappings/medraMapping.tsv 
 
 ! echo =================================================
