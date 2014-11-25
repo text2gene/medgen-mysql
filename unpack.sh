@@ -27,7 +27,7 @@ done
 # unzip 
 for zip in `find $DATASET | grep zip$`;
 do
-    unzip $zip 
+    unzip -q $zip -d $DATASET/mirror/. 
 done
 
 # untar  
