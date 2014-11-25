@@ -169,14 +169,4 @@ delimiter ;
 
 call log('etime', 'procedure created');  
 
--- delimiter ;
--- drop function if exists readme_url;
-
--- delimiter //
--- create function readme_url()
---        select distinct readme from log order by idx; 
--- // 
-
--- delimiter ;
-
 call DATASET( DATABASE() ); 

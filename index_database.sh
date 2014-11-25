@@ -3,7 +3,7 @@
 set -e
 source common.sh 
 
-require $1 "pick a dataset like ./index_database gene" 
+require $1 "pick a dataset like ./index_database.sh gene" 
 
 dbconfig="$1/db.config"
 

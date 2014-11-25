@@ -20,14 +20,71 @@
 ! echo =================================================
 
 WGET_CMD="wget -c -m -nH --cut-dirs=100"
-MEDGEN_BASE_URL="ftp://ftp.ncbi.nlm.nih.gov/pub"
 
-# don't run wget -m (mirror) on html files.
-wget $MEDGEN_BASE_URL/medgen/README.html
-$WGET_CMD $MEDGEN_BASE_URL/medgen/presentations/Conditions_Phenotypes.pptx
 
-$WGET_CMD -r -A *RRF.gz $MEDGEN_BASE_URL/medgen/
-$WGET_CMD -r -A *.txt $MEDGEN_BASE_URL/medgen/
+! echo "///////////////////////////////"
+! echo "MedGen Concepts (MGCONSO)"
+! echo "///////////////////////////////"
+
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/MGCONSO.RRF.gz
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/MERGED.RRF.gz
+
+! echo "///////////////////////////////"
+! echo "MedGen Definitions (MGDEF)"
+! echo "///////////////////////////////"
+
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/MGDEF.RRF.gz
+
+
+! echo "///////////////////////////////"
+! echo "MedGen Definitions (MGDEF)"
+! echo "///////////////////////////////"
+
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/MGDEF.RRF.gz
+
+
+! echo "///////////////////////////////"
+! echo "MedGen Relations (MGREL)"
+! echo "///////////////////////////////"
+
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/MGREL.RRF.gz
+
+
+! echo "///////////////////////////////"
+! echo "MedGen  Attributes      (MGSAT)"
+! echo "///////////////////////////////"
+
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/MGSAT.RRF.gz
+
+ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/MedGen_CUI_history.txt
+
+
+! echo "///////////////////////////////"
+! echo "MedGen  Human Phenotypes (HPO)"
+! echo "///////////////////////////////"
+
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/MedGen_HPO_Mapping.txt.gz
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/MedGen_HPO_OMIM_Mapping.txt.gz
+
+! echo "///////////////////////////////"
+! echo "MedGen  SemanticType    (MGSTY) "
+! echo "///////////////////////////////"
+
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/MGSTY.RRF.gz
+
+
+! echo "///////////////////////////////"
+! echo "MedGen Preferred Terms  (NAMES)"
+! echo "///////////////////////////////"
+
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/NAMES.RRF.gz
+
+
+! echo "///////////////////////////////"
+! echo "MedGen PubMed Annotations!     "
+! echo "///////////////////////////////"
+
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/medgen_pubmed.lnk.gz
 
 ! echo =================================================
 ! echo "Clinical Genetics [ClinGen]"

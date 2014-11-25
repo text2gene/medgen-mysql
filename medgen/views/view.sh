@@ -23,7 +23,10 @@ echo "(clean) drop medgen.views_* "
 . ../db.config 
 $mysql_dataset < drop_views.sql 
 
-echo "1. MedGenUID lto UMLS ConceptID Mapping"  
+echo "Human readable view of concepts" 
+$mysql_dataset < view_concept.sql 
+
+echo "MedGenUID to UMLS ConceptID Mapping" 
 $mysql_dataset < view_medgen_uid.sql 
 
 echo "2. NCBI Prerred NAMES for Diseases, Concepts, and SemanticTypes" 

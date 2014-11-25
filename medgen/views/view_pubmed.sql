@@ -25,7 +25,7 @@ call log('view_pubmed_concept', 'Concept Term Frequency');
 
 drop table if exists view_pubmed_concept;
 
-create table view_pubmed_concept 
+create table view_pubmed_concept
 select   CUI as ConceptID, count(*) as TF                 
 from     medgen_pubmed 
 group by CUI order by TF desc;
@@ -40,6 +40,7 @@ call log('view_pubmed_concept', 'done');
 call log('view_pubmed_concept_preferred','preferred pubmed concept and semantics'); 
 
 drop   table if exists view_pubmed_concept_preferred; 
+
 create table           view_pubmed_concept_preferred
 select distinct PUBMED.TF, Prefer.* from 
        view_pubmed_concept    as PUBMED, 
@@ -54,7 +55,7 @@ call create_index('view_pubmed_concept_preferred', 'ConceptID');
 -- end 
 
 -- ###################################################
-call log('view_pubmed_disease', 'TF');
+call log('view_pubmed_disease', '*');
 drop table if exists view_pubmed_disease; 
 
 create table view_pubmed_disease 

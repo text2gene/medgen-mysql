@@ -6,4 +6,8 @@ echo
 echo "######################################" 
 
 . db.config 
+
+load_table tsv gene2disease archive/annotation/genes_to_diseases.txt
+load_table tsv disease2gene archive/annotation/diseases_to_genes.txt
+
 $mysql_dataset < mirror/MYHPO_10_2014.sql

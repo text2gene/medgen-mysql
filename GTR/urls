@@ -7,6 +7,7 @@
 
 WGET_CMD="wget -c -m -nH --cut-dirs=100"
 BASE_URL="ftp.ncbi.nlm.nih.gov/pub/GTR/data"
+TERMS_URL="ftp.ncbi.nlm.nih.gov/pub/GTR/standard_terms"
 
        ! mkdir -p GTR/mirror 
        cd GTR/mirror
@@ -14,6 +15,9 @@ BASE_URL="ftp.ncbi.nlm.nih.gov/pub/GTR/data"
 $WGET_CMD $BASE_URL/test_condition_gene.txt
 $WGET_CMD $BASE_URL/test_version.gz 
 $WGET_CMD $BASE_URL/labs_tests_by_country.txt
+
+$WGET_CMD $TERMS_URL/Mode_of_inheritance.txt
+$WGET_CMD $TERMS_URL/Clinical_significance.txt
 
 ! echo "////////////////////////////////////////////////////"
 ! echo "[ GTR Genetic Testing Registry download complete ]" 

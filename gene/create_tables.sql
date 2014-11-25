@@ -99,10 +99,6 @@ create table gene_history(
 ); 
 call utf8_unicode('gene_history');
 
--- end
--- begin
-call log('gene2accession', 'gene2accession.gz'); 
-
 -- TODO: how to stay consitent with UTA? 
 -- https://pypi.python.org/pypi/uta 
 -- gene2ensembl.gz 
@@ -145,6 +141,30 @@ create table gene2accession(
        peptide_acc_gi	    varchar(20)
 ); 
 call utf8_unicode('gene2accession');
+
+-- end
+-- begin
+-- call log('gene2refseq','begin'); 
+-- drop table if exists gene2refseq; 
+-- create table gene2refseq(       
+--        tax_id 	            int(5)  unsigned, 
+--        GeneID	            int(10)  unsigned, 
+--        STATUS               varchar(20), 
+--        RNA_acc_ver	    varchar(20), 
+--        RNA_acc_gi 	    varchar(20), 
+--        Protein_acc_ver	    varchar(20), 
+--        Protein_acc_gi	    varchar(20), 
+--        Genomic_acc_ver	    varchar(20),  
+--        Genomic_acc_gi 	    varchar(20), 
+--        Genomic_acc_start    varchar(20),  
+--        Genomic_acc_end	    varchar(20), 
+--        orientation	    varchar(20), 
+--        assembly	    	    varchar(20), 
+--        peptide_acc_ver	    varchar(20), 
+--        peptide_acc_gi	    varchar(20),
+--        Symbol               varchar(25) 
+-- );
+-- call utf8_unicode('gene2refseq');
 
 -- end
 -- begin
