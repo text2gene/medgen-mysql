@@ -48,7 +48,7 @@ GeneReviews: FORCE
 	
 hpo: FORCE
 	# complete.
-	-./mirror.sh hpo/urls
+	#-./mirror.sh hpo/urls
 	./unpack.sh hpo
 	./create_database.sh hpo
 	./load_database.sh hpo
