@@ -1,0 +1,23 @@
+! echo =================================================
+! echo "GO Gene Ontology" Sequences
+! echo =================================================
+! echo http://www.geneontology.org/GO.downloads.ontology.shtml
+
+mkdir -p GO/mirror 
+cd GO/mirror
+
+! echo =================================================
+
+WGET_CMD="wget -c -m -nH --cut-dirs=100"
+URL_GO_LITE_DB=http://archive.geneontology.org/lite/2014-11-15/
+
+! echo "////////////////////////////////////////////"
+! echo "GO sequences (seqdb)" 
+! echo
+! echo "link between a gene product and a biological sequence"
+
+       $WGET_CMD http://archive.geneontology.org/latest-lite/go_20141115-seqdb-tables.tar.gz
+
+! echo "///////////////////////////////////////////////////////"
+! echo "[ GO GeneOntology sequences download complete ]" 
+! echo "///////////////////////////////////////////////////////"

@@ -1,15 +1,3 @@
---  file: MERGED.RRF 
---  	  Merged concepts
-
-drop table if exists MERGED; 
-
-CREATE TABLE MERGED (
-       CUI   char(8) NOT NULL,
-       toCUI char(8) NOT NULL
-); 
-
-call utf8_unicode('MERGED'); 
-
 -- file: MGCONSO.RRF 
 -- 	 Concepts related to medical genetics 
 
@@ -32,11 +20,34 @@ CREATE TABLE MGCONSO (
 ); 
 call utf8_unicode('MGCONSO'); 
 
+--  file: MERGED.RRF 
+--  	  Merged concepts
+drop table if exists MERGED; 
+
+CREATE TABLE MERGED (
+       CUI   char(8) NOT NULL,
+       toCUI char(8) NOT NULL
+); 
+
+call utf8_unicode('MERGED'); 
+
+--  file: MedGen_CUI_history.txt
+--  	  Concept history 
+drop table if exists HISTORY; 
+
+create table HISTORY(
+     Previous_CUI    char(8),
+     Current_CUI     char(8),
+     Date_Of_Action  text 
+); 
+
+call utf8_unicode('HISTORY'); 
+
+
 -- file: MGDEF.RRF 
 -- 	 Definitions of medical concepts and their sources 
 -- 
 -- 
-
 drop table if exists MGDEF; 
 
 create table MGDEF( 

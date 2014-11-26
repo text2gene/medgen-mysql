@@ -1,23 +1,11 @@
 -- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 -- Example: change @Symbol to a HGNC official symbol 
 -- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-select 'NBN' into  @Symbol; 
-select '9606' into @human; 
-select GeneID into @GeneID from hgnc.hugo2entrez where Symbol = @Symbol; 
+select 'FOXP3'  into  @Symbol; 
+select  9606    into  @human; 
+select  GeneID  into  @GeneID from gene.gene_info where Symbol = 'FOXP3'; 
 -- 
 select concat('HGNC @Symbol=',@Symbol, '  ', 'NCBI @GeneID=', @GeneID, ' @tax_id=human=', @human) as note; 
-
--- ##################################################
--- hgnc:gene (get NCBI entrez GeneID for HGNC Symbol) 
--- ##################################################
-
-select * from hgnc.hugo2entrez where Symbol = @Symbol; 
--- +-----------+--------+--------+----------+--------+
--- | hgnc      | Symbol | Name   | Status   | GeneID |
--- +-----------+--------+--------+----------+--------+
--- | HGNC:7652 | NBN    | nibrin | Approved |   4683 |
--- +-----------+--------+--------+----------+--------+
-
 
 -- ##################################################
 -- gene:pubmed (GENE mentioned in pubmed abstract) 
@@ -25,43 +13,29 @@ select * from hgnc.hugo2entrez where Symbol = @Symbol;
 desc gene.gene2pubmed; 
 
 select * from gene.gene2pubmed where tax_id = @human and GeneID = @GeneID; 
--- +--------+--------+---------+
--- | tax_id | GeneID | PMID    |
--- +--------+--------+---------+
--- |   9606 |   4683 | 8125298 |
--- |   9606 |   4683 | 8170997 |
--- |   9606 |   4683 | 8870681 |
--- |   .... |   .... | ....... |
+
+-- +--------+--------+----------+
+-- | tax_id | GeneID | PMID     |
+-- +--------+--------+----------+
+-- |   9606 |  50943 |  8889548 |
+-- |   9606 |  50943 | 10677306 |
+-- |   9606 |  50943 | 11076863 |
+-- |   9606 |  50943 | 11120765 |
 -- 
---     select count(*) = 351 
+-- +++ more
 
 -- ################################################
 -- hgnc:pubmed ( hgnc gene Symbol curation ) 
 -- ################################################
 
-desc hgnc.hugo2pubmed; 
+desc hugo.hugo2pubmed; 
 
-select * from hgnc.hugo2pubmed where Symbol = @Symbol;
--- +-----------+--------+--------+----------+--------+------------------+
--- | hgnc      | Symbol | Name   | Status   | GeneID | pubmeds          |
--- +-----------+--------+--------+----------+--------+------------------+
--- | HGNC:7652 | NBN    | nibrin | Approved |   4683 | 9590181, 9590180 | << pubmeds are cited to curate the GENE:GO relationship
--- +-----------+--------+--------+----------+--------+------------------+
-
-
--- gene.gene_info
--- #####################
--- gene.gene_info.Locus*
--- #####################
-
-
-select LocusTag, chromosome, map_loc, GeneType, GeneDesc, Synonyms from gene.gene_info 
-where tax_id = @human and Symbol = @Symbol;   
--- +----------+------------+---------+----------------+----------+------------------------------+
--- | LocusTag | chromosome | map_loc | GeneType       | GeneDesc | Synonyms                     |
--- +----------+------------+---------+----------------+----------+------------------------------+
--- | -        | 8          | 8q21    | protein-coding | nibrin   | AT-V1|AT-V2|ATV|NBS|NBS1|P95 |
--- +----------+------------+---------+----------------+----------+------------------------------+
+select * from hugo.hugo2pubmed where Symbol = @Symbol;
+-- +-----------+--------+-----------------+----------+--------+--------------------+
+-- | hgnc      | Symbol | Name            | Status   | GeneID | pubmeds            |
+-- +-----------+--------+-----------------+----------+--------+--------------------+
+-- | HGNC:6106 | FOXP3  | forkhead box P3 | Approved |  50943 | 10677306, 11138001 | << pubmeds are cited to curate the GENE:GO relationship 
+-- +-----------+--------+-----------------+----------+--------+--------------------+
 
 select GeneType, count(*) as cnt from gene.gene_info 
 where tax_id = @human group by GeneType order by cnt asc; 
@@ -80,42 +54,32 @@ where tax_id = @human group by GeneType order by cnt asc;
 -- | protein-coding | 20724 | << protein coding 
 -- +----------------+-------+
 
-select dbXrefs from gene.gene_info 
-where tax_id = @human and Symbol = @Symbol;   
-
--- +------------------------------------------------------------------------------+
--- | dbXrefs                                                                      |
--- +------------------------------------------------------------------------------+
--- HGNC:7652|MIM:602667|Ensembl:ENSG00000104320|HPRD:04050|Vega:OTTHUMG00000153546
--- +------------------------------------------------------------------------------+
-
-
--- hgnc.hugo_info
+-- hugo.hugo_info
 -- ##########################
--- hgnc.hugo_info.Synonyms*
+-- hugo.hugo_info.Synonyms*
 -- ##########################
-desc hgnc.hugo_info; 
+desc hugo.hugo_info; 
 
-select hgnc, PreviousSymbols, PreviousNames, Synonyms, NameSynonyms, DateNameChanged from hgnc.hugo_info where Symbol = @Symbol; 
--- +-----------+-----------------+-----------------------------------------+-------------------+--------------+-----------------+
--- | hgnc      | PreviousSymbols | PreviousNames                           | Synonyms          | NameSynonyms | DateNameChanged |
--- +-----------+-----------------+-----------------------------------------+-------------------+--------------+-----------------+
--- | HGNC:7652 | NBS, NBS1       | "Nijmegen breakage syndrome 1 (nibrin)" | ATV, AT-V2, AT-V1 |              | 2005-06-02      |
--- +-----------+-----------------+-----------------------------------------+-------------------+--------------+-----------------+
+select hgnc, PreviousSymbols, PreviousNames, Synonyms, NameSynonyms, DateNameChanged from hugo.hugo_info where Symbol = @Symbol; 
+-- +-----------+-----------------+-------------------------------------------------------------------+----------------------------------------+
+-- | hgnc      | PreviousSymbols | PreviousNames                                                     | Synonyms                               |
+-- +-----------+-----------------+-------------------------------------------------------------------+----------------------------------------+
+-- | HGNC:6106 | IPEX            | "immune dysregulation, polyendocrinopathy, enteropathy, X-linked" | JM2, XPID, AIID, PIDX, DIETER, SCURFIN |
+-- +-----------+-----------------+-------------------------------------------------------------------+----------------------------------------+
 
--- hgnc.hugo_info
+-- hugo.hugo_info
 -- ###########################
--- hgnc.hugo_info.LocusGroup
+-- hugo.hugo_info.LocusGroup
 -- ###########################
 
-select Symbol, LocusGroup, LocusType, Chromosome  from hgnc.hugo_info where Symbol = @Symbol; 
+select Symbol, LocusGroup, LocusType, Chromosome  from hugo.hugo_info where Symbol = @Symbol; 
 -- +--------+---------------------+---------------------------+------------+
 -- | Symbol | LocusGroup          | LocusType                 | Chromosome |
 -- +--------+---------------------+---------------------------+------------+
--- | NBN    | protein-coding gene | gene with protein product | 8q21-q24   |
+-- | FOXP3  | protein-coding gene | gene with protein product | Xp11.23    |
 -- +--------+---------------------+---------------------------+------------+
 
-select LocusGroup, LocusType, count(*) as cnt from hgnc.hugo_info group by LocusGroup, LocusType order by LocusGroup, cnt asc; 
+select LocusGroup, LocusType, count(*) as cnt from hugo.hugo_info group by LocusGroup, LocusType order by LocusGroup, cnt asc; 
 -- +---------------------+----------------------------+-------+
 -- | LocusGroup          | LocusType                  | cnt   |
 -- +---------------------+----------------------------+-------+
@@ -124,52 +88,52 @@ select LocusGroup, LocusType, count(*) as cnt from hgnc.hugo_info group by Locus
 -- | non-coding RNA      | RNA, Y                     |     4 |
 -- | non-coding RNA      | RNA, vault                 |     4 |
 -- | non-coding RNA      | RNA, ribosomal             |    34 |
--- | non-coding RNA      | RNA, small nuclear         |    71 |
+-- | non-coding RNA      | RNA, small nuclear         |    67 |
 -- | non-coding RNA      | RNA, cluster               |   125 |
--- | non-coding RNA      | RNA, small nucleolar       |   414 |
--- | non-coding RNA      | RNA, transfer              |   533 |
--- | non-coding RNA      | RNA, micro                 |  1520 |
--- | non-coding RNA      | RNA, long non-coding       |  2174 |
+-- | non-coding RNA      | RNA, small nucleolar       |   458 |
+-- | non-coding RNA      | RNA, transfer              |   637 |
+-- | non-coding RNA      | RNA, micro                 |  1879 |
+-- | non-coding RNA      | RNA, long non-coding       |  2661 |
 -- | other               | transposable element       |     4 |
 -- | other               | virus integration site     |     8 |
 -- | other               | complex locus constituent  |    27 |
 -- | other               | protocadherin              |    39 |
--- | other               | region                     |    47 |
--- | other               | endogenous retrovirus      |   101 |
--- | other               | readthrough                |   109 |
+-- | other               | region                     |    45 |
+-- | other               | endogenous retrovirus      |    97 |
+-- | other               | readthrough                |   113 |
 -- | other               | fragile site               |   117 |
--- | other               | T cell receptor gene       |   207 |
--- | other               | immunoglobulin gene        |   227 |
--- | other               | unknown                    |   287 |
+-- | other               | T cell receptor gene       |   208 |
+-- | other               | immunoglobulin gene        |   228 |
+-- | other               | unknown                    |   315 |
 -- | phenotype           | phenotype only             |   598 |
--- | protein-coding gene | gene with protein product  | 19112 |
+-- | protein-coding gene | gene with protein product  | 19026 |
 -- | pseudogene          | T cell receptor pseudogene |    35 |
 -- | pseudogene          | immunoglobulin pseudogene  |   202 |
--- | pseudogene          | RNA, pseudogene            |  3787 |
--- | pseudogene          | pseudogene                 |  8500 |
--- | withdrawn           | withdrawn                  |  3924 |
+-- | pseudogene          | RNA, pseudogene            |  3714 |
+-- | pseudogene          | pseudogene                 |  8723 |
+-- | withdrawn           | withdrawn                  |  3993 |
 -- +---------------------+----------------------------+-------+
 
-
--- hgnc.hugo_info
+-- hugo.hugo_info
 -- #####################################
--- hgnc.hugo_info.LocusSpecificDatabases
+-- hugo.hugo_info.LocusSpecificDatabases
 -- #####################################
 
-desc hgnc.hugo_info; 
-select LocusSpecificDatabases from hgnc.hugo_info where Symbol = @Symbol;   
+desc hugo.hugo_info; 
+select LocusSpecificDatabases from hugo.hugo_info where Symbol = @Symbol;   
 
 -- +-------------------------------------------------------------------------------------------------------------------------------------------------+
 -- | LocusSpecificDatabases                                                                                                                          |
 -- +-------------------------------------------------------------------------------------------------------------------------------------------------+
--- | "LOVD - Leiden Open Variation Database|http://chromium.liacs.nl/LOVD2/home.php?select_db=NBN","LRG_158|http://www.lrg-sequence.org/LRG/LRG_158" |
+-- FOXP3base: Mutation registry for Immunodysregulation, polyendocrinopathy, and enteropathy, X-linked; IPEX |
+-- http://rna.uta.fi/FOXP3base/","Mental Retardation database |
+-- http://grenada.lumc.nl/LOVD2/MR/home.php?select_db=FOXP3","LRG_62 |
+-- http://www.lrg-sequence.org/LRG/LRG_62" |
 -- +-------------------------------------------------------------------------------------------------------------------------------------------------+
 
-select SpecialistDB from hgnc.hugo_info where Symbol = @Symbol;   
--- <a href="http://www.sanger.ac.uk/perl/genetics/CGP/cosmic?action=gene&amp;ln=NBN">COSMIC</a>
--- <a href="http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=GB&Expert=123688">Orphanet</a>
-
-
+select SpecialistDB from hugo.hugo_info where Symbol = @Symbol;   
+-- <a href="http://www.sanger.ac.uk/perl/genetics/CGP/cosmic?action=gene&amp;ln=FOXP3">COSMIC</a>
+-- <a href="http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=GB&Expert=121913">Orphanet</a>
 
 -- ###################
 -- gene (GENE GROUP) 
@@ -196,20 +160,18 @@ select relationship, count(*) as cnt from gene.gene_group group by relationship 
 
 desc gene.gene2go; 
 
-select * from gene.gene2go
-where tax_id = @human and GeneID = @GeneID; 
+select * from gene.gene2go where tax_id = @human and GeneID = @GeneID and PUBMEDS != '-'; 
 
--- +--------+--------+------------+----------+----------------+----------------------------------------------------------------+----------+-----------+
--- | tax_id | GeneID | GO_id      | Evidence | Qualifier      | GO_term                                                        | PMIDS    | Category  |
--- +--------+--------+------------+----------+----------------+----------------------------------------------------------------+----------+-----------+
--- |   9606 |   4683 | GO:0000077 | IDA      | -              | DNA damage checkpoint                                          | 12529385 | Process   |
--- |   9606 |   4683 | GO:0000723 | IMP      | -              | telomere maintenance                                           | 11448772 | Process   |
--- |   9606 |   4683 | GO:0000724 | TAS      | -              | double-strand break repair via homologous recombination        | -        | Process   |
--- |   9606 |   4683 | GO:0000784 | IDA      | -              | nuclear chromosome, telomeric region                           | 10888888 | Component |
--- |   9606 |   4683 | GO:0001832 | IEA      | -              | blastocyst growth                                              | -        | Process   |
--- |   9606 |   4683 | GO:0003684 | IC       | contributes_to | damaged DNA binding                                            | 9590180  | Function  |
--- |   9606 |   4683 | GO:0004003 | IMP      | contributes_to | ATP-dependent DNA helicase activity                            | 15790808 | Function  |
-
+-- +--------+--------+------------+----------+-----------+------------------------------------------------------------------------------------+----------+-----------+
+-- | tax_id | GeneID | GO_id      | Evidence | Qualifier | GO_term                                                                            | PUBMEDS  | Category  |
+-- +--------+--------+------------+----------+-----------+------------------------------------------------------------------------------------+----------+-----------+
+-- |   9606 |  50943 | GO:0002725 | IDA      | -         | negative regulation of T cell cytokine production                                  | 15466453 | Process   |
+-- |   9606 |  50943 | GO:0003700 | IDA      | -         | sequence-specific DNA binding transcription factor activity                        | 11483607 | Function  |
+-- |   9606 |  50943 | GO:0003700 | NAS      | -         | sequence-specific DNA binding transcription factor activity                        | 11138001 | Function  |
+-- |   9606 |  50943 | GO:0005515 | IPI      | -         | protein binding                                                                    | 16652169 | Function  |
+-- |   9606 |  50943 | GO:0005634 | IDA      | -         | nucleus                                                                            | 11483607 | Component |
+-- 
+-- ++ More 
 
 select 'evidence for known biological process, component, or function' as note; 
 select * from GO.evidence_codes; 

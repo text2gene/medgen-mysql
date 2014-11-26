@@ -28,6 +28,7 @@ WGET_CMD="wget -c -m -nH --cut-dirs=100"
 
 $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/MGCONSO.RRF.gz
 $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/MERGED.RRF.gz
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/MedGen_CUI_history.txt
 
 ! echo "///////////////////////////////"
 ! echo "MedGen Definitions (MGDEF)"
@@ -78,6 +79,7 @@ $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/MGSTY.RRF.gz
 ! echo "///////////////////////////////"
 
 $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/NAMES.RRF.gz
+
 
 
 ! echo "///////////////////////////////"
