@@ -43,7 +43,5 @@ where
   S1.STY = 'Disease or Syndrome' and 
   S2.STY = 'Disease or Syndrome'   ; 
 
-alter table view_disease_subtype add column Preferred boolean default false; 
-
 -- ################################################################
 call log('view_disease_subtype.sql', 'done');
