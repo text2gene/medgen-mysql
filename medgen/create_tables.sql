@@ -22,27 +22,26 @@ call utf8_unicode('MGCONSO');
 
 --  file: MERGED.RRF 
 --  	  Merged concepts
-drop table if exists MERGED; 
+drop table if exists MGMERGED; 
 
-CREATE TABLE MERGED (
+CREATE TABLE MGMERGED (
        CUI   char(8) NOT NULL,
        toCUI char(8) NOT NULL
 ); 
 
-call utf8_unicode('MERGED'); 
+call utf8_unicode('MGMERGED'); 
 
 --  file: MedGen_CUI_history.txt
 --  	  Concept history 
-drop table if exists HISTORY; 
+drop table if exists MGHISTORY; 
 
-create table HISTORY(
+create table MGHISTORY(
      Previous_CUI    char(8),
      Current_CUI     char(8),
      Date_Of_Action  text 
 ); 
 
-call utf8_unicode('HISTORY'); 
-
+call utf8_unicode('MGHISTORY'); 
 
 -- file: MGDEF.RRF 
 -- 	 Definitions of medical concepts and their sources 
