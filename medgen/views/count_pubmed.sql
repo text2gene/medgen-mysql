@@ -31,32 +31,32 @@ call create_index('count_pubmed_concept', 'ConceptID');
 call log('count_pubmed_concept', 'done');
 
 -- ###################################################
-call log('count_pubmed_semantics', 'SemanticType Frequency');
+-- call log('count_pubmed_semantics', 'SemanticType Frequency');
 
--- 'Finding'
--- 'Disease or Syndrome'
--- 'Pathologic Function'
--- 'Neoplastic Process'
--- 'Congenital Abnormality'
--- 'Cell or Molecular Dysfunction'; 
+-- -- 'Finding'
+-- -- 'Disease or Syndrome'
+-- -- 'Pathologic Function'
+-- -- 'Neoplastic Process'
+-- -- 'Congenital Abnormality'
+-- -- 'Cell or Molecular Dysfunction'; 
 
-drop table if exists count_pubmed_semantics;
+-- drop table if exists count_pubmed_semantics;
 
-create table count_pubmed_semantics
-select   SemanticType, 	 
-	 count(*)             as cnt 
-	 count(distinct PMID) as cnt_pmid                 
-	 count(distinct CUI)  as cnt_CUi                 	 
-from     medgen_pubmed  as P, 	 
-	 view_semantics as S
-where    P.CUI = S.ConceptID 	
-group by SemanticType       	 
-order by cnt_pmid desc;
+-- create table count_pubmed_semantics
+-- select   SemanticType, 	 
+-- 	 count(*)             as cnt,
+-- 	 count(distinct PMID) as cnt_pmid,                 
+-- 	 count(distinct CUI)  as cnt_CUI               	 
+-- from     medgen_pubmed  as P, 	 
+-- 	 view_semantics as S
+-- where    P.CUI = S.ConceptID 	
+-- group by SemanticType       	 
+-- order by cnt_pmid desc;
 
-call utf8_unicode('count_pubmed_concept'); 
-call create_index('count_pubmed_concept', 'SemanticType'); 
+-- call utf8_unicode('count_pubmed_concept'); 
+-- call create_index('count_pubmed_concept', 'SemanticType'); 
 
-call log('count_pubmed_semantics', 'done');
+-- call log('count_pubmed_semantics', 'done');
 -- ###################################################
 
 -- ###################################################
