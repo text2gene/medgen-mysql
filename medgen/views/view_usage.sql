@@ -1,4 +1,4 @@
-call log('view_usage.sql', 'begin');
+call log('summary.sql', 'begin');
 
 -- ############################################
 --    NCBI MedGen Human Curation Summary 
@@ -8,14 +8,15 @@ call log('view_usage.sql', 'begin');
 --  Usage Statistics (Genes Concepts Diseeases)
 -- ############################################
 
-call log('view_curation_usage', '#genes,#concepts,#diseases per curator');
+-- #################################################################
+call log('summary_gene_curation', '#genes,#concepts,#omim per clinvar.gene_condition_source_id');
 
-drop   table if exists view_curation_usage; 
-create table view_curation_usage
+drop   table if exists summary_gene_curation; 
+create table summary_gene_curation
    select SourceName as Curation, 
      count(distinct GeneID)     as cnt_genes, 
      count(distinct ConceptID)  as cnt_concepts, 
-     count(distinct DiseaseMIM) as cnt_diseases
+     count(distinct DiseaseMIM) as cnt_omim
    from 
      clinvar.gene_condition_source_id
    group by SourceName 
@@ -24,97 +25,101 @@ create table view_curation_usage
 -- medgen all source vocabularies 
 -- that contribute annotations by human experts  
 
-insert into view_curation_usage 
+insert into summary_gene_curation
    select 'NCBI_MEDGEN_CURATION' as Curation, 
-     count(distinct GeneID)      as cnt_gene, 
+     count(distinct GeneID)      as cnt_genes, 
      count(distinct ConceptID)   as cnt_concepts, 
-     count(distinct DiseaseMIM)  as cnt_diseases
+     count(distinct DiseaseMIM)  as cnt_omim
    from 
      clinvar.gene_condition_source_id;
 
-call log('view_curation_usage', 'done');
+call log('summary_gene_curation', 'done');
 
 -- #################################################################
-call log('view_vocab_usage', 'NCBI preferred terms counts for GTR/MedGen/etc.');
 
-drop table if exists view_vocab_usage; 
+call log('summary_vocab', '#concepts per SourceVocab (medgen.NAMES.source)');
 
-select count(*) into @cnt from NAMES; 
-
-create table view_vocab_usage 
-select source as SourceVocab, 
-       count(distinct NAMES.CUI)      as cnt, 
-       count(distinct NAMES.CUI)/@cnt as percent
-from NAMES 
-group by source order by cnt desc; 
-
-alter table view_vocab_usage change percent percent Float(2) default 0; 
-
-call log('view_vocab_usage', 'done'); 
-
--- #################################################################
-call log('view_semantic_usage', 'Preferred use of SemanticTypes byGTR/MedGen/etc.');
+drop table if exists summary_vocab; 
 
 select count(distinct CUI) into @cnt from NAMES; 
 
-drop  table if exists view_semantic_usage; 
+create table summary_vocab
+select source as SourceVocab, 
+       count(distinct CUI)      as cnt_concepts, 
+       count(distinct CUI)/@cnt*100 as percent
+from NAMES 
+group by source order by cnt_concepts desc; 
 
-create table view_semantic_usage
-select semantic.STY   as SemanticType, 
-       count(distinct NAMES.CUI)  as cnt, 
-       count(distinct NAMES.CUI)/@cnt  as percent
-from  NAMES, 
-      MGCONSO as concept, 
-      MGSTY   as semantic
-where    NAMES.CUI = concept.CUI  and 
-         NAMES.CUI = semantic.CUI 
-group by SemanticType 
-order by cnt desc; 
+alter table summary_vocab change percent percent Float(2) default 0; 
 
-alter table view_semantic_usage change percent percent Float(2) default 0; 
-
-call log('view_semantic_usage', 'done'); 
+call log('summary_vocab', 'done'); 
 
 -- #################################################################
-call log('view_preferred_usage', 'Preferred use of SourceVocab:SemanticType');
+call log('summary_semantics', '#concepts per SemanticType (medgen.MGSTY.STY) .');
 
-select count(distinct CUI) into @cnt from NAMES;
+select count(*) into @cnt from NAMES; 
 
-drop  table if exists view_preferred_usage; 
+drop  table if exists summary_semantics; 
 
-create table view_preferred_usage
-select concept.SAB    as SourceVocab, 
-       semantic.STY   as SemanticType, 
-       count(distinct NAMES.CUI)  as cnt, 
-       count(distinct NAMES.CUI)/@cnt  as percent
+create table summary_semantics
+select semantic.STY   as SemanticType, 
+       count(distinct NAMES.CUI)  as cnt_concepts, 
+       count(distinct NAMES.CUI)/@cnt*100  as percent
 from  NAMES, 
-      MGCONSO as concept, 
-      MGSTY   as semantic
-where    concept.ISPREF   = 'Y'   and 
-	 concept.STT      = 'PF'  and 
- 	 concept.SUPPRESS = 'N'   and  
- 	 concept.CUI      = NAMES.CUI  and 
- 	 concept.CUI      = semantic.CUI 
-group by SourceVocab, SemanticType 
-order by cnt desc; 
+      MGSTY as semantic
+where NAMES.CUI = semantic.CUI 
+group by SemanticType 
+order by cnt_concepts desc; 
 
-alter table view_preferred_usage change percent percent Float(2) default 0; 
+alter table summary_semantics change percent percent Float(2) default 0; 
 
-call log('view_preferred_usage', 'done'); 
+call log('summary_semantics', 'done'); 
+
+-- #################################################################
+-- call log('summary_vocabs_semantics', '#concepts per {SourceVocab,SemanticType}');
+
+-- select count(distinct CUI) into @cnt from NAMES;
+
+-- drop  table if exists view_preferred_usage; 
+
+-- create table view_preferred_usage
+-- select concept.SAB    as SourceVocab, 
+--        semantic.STY   as SemanticType, 
+--        count(distinct NAMES.CUI)  as cnt, 
+--        count(distinct NAMES.CUI)/@cnt  as percent
+-- from  NAMES, 
+--       MGCONSO as concept, 
+--       MGSTY   as semantic
+-- where    concept.ISPREF   = 'Y'   and 
+-- 	 concept.STT      = 'PF'  and 
+--  	 concept.SUPPRESS = 'N'   and  
+--  	 concept.CUI      = NAMES.CUI  and 
+--  	 concept.CUI      = semantic.CUI 
+-- group by SourceVocab, SemanticType 
+-- order by cnt desc; 
+
+-- alter table summary_vocabs_semantics change percent percent Float(2) default 0; 
+
+call log('summary_vocabs_semantics', 'done');
 
 -- ################################################################
-call log('view_concept_usage','count SemanticTypes per concept'); 
 
-drop    table if exists view_concept_usage; 
+call log('summary_concept','count #SourceVocab, #SemanticType per concept'); 
 
-create  table view_concept_usage
-select     CUI as ConceptID, 
-           count(distinct STY) as cnt_semtype
-from       MGSTY 
-group by   CUI
+drop    table if exists summary_concept; 
+
+create  table summary_concept
+select     C.CUI as ConceptID, 
+	   count(distinct C.SAB) as cnt_vocab, 
+           count(distinct S.STY) as cnt_semtype,
+	   count(distinct C.STR) as cnt_names
+from       MGCONSO C,
+	   MGSTY   S
+where      C.CUI = S.CUI 
+group by   C.CUI
 order by   cnt_semtype desc; 
 
-call log('view_concept_usage','done'): 
+call log('summary_concept','done'): 
 
 -- ################################################################
 call log('view_relate_usage', 'count MedGen relationships');
@@ -150,4 +155,4 @@ create table         view_medgen_hpo_omim_usage
    ORDER BY cnt desc; 
 
 -- #################################################################
-call log('view_usage.sql', 'EOF');
+call log('summary.sql', 'done');

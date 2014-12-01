@@ -33,8 +33,15 @@ $mysql_dataset < view_concept.sql
 echo "Human readable view of definitions" 
 $mysql_dataset < view_concept_def.sql 
 
-echo "NCBI Prerred NAMES for Diseases, Concepts, and SemanticTypes" 
+echo "NCBI Preferred NAMES for Diseases, Concepts, and SemanticTypes" 
 $mysql_dataset < view_concept_preferred.sql
+
+echo "######################################"
+echo "SemanticType views" 
+echo "######################################"
+
+echo "SemanticTypes (MGSTY.* joined to Concept)" 
+$mysql_dataset < view_semantics.sql
 
 echo "Genetic Tests" 
 $mysql_dataset < view_concept_genetic_tests.sql
@@ -72,3 +79,9 @@ $mysql_dataset < view_mode_of_inheritance.sql
 echo "MedGen to UMLS Unified Medical Language System"
 echo "medgen:MedGenUID::UMLS:ConceptID"
 $mysql_dataset < view_medgen_uid.sql 
+
+echo "######################################"
+echo "COUNTS"
+echo "######################################"
+$mysql_dataset < count_medgen.sql 
+$mysql_dataset < count_pubmed.sql 
