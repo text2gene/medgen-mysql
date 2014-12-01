@@ -23,28 +23,52 @@ echo "(clean) drop medgen.views_* "
 . ../db.config 
 $mysql_dataset < drop_views.sql 
 
+echo "######################################"
+echo "MedGen concept views" 
+echo "######################################"
+
 echo "Human readable view of concepts" 
 $mysql_dataset < view_concept.sql 
 
 echo "Human readable view of definitions" 
 $mysql_dataset < view_concept_def.sql 
 
-echo "MedGen Hierarchy of concepts " 
+echo "NCBI Prerred NAMES for Diseases, Concepts, and SemanticTypes" 
+$mysql_dataset < view_concept_preferred.sql
+
+echo "Genetic Tests" 
+$mysql_dataset < view_concept_genetic_tests.sql
+
+echo "######################################"
+echo "TREE Hierarchy" 
+echo "######################################"
+
+echo "concept:concept::broader:narrower" 
 $mysql_dataset < view_concept_tree.sql
 
-echo "MedGenUID to UMLS ConceptID Mapping" 
+echo TREE Hierarchy
+echo "concept:concept::broader:disease"
+$mysql_dataset < view_disease_tree.sql
+
+echo TREE Hierarchy 
+echo "concept:concept::disease:subtype" 
+$mysql_dataset < view_disease_subtype.sql 
+
+echo "######################################"
+echo "MAPPINGS"
+echo "######################################"
+
+echo "HPO Human Phenotype Ontology"
+echo "medgen:hpo" 
+$mysql_dataset < view_medgen_hpo.sql 
+
+echo "Online Mendelian Inheritance in Man"
+echo "medgen:hpo::hpo:omim" 
+$mysql_dataset < view_medgen_hpo_omim.sql 
+
+echo "genetic conditions inheritance"
+$mysql_dataset < view_mode_of_inheritance.sql
+
+echo "MedGen to UMLS Unified Medical Language System"
+echo "medgen:MedGenUID::UMLS:ConceptID"
 $mysql_dataset < view_medgen_uid.sql 
-
-##############################################################
-
-# echo "2. NCBI Prerred NAMES for Diseases, Concepts, and SemanticTypes" 
-# $mysql_dataset < view_preferred.sql
-
-# echo "4. Disease:Subtypes " 
-# $mysql_dataset < view_disease_subtype.sql 
-
-# echo "5. MedGen:HPO (HPO Human Phenotypes) "
-# $mysql_dataset < view_medgen_hpo.sql 
-
-# echo "7. PubMed references" 
-# $mysql_dataset < view_pubmed.sql
