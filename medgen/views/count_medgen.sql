@@ -106,7 +106,7 @@ from       MGCONSO C,
 	   MGSTY   S
 where      C.CUI = S.CUI 
 group by   C.CUI
-order by   cnt_names, cnt_semtype desc; 
+order by   cnt_names, cnt_semantics desc; 
 
 call log('count_concept','done'); 
 
