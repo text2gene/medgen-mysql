@@ -24,7 +24,7 @@ create table          view_concept (
   TermStatus          char(1)      , 
   StringTermType      varchar(3)   , 
   Preferred           char(1)      , 
-  AttributeID         varchar(9)   , 
+  AtomID              varchar(9)   , 
   SourceAttributeID   varchar(50)  , 
   SourceConceptID     varchar(100) , 
   SourceDocumentID    varchar(100) , 
