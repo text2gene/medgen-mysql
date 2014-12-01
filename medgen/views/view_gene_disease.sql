@@ -1,8 +1,6 @@
-use medgen; 
-
 call log('view_gene_disease.sql', 'begin');
+-- ################################################################
 
-desc clinvar.gene_condition_source_id; 
 -- +-------------+------------------+------+-----+---------+-------+
 -- | Field       | Type             | Null | Key | Default | Extra |
 -- +-------------+------------------+------+-----+---------+-------+
@@ -43,41 +41,5 @@ call create_index('view_gene_disease', 'GeneID');
 call create_index('view_gene_disease', 'ConceptID'); 
 call create_index('view_gene_disease', 'DiseaseMIM'); 
 
--- #####################################################
-call log('view_gene_disease','set SemanticType'); 
-
-UPDATE  view_gene_disease as gene2disease,
-	MGSTY  as semantic
-SET     gene2disease.SemanticType = semantic.STY
-where   gene2disease.ConceptID    = semantic.CUI; 
-
--- #####################################################
-call log('view_gene_disease','cnt_semtype'); 
-
-UPDATE  view_gene_disease as G,
-	view_concept_usage   as C 
-SET     G.cnt_semtype      = C.cnt_semtype
-where   G.ConceptID        = C.ConceptID; 
-
--- #####################################################
-call log('view_gene_disease','Disese:SemanticType'); 
-
--- SELECT   SemanticType, count(*) as cnt 
--- FROM     view_gene_disease 
--- GROUP BY SemanticType order by cnt desc; 
-
--- select cnt_semtype, count(*) from view_concept_usage 
--- group by cnt_semtype order by cnt_semtype desc; 
--- +---------------+----------+
--- | cnt_semtype | count(*) |
--- +---------------+----------+
--- |             1 |   160162 |
--- |             2 |    92763 |
--- |             3 |     6395 |
--- |             4 |      188 |
--- |             5 |        8 |
--- +---------------+----------+
-
 call log('view_gene_disease.sql', 'end');
 -- #####################################################
--- end 

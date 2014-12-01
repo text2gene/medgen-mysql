@@ -4,8 +4,6 @@
 
 echo ############################################################################
 
-echo unpack mirrored contents "(gunzip | unzip | tar)"
-
 if [ $# -eq 0 ]
   then
     echo "No dataset passed. example ./unpack gene"
@@ -15,23 +13,26 @@ fi
 export DATASET=$1
 require $DATASET "DATASET=?"
 
+echo "attempting to unpack $DATASET mirror using (gunzip | unzip | tar)"
+
 mkdir -p $DATASET/mirror 
 
 for f in `find $DATASET | grep gz$`;
 do
-  ls $f
+  echo "attempting to gunzip $f" 
   STEM=$(basename "${f}" .gz)  
   gunzip -cq "${f}" > $DATASET/mirror/"${STEM}"
 done
 
-# unzip 
-for zip in `find $DATASET | grep zip$`;
+for f in `find $DATASET | grep zip$`;
 do
-    unzip -q $zip -d $DATASET/mirror/. 
+    echo "attempting to unzip $f" 
+    unzip -q $f -d $DATASET/mirror/. 
 done
 
-# untar  
-for tar in `find $DATASET | grep "tar$"`;
+for f in `find $DATASET | grep tar$`;
 do
-    tar -xvf $tar -C $DATASET/mirror/. 
+  echo "attempting to untar $f" 
+  #STEM=$(basename "${f}" .tar)
+  tar -xvf $f -C $DATASET/mirror/.
 done

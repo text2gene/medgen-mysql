@@ -1,0 +1,24 @@
+! echo =================================================
+! echo "GO Gene Ontology ASSOCIATIONS" 
+! echo =================================================
+! echo http://www.geneontology.org/GO.downloads.ontology.shtml
+
+mkdir -p GO/mirror 
+cd GO/mirror
+
+! echo =================================================
+
+WGET_CMD="wget -c -m -nH --cut-dirs=100"
+
+URL_GO_LITE_DB=http://archive.geneontology.org/lite/2014-11-15/
+
+! echo "////////////////////////////////////////////"
+! echo "GO associations (assocdb)" 
+! echo
+! echo "all manual and automatically annotated gene products"
+  
+	$WGET_CMD $URL_GO_LITE_DB/go_20141115-assocdb-tables.tar.gz
+
+! echo "///////////////////////////////////////////////////////"
+! echo "[ GO GeneOntology associations download complete ]" 
+! echo "///////////////////////////////////////////////////////"

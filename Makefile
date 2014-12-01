@@ -45,6 +45,15 @@ GeneReviews: FORCE
 	./create_database.sh GeneReviews
 	./load_database.sh GeneReviews
 	./index_database.sh GeneReviews
+
+GO: FORCE
+	# testing
+	-./mirror.sh GO/urls.terms
+	./unpack.sh GO
+	./create_database.sh GO
+	./load_database.sh GO
+	./index_database.sh GO
+	
 	
 hpo: FORCE
 	# partial.
@@ -129,6 +138,7 @@ all: FORCE
 	-make clinvar
 	-make GTR
 	-make GeneReviews
+	-make GO
 	-make hugo
 	-make LSDB
 	-make medgen
@@ -138,5 +148,4 @@ all: FORCE
 	-make PubTator
 	-make SETH
 	
-.PHONY:  FORCE help user all clinvar GTR gene GeneReviews hugo LSDB medgen orphanet PersonalGenomes pubmed PubTator SETH 
-
+.PHONY:  FORCE help user all clinvar GTR gene GeneReviews GO hugo LSDB medgen orphanet PersonalGenomes pubmed PubTator SETH 

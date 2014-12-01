@@ -13,6 +13,29 @@ desc medgen_hpo;
 -- | STY           | varchar(50)  | NO   | MUL | NULL    |       |
 -- +---------------+--------------+------+-----+---------+-------+
 
+call log('view_medgen_hpo', 'medgen_hpo concepts');
+-- ################################################################
+drop table   if exists view_medgen_hpo; 
+CREATE TABLE           view_medgen_hpo 
+SELECT
+       MedGenStr_SAB as SourceVocab, 
+       STY           as SemanticType, 
+       CUI           as ConceptID, 
+       MedGenStr     as ConceptName, 
+       HpoStr        as PhenotypeName,
+       SDUI 	     as HPO_ID
+FROM   medgen_hpo; 
+
+call utf8_unicode('view_medgen_hpo'); 
+call create_index('view_medgen_hpo', 'SemanticType'); 
+call create_index('view_medgen_hpo', 'SourceVocab'); 
+call create_index('view_medgen_hpo', 'ConceptID'); 
+call create_index('view_medgen_hpo', 'HPO_ID'); 
+-- ################################################################
+call log('view_medgen_hpo.sql', 'done'); 
+
+
+
 desc medgen_hpo_omim; 
 -- +---------------+-------------+------+-----+---------+-------+
 -- | Field         | Type        | Null | Key | Default | Extra |
@@ -29,56 +52,40 @@ desc medgen_hpo_omim;
 -- | STY           | varchar(50) | NO   | MUL | NULL    |       |
 -- +---------------+-------------+------+-----+---------+-------+
 
-
-call log('view_medgen_hpo', 'medgen_hpo concepts');
--- ################################################################
-drop table   if exists view_medgen_hpo; 
-CREATE TABLE            view_medgen_hpo 
-SELECT
-       STY           as SemanticType, 
-       MedGenStr_SAB as SourceVocab, 
-       CUI           as ConceptID, 
-       MedGenStr     as ConceptName, 
-       HpoStr        as PhenotypeName,
-       SDUI 	     as HP
-FROM   medgen_hpo; 
-
-alter table view_medgen_hpo ENGINE=InnoDB DEFAULT CHARSET=utf8; 
-
-alter table view_medgen_hpo add index (SemanticType); 
-alter table view_medgen_hpo add index (SourceVocab); 
-alter table view_medgen_hpo add index (ConceptID); 
-alter table view_medgen_hpo add index (HP); 
--- ################################################################
--- end 
-
 -- begin 
 call log('view_medgen_hpo_omim', 'refresh');
 -- ################################################################
+
 drop table if exists view_medgen_hpo_omim; 
 CREATE TABLE         view_medgen_hpo_omim
-SELECT 
-       OMIM_CUI      as OMIM_ConceptID, 
-       MIM_number    as MIM, 
-       OMIM_name     as OMIM_Name, 
-       relationship, 
-       HPO_CUI       as HPO_ConceptID, 
-       HPO_ID        as HP, 
-       HPO_name      as HPO_Name, 
-       MedGen_Name   as Name, 
-       MedGen_Source as SourceVocab, 
-       STY           as SemanticType 
+SELECT distinct 
+       OMIM_STY.STY          as OMIM_SemanticType,
+       mapping.OMIM_CUI      as OMIM_ConceptID, 
+       mapping.MIM_number    as OMIM_ID, 
+       mapping.OMIM_name     as OMIM_Name, 
+       mapping.relationship  as Relationship, 
+       HPO_STY.STY           as HPO_SemanticType,
+       mapping.HPO_CUI       as HPO_ConceptID, 
+       mapping.HPO_ID        as HPO_ID, 
+       mapping.HPO_name      as HPO_Name,        
+       mapping.MedGen_Source as SourceVocab, 
+       mapping.STY           as SemanticType,
+       mapping.MedGen_Name   as Name
 FROM 
-     medgen_hpo_omim; 
+     medgen_hpo_omim as mapping, 
+     MGSTY as OMIM_STY, 
+     MGSTY as HPO_STY
+where 
+     mapping.OMIM_CUI = OMIM_STY.CUI and 
+     mapping.HPO_CUI  =  HPO_STY.CUI ;
 
-alter table view_medgen_hpo_omim ENGINE=InnoDB DEFAULT CHARSET=utf8; 
-
-alter table view_medgen_hpo_omim add index (SemanticType); 
-alter table view_medgen_hpo_omim add index (SourceVocab); 
-alter table view_medgen_hpo_omim add index (HPO_ConceptID); 
-alter table view_medgen_hpo_omim add index (OMIM_ConceptID); 
-alter table view_medgen_hpo_omim add index (MIM); 
-alter table view_medgen_hpo_omim add index (HP); 
+call utf8_unicode('view_medgen_hpo_omim'); 
+call create_index('view_medgen_hpo_omim','SemanticType'); 
+call create_index('view_medgen_hpo_omim','SourceVocab'); 
+call create_index('view_medgen_hpo_omim','HPO_ConceptID'); 
+call create_index('view_medgen_hpo_omim','OMIM_ConceptID'); 
+call create_index('view_medgen_hpo_omim','OMIM_ID'); 
+call create_index('view_medgen_hpo_omim','HPO_ID'); 
 
 alter table view_medgen_hpo_omim add column OMIM_SemanticType varchar(50) not null; 
 alter table view_medgen_hpo_omim add column HPO_SemanticType  varchar(50) not null; 
@@ -109,7 +116,7 @@ select DISTINCT
 from view_medgen_hpo_omim 
 where relationship = 'inheritance_type_of'; 
 
-alter table view_mode_of_inheritance add index (ConceptID) ; 
+alter table view_mode_of_inheritance ','ConceptID) ; 
 alter table view_mode_of_inheritance add column Name varchar(1000) default null; 
 
 update 
