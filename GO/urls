@@ -12,6 +12,7 @@ cd GO/mirror
 ! echo =================================================
 
 WGET_CMD="wget -c -m -nH --cut-dirs=100"
+GO_BASE_URL="http://archive.geneontology.org/lite/latest"
 
 ! echo "////////////////////////////////////////////"
 ! echo "GO terms (termdb)" 
@@ -24,15 +25,34 @@ WGET_CMD="wget -c -m -nH --cut-dirs=100"
 ! echo "GO associations (assocdb)" 
 ! echo
 ! echo "all manual and automatically annotated gene products"
-  
-	$WGET_CMD http://archive.geneontology.org/latest-lite/go_20141025-assocdb-tables.tar.gz
+
+content=$(wget -qO- $GO_BASE_URL)
+
+# figure out filename of latest assocdb-tables.tar.gz
+
+re='go_[0-9]+-assocdb-tables'
+if [[ "$content" =~ $re ]]
+then
+        $WGET_CMD $GO_BASE_URL/$BASH_REMATCH.tar.gz
+else
+        echo "assocdb-tables not found"
+fi
 
 ! echo "////////////////////////////////////////////"
 ! echo "GO sequences (seqdb)" 
 ! echo
 ! echo "link between a gene product and a biological sequence"
 
-       $WGET_CMD http://archive.geneontology.org/latest-lite/go_20141025-seqdb-tables.tar.gz
+# figure out filename of latest seqdb-tables.tar.gz
+
+re='go_[0-9]+-seqdb-tables'
+if [[ "$content" =~ $re ]]
+then
+        $WGET_CMD $GO_BASE_URL/$BASH_REMATCH.tar.gz
+else
+        echo "seqdb-tables not found"
+fi
+
 
 ! echo =================================================
 ! echo 
