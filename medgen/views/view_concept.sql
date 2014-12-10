@@ -43,6 +43,7 @@ call create_index('view_concept','SourceDocumentID');
 call create_index('view_concept','TermType');
 call create_index('view_concept','SourceCode');
 call create_index('view_concept','Name');
+call create_index('view_concept','Preferred');
 
 -- ###################################################
 call log('view_concept', 'done');
