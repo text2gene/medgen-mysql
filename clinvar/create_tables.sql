@@ -101,6 +101,23 @@ create table molecular_consequences
 ); 
 call utf8_unicode('variant_summary'); 
 
+
+-- end 
+-- ###################################
+-- begin 
+
+drop table if exists cross_references; 
+
+create table cross_references
+(
+	AlleleID       integer, 
+	SourceVocab    varchar(20), 
+	SourceCode     varchar(20),
+	last_updated_  varchar(20)
+); 
+
+call utf8_unicode('cross_references'); 
+
 -- end 
 -- ###################################
 -- begin 

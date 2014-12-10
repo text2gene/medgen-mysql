@@ -173,16 +173,6 @@ delimiter ;
 
 call log('etime', 'procedure created');  
 
--- delimiter ;
--- drop function if exists readme_url;
-
--- delimiter //
--- create function readme_url()
---        select distinct readme from log order by idx; 
--- // 
-
--- delimiter ;
-
 call DATASET( DATABASE() ); 
 insert into README values
 ('memory',   'procedure',  'mem',      'call mem', 'get schema +memory usage'),
@@ -221,14 +211,6 @@ begin
   information_schema.processlist.INFO not like '%information_schema.processlist%';
 end//
 delimiter ;
-
--- drop function  if exists freq;
-
--- delimiter //
--- create function freq( tablename varchar(100), colname varchar(100))
--- returns varchar(1000) 
--- 	return  concat('select ',  colname, ',' ,'count(*) as cnt', ' from ', tablename, ' group by ' , colname, ' order by cnt desc');//
--- delimiter ;
 
 drop procedure if exists freq;  
 
@@ -274,10 +256,6 @@ drop procedure if exists utf8_unicode;
 delimiter //
 create procedure utf8_unicode( tablename varchar(100))
 begin
-	-- select concat('alter table ', tablename, ' Engine=INNODB default CHARSET=utf8') as idx; 
-	-- prepare stmt from @idx; execute stmt;
-	-- call log(tablename, 'Engine=INNODB utf8');
-
 	select concat('alter table ', tablename, ' convert to CHARSET utf8 collate utf8_unicode_ci') into @idx; 
 	prepare stmt from @idx; execute stmt;
 	

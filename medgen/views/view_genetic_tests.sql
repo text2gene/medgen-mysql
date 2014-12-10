@@ -1,8 +1,8 @@
 call log('view_concept_genetic_tests', 'refresh');
 -- ################################################################
 
-drop   table if exists view_concept_genetic_tests; 
-create table           view_concept_genetic_tests 
+drop   table if exists view_genetic_tests; 
+create table           view_genetic_tests 
 select distinct 
      semantic.STY as SemanticType, 
      attr.CUI     as ConceptID, 

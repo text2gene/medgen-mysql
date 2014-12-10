@@ -17,8 +17,8 @@ $mysql_dataset < view_concept.sql
 echo "Human readable view of definitions" 
 $mysql_dataset < view_concept_def.sql 
 
-echo "NCBI Preferred NAMES for Diseases, Concepts, and SemanticTypes" 
-$mysql_dataset < view_concept_preferred.sql
+# echo "NCBI Preferred NAMES for Diseases, Concepts, and SemanticTypes" 
+# $mysql_dataset < view_concept_preferred.sql
 
 echo "######################################"
 echo "SemanticType views" 
@@ -28,7 +28,7 @@ echo "SemanticTypes (MGSTY.* joined to Concept)"
 $mysql_dataset < view_semantics.sql
 
 echo "Genetic Tests" 
-$mysql_dataset < view_concept_genetic_tests.sql
+$mysql_dataset < view_genetic_tests.sql
 
 echo "######################################"
 echo "TREE Hierarchy" 

@@ -50,5 +50,10 @@ $WGET_CMD $BASE_TAB_DELIM_URL/gene_specific_summary*
 $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/supplements/molecular_consequences.txt
 
 ! echo "////////////////////////////////////////////"
+! echo "NCBI variant cross references" 
+
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/cross_references.txt
+
+! echo "////////////////////////////////////////////"
 ! echo "[ clinvar download complete ]"
 ! echo "////////////////////////////////////////////"
