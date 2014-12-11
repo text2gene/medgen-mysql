@@ -17,9 +17,6 @@ $mysql_dataset < view_concept.sql
 echo "Human readable view of definitions" 
 $mysql_dataset < view_concept_def.sql 
 
-# echo "NCBI Preferred NAMES for Diseases, Concepts, and SemanticTypes" 
-# $mysql_dataset < view_concept_preferred.sql
-
 echo "######################################"
 echo "SemanticType views" 
 echo "######################################"
