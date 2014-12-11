@@ -38,9 +38,9 @@ call log('count_pubmed_concept', 'done');
 -- -- 'Pathologic Function'
 -- -- 'Neoplastic Process'
 -- -- 'Congenital Abnormality'
--- -- 'Cell or Molecular Dysfunction'; 
+-- -- 'Cell or Molecular Dysfunction'
 
--- drop table if exists count_pubmed_semantics;
+-- drop table if exists count_pubmed_semantics ; 
 
 -- create table count_pubmed_semantics
 -- select   SemanticType, 	 
