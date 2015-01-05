@@ -1,5 +1,12 @@
 call log('create_index.sql','NCBI Entrez Gene'); 
 
+call log('create_index.sql','cleaning up some cols prior to index....'); 
+
+update gene.mim2gene_medgen set MIM_vocab='' where MIM_vocab = '-'; 
+update gene.mim2gene_medgen set MedGenCUI='' where MedGenCUI = '-'; 
+
+call log('create_index.sql' ,'OK, continuing...'); 
+
 call create_index('gene2pubmed','tax_id'); 
 call create_index('gene2pubmed','GeneID'); 
 call create_index('gene2pubmed','PMID'); 
