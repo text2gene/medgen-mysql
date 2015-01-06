@@ -1,19 +1,11 @@
 ! echo "////////////////////////////////////////////"
-! echo "### CGD: Clinical Genomics Database ###" 
+! echo "### PhenCode ###" 
 
 WGET_CMD="wget -nv -c -m -nH --cut-dirs=100 -R '*html*'"
 
 !   mkdir -p LSDB/mirror
     cd LSDB/mirror
 
-! echo "////////////////////////////////////////////"
-! echo "### PhenCode ###" 
-
-wget -c -nv http://globin.bx.psu.edu/phencode/otherLinks.html
-
-$WGET_CMD http://research.nhgri.nih.gov/CGD/download/txt/CGD.txt.gz
-
-$WGET_CMD http://research.nhgri.nih.gov/CGD/download/txt/CGD.txt.gz
 $WGET_CMD http://phencode.bx.psu.edu/dist/phencode/database/gvSrc.txt
 $WGET_CMD http://phencode.bx.psu.edu/dist/phencode/database/linkBuilder.txt
 $WGET_CMD http://phencode.bx.psu.edu/dist/phencode/database/srcDetails.txt
@@ -24,5 +16,7 @@ $WGET_CMD http://phencode.bx.psu.edu/dist/phencode/database/gvPosHg19.txt
 
 $WGET_CMD http://phencode.bx.psu.edu/dist/phencode/database/tables.txt
 $WGET_CMD http://phencode.bx.psu.edu/dist/phencode/database/tables.sql
+
+wget -c -nv http://globin.bx.psu.edu/phencode/otherLinks.html
 
 ! echo "////////////////////////////////////////////"
