@@ -22,7 +22,7 @@ else
     export DB_FILE="$DATASET.$DB_TABLE.$TODAY.mysqldump"
 fi 
 
-export DB_DUMP="mysqldump $DB_LOCK -u $DB_USER -p$DB_PASS -h $DB_HOST --port $DB_PORT  $DATASET $DB_TABLE" 
+export DB_DUMP="mysqldump --skip-lock-tables -u $DB_USER -p$DB_PASS -h $DB_HOST --port $DB_PORT  $DATASET $DB_TABLE" 
 
 echo '##########################' 
 echo " DATASET  = $DATASET " 
