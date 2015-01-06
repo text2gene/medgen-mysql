@@ -71,11 +71,6 @@ hugo: FORCE
 	./load_database.sh hugo
 	./index_database.sh hugo
 
-LSDB: FORCE
-	# complete. (no DB -- copyright issues)
-	-./mirror.sh LSDB/urls
-	-./mirror.sh LSDB/urls.lovd
-
 medgen: FORCE
 	# complete.
 	-./mirror.sh medgen/urls
@@ -148,4 +143,4 @@ all: FORCE
 	-make PubTator
 	-make SETH
 	
-.PHONY:  FORCE help user all clinvar GTR gene GeneReviews GO hugo LSDB medgen orphanet PersonalGenomes pubmed PubTator SETH 
+.PHONY:  FORCE help user all clinvar GTR gene GeneReviews GO hugo medgen orphanet PersonalGenomes pubmed PubTator SETH 
