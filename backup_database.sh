@@ -5,41 +5,38 @@ set -e
 export TODAY="$(date +%F)"
 export BATCH="$TODAY" 
 
-####################
-DB_USER=medgen 
-DB_PASS=medgen
-DB_HOST="localhost" 
-DB_PORT="3306"  
-#DB_LOCK="--skip-lock-tables"
-DB_LOCK=""
-####################
+source common.sh 
 
-export DB_NAME=$1 
+require   $1 "pick a dataset like ./create_database clinvar" 
+
+dbconfig="$1/db.config"
+
+require $dbconfig "DATASET/db.config not found" 
+source  $dbconfig
+
 export DB_TABLE=$2
 
-# require $DB_NAME   "which database?" 
-
 if [ "$#" -lt 2 ]; then 
-    export DB_FILE="$DB_NAME.$TODAY.mysqldump"
+    export DB_FILE="$DATASET.$TODAY.mysqldump"
 else
-    export DB_FILE="$DB_NAME.$DB_TABLE.$TODAY.mysqldump"
+    export DB_FILE="$DATASET.$DB_TABLE.$TODAY.mysqldump"
 fi 
 
-export DB_DUMP="mysqldump $DB_LOCK -u $DB_USER -p$DB_PASS -h $DB_HOST --port $DB_PORT  $DB_NAME $DB_TABLE" 
+export DB_DUMP="mysqldump $DB_LOCK -u $DB_USER -p$DB_PASS -h $DB_HOST --port $DB_PORT  $DATASET $DB_TABLE" 
 
 echo '##########################' 
-echo " DB_NAME  = $DB_NAME " 
+echo " DATASET  = $DATASET " 
 echo " DB_TABLE = $DB_TABLE" 
 echo " DB_FILE  = $DB_FILE " 
 echo " DB_DUMP  = $DB_DUMP " 
 echo '##########################' 
-echo "$DB_NAME/mysqldump" 
+echo "$DATASET/mysqldump" 
 
-mkdir -p $DB_NAME/mysqldump/ 
+mkdir -p $DATASET/mysqldump/ 
 
-$DB_DUMP > $DB_NAME/mysqldump/$DB_FILE
+$DB_DUMP > $DATASET/mysqldump/$DB_FILE
 
-ls -lh $DB_NAME/mysqldump
+ls -lh $DATASET/mysqldump
 
 echo '    ' 
 echo 'done' 
