@@ -155,6 +155,7 @@ view_concept_tree
 ==================
 | MedGen term hierarchy contains many "parent:child" relationships
 | "parent to child" relationships derived from **medgen.MGREL** are stored in this table. 
+| 
 
 
 |
@@ -163,10 +164,47 @@ view_disease_tree
 ==================
 | MedGen term hierarchy of diseases, more formally `SemanticType`_ **Disease or Syndrome**
 | View is a subset of `view_concept_tree`_
+| Parent
+
+
+|
+|
+view_disease_subtype
+======================
+| MedGen term hierarchy of diseases, more formally `SemanticType`_ **Disease or Syndrome**
+| View is a subset of `view_disease_tree`_
 | 
 
+|
+|
+view_genetic_tests
+==================
+| **GTR** Genetic Testing Registry concepts 
 
+::
 
+   call freq('view_genetic_tests', 'SemanticType'); 
+   
+   -- select SemanticType,count(*) as cnt 
+   -- from view_genetic_tests 
+   -- group by SemanticType order by cnt desc
+
+   +----------------------------------+-------+
+   | SemanticType                     | cnt   |
+   +----------------------------------+-------+
+   | Disease or Syndrome              | 65299 |
+   | Congenital Abnormality           |  7073 |
+   | Neoplastic Process               |  3044 |
+   | Finding                          |  1314 |
+   | Pathologic Function              |   271 |
+   | Mental or Behavioral Dysfunction |   169 |
+   | Sign or Symptom                  |    66 |
+   | Gene or Genome                   |    29 |
+   | Anatomical Abnormality           |    18 |
+   | Cell or Molecular Dysfunction    |     7 |
+   | Body System                      |     2 |
+   | Acquired Abnormality             |     1 |
+   +----------------------------------+-------+
 
 |
 |
