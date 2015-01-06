@@ -27,7 +27,7 @@ done
 for f in `find $DATASET | grep zip$`;
 do
     echo "attempting to unzip $f" 
-    unzip -q $f -d $DATASET/mirror/. 
+    unzip -oq $f -d $DATASET/mirror/. 
 done
 
 for f in `find $DATASET | grep tar$`;
