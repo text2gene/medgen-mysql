@@ -19,8 +19,8 @@ create table mutation2pubtator(
        PMID        int(10) unsigned null, 
        Components  varchar(200), 
        Mentions    Text not null
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+);
+call utf8_unicode('mutation2pubtator');
 
         
 -- PMID | EntrezGeneID | Annotator | Mentions
@@ -32,21 +32,14 @@ ENGINE=InnoDB DEFAULT CHARSET=utf8;
 -- select count(*) from gene2pubtator where PMID not RLIKE '^[0-9]+$';
 -- alter table mutation2pubtator change PMID PMID int(10) unsigned null
 
-
 drop table if exists gene2pubtator;
 create table gene2pubtator( 
        PMID      int(10) unsigned null, 
        GeneID    int(10) unsigned, 
        Annotator varchar(50), 
        Mentions    Text not null
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8;  
-
-drop table if exists gene2norm;
-drop table if exists gene2pubmed;
-
-create table gene2norm   like gene2pubtator;
-create table gene2pubmed like gene2pubtator;
+);
+call utf8_unicode('gene2pubtator');
         
 -- PMID | MeshID | Mentions
 
@@ -59,8 +52,9 @@ create table disease2pubtator(
        PMID      int(10) unsigned null, 
        MeshID    varchar(100), 
        Mentions  Text
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+);
+call utf8_unicode('disease2pubtator');
+
 
 -- PMID | MeshID | Mentions
 -- 
@@ -72,8 +66,8 @@ create table chemical2pubtator(
        PMID      int(10) unsigned not null, 
        MeshID    varchar(100), 
        Mentions  Text 
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+); 
+call utf8_unicode('chemical2pubtator');
 
 
 -- PMID    TaxID   Mentions
@@ -83,6 +77,7 @@ create table species2pubtator(
        PMID      int(10) unsigned not null, 
        TaxID     varchar(10),
        Mentions  Text 
-)
-Engine = InnoDB;
+); 
+call utf8_unicode('species2pubtator');
+
 
