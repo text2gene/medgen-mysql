@@ -1,0 +1,35 @@
+! echo "////////////////////////////////////////////"
+! echo "### BIC Breast Cancer Information Core ###" 
+
+WGET_CMD="wget -nv -c -m -nH --cut-dirs=100 -R '*html*'"
+
+!   mkdir -p LSDB/mirror
+    cd LSDB/mirror
+
+echo "////////////////////////////////////////////"
+
+echo "###   LSDB LOGIN   ###" 
+echo "#" 
+echo "# export LSDB_USER=$LSDB_USER"
+echo "# export LSDB_PASS=$LSDB_PASS"
+echo "#" 
+echo "###   LSDB LOGIN   ###" 
+
+echo "////////////////////////////////////////////"
+
+export BIC_BRCA1="https://$LSDB_USER:$LSDB_PASS@research.nhgri.nih.gov/projects/bic/Member/cgi-bin/bic_query_result.cgi/brca1_data.txt?table=brca1_exons&download=1"
+export BIC_BRCA2="https://$LSDB_USER:$LSDB_PASS@research.nhgri.nih.gov/projects/bic/Member/cgi-bin/bic_query_result.cgi/brca2_data.txt?table=brca1_exons&download=1" 
+
+echo "////////////////////////////////////////////"
+
+echo "Fetching BIC_BRCA1" 
+echo $BIC_BRCA1
+$WGET_CMD $BIC_BRCA1
+
+echo "////////////////////////////////////////////"
+
+echo "Fetching BIC_BRCA2" 
+echo $BIC_BRCA2
+$WGET_CMD $BIC_BRCA2
+
+echo "////////////////////////////////////////////"
