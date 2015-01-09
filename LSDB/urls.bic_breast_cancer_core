@@ -1,7 +1,7 @@
 ! echo "////////////////////////////////////////////"
 ! echo "### BIC Breast Cancer Information Core ###" 
 
-WGET_CMD="wget -nv -c -m -nH --cut-dirs=100 -R '*html*'"
+WGET_CMD="wget -c"
 
 !   mkdir -p LSDB/mirror
     cd LSDB/mirror
@@ -24,12 +24,12 @@ echo "////////////////////////////////////////////"
 
 echo "Fetching BIC_BRCA1" 
 echo $BIC_BRCA1
-$WGET_CMD $BIC_BRCA1
+$WGET_CMD $BIC_BRCA1 -O brca1_data.txt
 
 echo "////////////////////////////////////////////"
 
 echo "Fetching BIC_BRCA2" 
 echo $BIC_BRCA2
-$WGET_CMD $BIC_BRCA2
+$WGET_CMD $BIC_BRCA2 -O brca2_data.txt 
 
 echo "////////////////////////////////////////////"
