@@ -135,7 +135,6 @@ all: FORCE
 	-make GeneReviews
 	-make GO
 	-make hugo
-	-make LSDB
 	-make medgen
 	-make orphanet
 	-make PersonalGenomes
