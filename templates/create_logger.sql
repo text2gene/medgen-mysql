@@ -80,7 +80,7 @@ CREATE TABLE log
   event_time   timestamp    default now(),
   entity_name  varchar(100) NOT NULL,
   message      varchar(100) NULL,
-  DATASET      varchar(20)  null
+  DATASET      varchar(30)  null
 );
 
 ALTER TABLE log add idx smallint UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY;
