@@ -10,6 +10,7 @@ WGET_CMD="wget -c -m -nH --cut-dirs=100"
 ! echo "////////////////////////////////////////////"
 
 $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/file_list.txt
+$WGET_CMD http://ftp.ncbi.nlm.nih.gov/pubmed/deleted.pmids.gz
 $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/PMC-ids.csv.gz
 
 ! echo ===========================================================
