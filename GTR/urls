@@ -12,9 +12,22 @@ TERMS_URL="ftp.ncbi.nlm.nih.gov/pub/GTR/standard_terms"
        ! mkdir -p GTR/mirror 
        cd GTR/mirror
 
+
+! echo "////////////////////////////////////////////"
+! echo "tests and labs (tabular data)" 
+
 $WGET_CMD $BASE_URL/test_condition_gene.txt
 $WGET_CMD $BASE_URL/test_version.gz 
 $WGET_CMD $BASE_URL/labs_tests_by_country.txt
+
+! echo "////////////////////////////////////////////"
+! echo "XML" 
+
+wget ftp://ftp.ncbi.nlm.nih.gov/pub/GTR/documentation/GTRPublicData.xsd
+$WGET_CMD $BASE_URL/gtr_ftp.xml.gz
+
+! echo "////////////////////////////////////////////"
+! echo "Standard Terms" 
 
 $WGET_CMD $TERMS_URL/Mode_of_inheritance.txt
 $WGET_CMD $TERMS_URL/Clinical_significance.txt
@@ -22,4 +35,3 @@ $WGET_CMD $TERMS_URL/Clinical_significance.txt
 ! echo "////////////////////////////////////////////////////"
 ! echo "[ GTR Genetic Testing Registry download complete ]" 
 ! echo "////////////////////////////////////////////////////"
-
