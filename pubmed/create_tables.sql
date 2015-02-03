@@ -3,7 +3,8 @@ use pubmed;
 call log('create_tables.sql', 'done');
 -- 
 
-call log('file_list', 'create table');
+-- ###################################
+call log('file_list', 'refresh');
 
 drop table if exists  file_list ; 
 
@@ -12,11 +13,10 @@ create table file_list(
   journal_volume    text not null,
   PMCID             varchar(10) not null
 )
-Engine=InnoDB;
+call utf8_unicode('file_list'); 
 
-call log('file_list', 'done'); 
---
-call log('PMC', 'create table');
+-- ###################################
+call log('PMC', 'refresh');
 
 drop table if exists  PMC ; 
 
@@ -33,16 +33,22 @@ create table PMC (
   PMID		       int(10) unsigned null, 
   ManuscriptID	       text null, 
   ReleaseDate	       text null
-)
-Engine=InnoDB;
+);
+call utf8_unicode('PMC'); 
 
-call log('PMC', 'done');
---
-call log('medline', 'http://www.nlm.nih.gov/bsd/licensee/access/medline_pubmed.html');
-call log('medline', 'create table');
 
-drop table if exists  medline ; 
-create table medline like PMC; 
+-- ###################################
 
--- 
+call log('deleted', 'refresh');
+drop table if exists deleted; 
+
+create table deleted
+(
+  PMID int(10) unsigned null
+); 
+
+call utf8_unicode('deleted'); 
+
+-- ###################################
+
 call log('create_tables.sql', 'done');
