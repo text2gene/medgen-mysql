@@ -69,7 +69,7 @@ $WGET_CMD $BASE_URL/gene_group.gz
 ! echo "////////////////////////////////////////////"
 ! echo "Gene Neighbors"
 
-$WGET_CMD $BASE_URL/gene_neighbors.gz  
+#$WGET_CMD $BASE_URL/gene_neighbors.gz  
 
 ! echo "////////////////////////////////////////////"
 ! echo "Gene Ontology (GO)"
@@ -87,8 +87,8 @@ $WGET_CMD $BASE_URL/mim2gene_medgen
 GENERIF_BASE_URL="ftp://ftp.ncbi.nlm.nih.gov/gene/GeneRIF"
 
 $WGET_CMD $GENERIF_BASE_URL/generifs_basic.gz
-$WGET_CMD $GENERIF_BASE_URL/interactions.gz
-$WGET_CMD $GENERIF_BASE_URL/interaction_sources
+#$WGET_CMD $GENERIF_BASE_URL/interactions.gz
+#$WGET_CMD $GENERIF_BASE_URL/interaction_sources
 
 ! echo "////////////////////////////////////////////"
 ! echo "[ gene download complete ]"
