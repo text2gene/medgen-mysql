@@ -3,7 +3,7 @@ load_table tsv gene_info        Homo_sapiens.gene_info
 
 load_table tsv mim2gene_medgen  mim2gene_medgen 
 
-load_table tsv gene2accession   gene2accession
+# load_table tsv gene2accession   gene2accession
 load_table tsv gene2go          gene2go
 
 load_table tsv generifs_basic   generifs_basic
