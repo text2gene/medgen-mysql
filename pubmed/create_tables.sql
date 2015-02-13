@@ -47,7 +47,22 @@ create table deleted
   PMID int(10) unsigned null
 ); 
 
-call utf8_unicode('deleted'); 
+call utf8_unicode('deleted');
+
+
+-- ###################################
+
+call log('pubmed_xml', 'refresh');
+drop table if exists pubmed_xml; 
+
+create table pubmed_xml
+(
+  PMID int(10) unsigned null,
+  XML  longtext null, 
+  Tstamp   timestamp  not null default CURRENT_TIMESTAMP  
+); 
+
+call utf8_unicode('pubmed_xml'); 
 
 -- ###################################
 
