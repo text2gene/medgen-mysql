@@ -37,7 +37,7 @@ $WGET_CMD $BASE_URL/stopwords_gene
 ! echo "Gene transcripts: NCBI accession "
 ! echo 
 
-! $WGET_CMD $BASE_URL/gene2accession.gz  
+# $WGET_CMD $BASE_URL/gene2accession.gz  
 
 ! echo "////////////////////////////////////////////"
 ! echo "Gene transcripts: Ensembl"
@@ -45,11 +45,10 @@ $WGET_CMD $BASE_URL/stopwords_gene
 
 $WGET_CMD $BASE_URL/gene2ensembl.gz  
 
-! echo "////////////////////////////////////////////"
-! echo "Genes to transcripts (RefSeq, uta?)"
-! echo 
-
-$WGET_CMD $BASE_URL/gene2refseq.gz  
+# ! echo "////////////////////////////////////////////"
+# ! echo "Genes to transcripts (RefSeq, uta?)"
+# ! echo 
+# $WGET_CMD $BASE_URL/gene2refseq.gz  
 
 ! echo "////////////////////////////////////////////"
 ! echo "Gene Info"
