@@ -1,6 +1,6 @@
 call log('medgen.create_index.sql','begin'); 
 
-call create_index('MERGED'  ,'CUI');
+call create_index('MGMERGED'  'CUI');
 call create_index('MGCONSO' ,'CUI');
 call create_index('MGCONSO','SCUI');
 call create_index('MGDEF',   'CUI');
