@@ -122,25 +122,25 @@ call utf8_unicode('gene_history');
 -- mature_peptide_accession.version 
 -- mature_peptide_gi 
 
-drop table if exists gene2accession; 
-create table gene2accession(
-       tax_id     int(5)  unsigned, 
-       GeneID     int(10)  unsigned, 
-       STATUS     varchar(20), 
-       RNA_acc_ver	    varchar(20), 
-       RNA_acc_gi 	    varchar(20), 
-       Protein_acc_ver	    varchar(20), 
-       Protein_acc_gi	    varchar(20), 
-       Genomic_acc_ver	    varchar(20),  
-       Genomic_acc_gi 	    varchar(20), 
-       Genomic_acc_start    varchar(20),  
-       Genomic_acc_end	    varchar(20), 
-       orientation	    varchar(20), 
-       assembly	    	    varchar(20), 
-       peptide_acc_ver	    varchar(20), 
-       peptide_acc_gi	    varchar(20)
-); 
-call utf8_unicode('gene2accession');
+-- drop table if exists gene2accession; 
+-- create table gene2accession(
+--        tax_id     int(5)  unsigned, 
+--        GeneID     int(10)  unsigned, 
+--        STATUS     varchar(20), 
+--        RNA_acc_ver	    varchar(20), 
+--        RNA_acc_gi 	    varchar(20), 
+--        Protein_acc_ver	    varchar(20), 
+--        Protein_acc_gi	    varchar(20), 
+--        Genomic_acc_ver	    varchar(20),  
+--        Genomic_acc_gi 	    varchar(20), 
+--        Genomic_acc_start    varchar(20),  
+--        Genomic_acc_end	    varchar(20), 
+--        orientation	    varchar(20), 
+--        assembly	    	    varchar(20), 
+--        peptide_acc_ver	    varchar(20), 
+--        peptide_acc_gi	    varchar(20)
+-- ); 
+-- call utf8_unicode('gene2accession');
 
 -- end
 -- begin
