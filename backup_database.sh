@@ -34,7 +34,11 @@ echo "$DATASET/mysqldump"
 
 mkdir -p $DATASET/mysqldump/ 
 
+$mysql_dataset -e "call log('backup_database.sh', 'begin')"
+
 $DB_DUMP > $DATASET/mysqldump/$DB_FILE
+
+$mysql_dataset -e "call log('backup_database.sh', 'done')"
 
 ls -lh $DATASET/mysqldump
 
