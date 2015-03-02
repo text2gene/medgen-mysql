@@ -1,6 +1,9 @@
 CREATE DATABASE IF NOT EXISTS medgen CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-use medgen; 
+use medgen;
+
+-- http://www.jamediasolutions.com/blog/deterministic-no-sql-or-reads-sql-data-in-its-declaration.html
+SET GLOBAL log_bin_trust_function_creators = 1;
 
 -- MySQL application logging procedures 
 -- use DATASET; 
@@ -84,7 +87,7 @@ CREATE TABLE log
   event_time   timestamp    default now(),
   entity_name  varchar(100) NOT NULL,
   message      varchar(100) NULL,
-  DATASET      varchar(20)  null
+  DATASET      varchar(30)  null
 );
 
 ALTER TABLE log add idx smallint UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY;
@@ -240,7 +243,7 @@ drop procedure if exists create_index;
 delimiter //
 create procedure create_index( tablename varchar(100), indexcols varchar(100) )
 begin
-	call log(tablename, indexcols);	
+	call log( concat(tablename,':', indexcols), 'index begin');
 
 	select concat('alter table ', tablename, ' add  index (', indexcols, ')') into @idx; 
 	prepare stmt from @idx; execute stmt;
@@ -248,7 +251,7 @@ begin
 	select concat('show index from ', tablename) into @show; 
 	prepare stmt from @show; execute stmt;
 	
-	call log( concat(tablename,':', indexcols), 'done');
+	call log( concat(tablename,':', indexcols), 'index done');
 end//
 delimiter ;
 

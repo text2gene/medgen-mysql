@@ -64,7 +64,7 @@ drop procedure if exists create_index;
 delimiter //
 create procedure create_index( tablename varchar(100), indexcols varchar(100) )
 begin
-	call log(tablename, indexcols);	
+	call log( concat(tablename,':', indexcols), 'index begin');
 
 	select concat('alter table ', tablename, ' add  index (', indexcols, ')') into @idx; 
 	prepare stmt from @idx; execute stmt;
@@ -72,7 +72,7 @@ begin
 	select concat('show index from ', tablename) into @show; 
 	prepare stmt from @show; execute stmt;
 	
-	call log( concat(tablename,':', indexcols), 'done');
+	call log( concat(tablename,':', indexcols), 'index done');
 end//
 delimiter ;
 

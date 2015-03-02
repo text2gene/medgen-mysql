@@ -39,16 +39,10 @@ medgen_pubmed
    | NAME  | varchar(1000) | NO   | MUL | NULL    |       | Name 
    | PMID  | varchar(10)   | NO   | MUL | NULL    |       | PMID
    +-------+---------------+------+-----+---------+-------+
-
+   
 |
 |
-view_foo
-=========================
-::
-
-   call bar 
-
-
+   
 MedGen provides links to resources
 ==================================
 
