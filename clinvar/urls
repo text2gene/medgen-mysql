@@ -8,7 +8,9 @@
 ! echo 
 ! echo ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/README.txt
 
-WGET_CMD="wget -m -nH --cut-dirs=100"
+#WGET_CMD="wget -m -nH --cut-dirs=100"
+
+WGET_CMD="wget -c"
 BASE_URL="ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar"
 
         ! mkdir -p clinvar/mirror 
