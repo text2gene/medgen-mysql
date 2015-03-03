@@ -24,12 +24,12 @@ call create_index('gene_group','GeneID');
 call create_index('gene_info','tax_id'); 
 call create_index('gene_info','GeneID'); 
 
-call create_index('gene2accession','tax_id'); 
-call create_index('gene2accession','GeneID'); 
+-- call create_index('gene2accession','tax_id'); 
+-- call create_index('gene2accession','GeneID'); 
 
-call create_index('gene2accession','RNA_acc_ver'); 
-call create_index('gene2accession','Protein_acc_ver'); 
-call create_index('gene2accession','Genomic_acc_ver'); 
+-- call create_index('gene2accession','RNA_acc_ver'); 
+-- call create_index('gene2accession','Protein_acc_ver'); 
+-- call create_index('gene2accession','Genomic_acc_ver'); 
 
 call create_index('generifs_basic','tax_id'); 
 call create_index('generifs_basic','GeneID'); 
