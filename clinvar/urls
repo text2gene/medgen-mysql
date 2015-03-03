@@ -56,12 +56,6 @@ $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/supplements/molec
 
 $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/cross_references.txt
 
-
-! echo "////////////////////////////////////////////"
-! echo "ClinVar Full Release XML" 
-
-wget ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/xml/ClinVarFullRelease_00-latest.xml.gz
-
 ! echo "////////////////////////////////////////////"
 ! echo "[ clinvar download complete ]"
 ! echo "////////////////////////////////////////////"
