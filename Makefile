@@ -48,7 +48,7 @@ GeneReviews: FORCE
 
 GO: FORCE
 	# testing
-	-./mirror.sh GO/urls.terms
+	-./mirror.sh GO/urls
 	./unpack.sh GO
 	./create_database.sh GO
 	./load_database.sh GO

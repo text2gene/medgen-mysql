@@ -12,10 +12,14 @@ source  $dbconfig
 
 require $DATASET  "which dataset?" 
 
+$mysql_dataset -e "call log('index_database.sh', 'begin')"
+
 pushd . 
 cd $DATASET
 $mysql_dataset < create_index.sql 
-popd 
+popd
+
+$mysql_dataset -e "call log('index_database.sh', 'done')"
 
 echo '##################################################################' 
 echo "DATASET: $DATASET " 

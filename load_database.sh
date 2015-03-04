@@ -10,16 +10,20 @@ dbconfig="$1/db.config"
 require $dbconfig "DATASET/db.config not found" 
 source  $dbconfig
 
-require $DATASET  "which dataset?" 
+require $DATASET  "which dataset?"
+
+$mysql_dataset -e "call log('load_database.sh', 'begin')"
 
 interpolate_file_config "templates/load"  > $DATASET/load.sh
-cat $DATASET/load_tables                 >> $DATASET/load.sh 
+cat $DATASET/load_tables                 >> $DATASET/load.sh
 
 pushd . 
 cd $DATASET
 chmod +x load.sh 
 ./load.sh 
-popd 
+popd
+
+$mysql_dataset -e "call log('load_database.sh', 'done')"
 
 echo '##################################################################' 
 echo "DATASET: $DATASET " 
