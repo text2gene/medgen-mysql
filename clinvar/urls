@@ -16,8 +16,16 @@ BASE_URL="ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar"
         ! mkdir -p clinvar/mirror 
         cd clinvar/mirror
        
-$WGET_CMD $BASE_URL/README.txt 
+$WGET_CMD $BASE_URL/README.txt
+
+
 ! echo =================================================
+
+! echo " //////////////////////////////////////////////  "
+! echo " ClinVar PubMed References ( AlleleID not HGVS ) " 
+
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/var_citations.txt
+
 ! echo 
 ! echo "////////////////////////////////////////////"
 ! echo "Clinical Genetics gene curation list" 
@@ -55,6 +63,12 @@ $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/supplements/molec
 ! echo "NCBI variant cross references" 
 
 $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/cross_references.txt
+
+! echo 
+! echo "////////////////////////////////////////////"
+! echo "Clinical Genetics gene curation list" 
+
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/dbVar/clingen/ClinGen_gene_curation_list.tsv
 
 ! echo "////////////////////////////////////////////"
 ! echo "[ clinvar download complete ]"

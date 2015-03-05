@@ -1,4 +1,20 @@
-call log('ClinVar Clinical Variants', 'ncbi'); 
+call log('ClinVar Clinical Variants', 'ncbi');
+
+-- begin
+call log('var_citations', 'refresh');
+
+drop   table if exists var_citations;
+create table           var_citations
+(
+	AlleleID	 integer not null, 
+	VariationID      integer not null, 
+	rs		 integer null, 
+	nsv		 integer null, 
+	citation_source  varchar(100),
+	citation_id	 integer
+); 
+call utf8_unicode('var_citations');
+
 
 -- begin
 call log('gene_condition_source_id','refresh');
