@@ -81,12 +81,12 @@ create table variant_summary (
        variant_name     text, 
        GeneID           integer  not null,   
        Symbol           varchar(20)  not null,  
-       ClinicalSignificance text, 
+       ClinicalSignificance varchar(200), 
        rs                   integer, 
        dbvar_nsv         text, 
        RCVaccession	 text, 
        TestedInGTR       char, 
-       PhenotypeIDs      text, 
+       PhenotypeIDs      varchar(500), 
        Origin            text, 
        Assembly      	 text, 
        Chromosome        varchar(20),
@@ -99,7 +99,7 @@ create table variant_summary (
        NumberSubmitters  integer, 
        LastEvaluated     text, 
        Guidelines        text, 
-       OtherIDs          text 
+       OtherIDs          varchar(500) 
 );
 call utf8_unicode('variant_summary'); 
 
