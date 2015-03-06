@@ -1,3 +1,4 @@
+load_table tsv  omim_pubmed	 pubmed_cited
 load_table rrf  MGCONSO  MGCONSO.RRF
 load_table rrf  MGDEF    MGDEF.RRF
 load_table rrf  MGREL    MGREL.RRF

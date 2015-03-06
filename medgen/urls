@@ -81,7 +81,6 @@ $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/MGSTY.RRF.gz
 $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/NAMES.RRF.gz
 
 
-
 ! echo "///////////////////////////////"
 ! echo "MedGen PubMed Annotations!     "
 ! echo "///////////////////////////////"
@@ -98,6 +97,10 @@ $WGET_CMD $CLINGEN_BASE_URL/ClinGen_gene_curation_list.tsv
 $WGET_CMD $CLINGEN_BASE_URL/ClinGen_region_curation_list.tsv
 
 ! echo =================================================
+! echo "OMIM Citations "
+! echo =================================================
+
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/repository/OMIM/pubmed_cited
 
 ! echo "/////////////////////////////////////////////////"
 ! echo "[NCBI Medical Genetics medgen download complete]" 

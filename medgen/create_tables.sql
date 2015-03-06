@@ -190,6 +190,17 @@ create table medgen_pubmed(
 
 call utf8_unicode('medgen_pubmed'); 
 
+-- file: pubmed_cited
+-- 	 OMIM pubmed citations
+
+drop   table if exists omim_pubmed;
+create table           omim_pubmed(
+       MIM           int null,
+       refnumber     int null,
+       PMID    int(10) unsigned
+);
+call utf8_unicode('omim_pubmed'); 
+
 --  file: MedGen_HPO_Mapping.txt 
 --  	  HPO references to medgen concepts 
 
