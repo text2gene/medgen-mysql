@@ -7,6 +7,19 @@ call create_index('var_citations', 'nsv');
 call create_index('var_citations', 'citation_source');
 call create_index('var_citations', 'citation_id');
 
+
+call create_index('variant_summary', 'AlleleID');
+call create_index('variant_summary', 'HGVS_c');
+call create_index('variant_summary', 'HGVS_p');
+call create_index('variant_summary', 'TestedInGTR');
+
+call create_index('variant_summary', 'PhenotypeIDs');
+call create_index('variant_summary', 'ClinicalSignificance');
+
+call create_index('variant_summary', 'rs');
+call create_index('variant_summary', 'Start');
+call create_index('variant_summary', 'Stop');
+
 call create_index('gene_condition_source_id', 'GeneID');
 call create_index('gene_condition_source_id', 'Symbol');
 call create_index('gene_condition_source_id', 'ConceptID');
