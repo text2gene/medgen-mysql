@@ -46,17 +46,17 @@ call utf8_unicode('deleted');
 
 -- ###################################
 
-call log('pubmed_xml', 'refresh');
-drop table if exists pubmed_xml; 
+call log('medline_xml', 'refresh');
+drop table if exists medline_xml; 
 
-create table pubmed_xml
+create table medline_xml
 (
   PMID int(10) unsigned null,
   XML  longtext null, 
   Tstamp   timestamp  not null default CURRENT_TIMESTAMP  
 ); 
 
-call utf8_unicode('pubmed_xml'); 
+call utf8_unicode('medline_xml'); 
 
 -- ###################################
 
