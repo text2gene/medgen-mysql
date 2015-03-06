@@ -1,18 +1,12 @@
-use pubmed; 
-
-call log('create_tables.sql', 'done');
--- 
-
--- ###################################
 call log('file_list', 'refresh');
 
 drop table if exists  file_list ; 
 
-create table file_list(
+create table file_list (
   article_path      text not null,
   journal_volume    text not null,
   PMCID             varchar(10) not null
-)
+); 
 call utf8_unicode('file_list'); 
 
 -- ###################################
@@ -21,18 +15,18 @@ call log('PMC', 'refresh');
 drop table if exists  PMC ; 
 
 create table PMC (
-  Journal	       text, 
-  ISSN		       text, 
-  eISSN                text, 
-  Year                 text, 
-  Volume 	       text, 
-  Issue		       text, 
-  Page		       text, 
-  DOI		       text, 
+  Journal	       varchar(100), 
+  ISSN		       varchar(10), 
+  eISSN                varchar(10), 
+  Year                 varchar(9), 
+  Volume 	       varchar(25), 
+  Issue		       varchar(150), 
+  Page		       varchar(200), 
+  DOI		       varchar(100), 
   PMCID		       varchar(20) null, 
   PMID		       int(10) unsigned null, 
-  ManuscriptID	       text null, 
-  ReleaseDate	       text null
+  ManuscriptID	       varchar(20) null, 
+  ReleaseDate	       varchar(20) null
 );
 call utf8_unicode('PMC'); 
 
