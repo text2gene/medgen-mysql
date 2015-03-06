@@ -1,0 +1,21 @@
+! echo ================================================================
+! echo " PUBMED OpenAccess Papers, metadata, and user engagement logs"
+! echo =================================================================
+
+WGET_CMD="wget -c -m -nH --cut-dirs=100"
+BASE_URL="ftp://ftp.ncbi.nlm.nih.gov"
+
+       ! mkdir -p pubmed/mirror 
+       cd pubmed/mirror
+
+$WGET_CMD $BASE_URL/pubmed
+
+! echo "////////////////////////////////////////////"
+! echo "PubMed all directory contents updated daily"
+
+$WGET_CMD $BASE_URL/repository/OMIM/pubmed_cited
+$WGET_CMD $BASE_URL/pub/pmc
+
+! echo "////////////////////////////////////////////"
+! echo "[pubmed open access download complete ]"
+! echo "////////////////////////////////////////////"

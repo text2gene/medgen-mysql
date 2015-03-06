@@ -93,9 +93,9 @@ PersonalGenomes: FORCE
 
 pubmed: FORCE
 	# testing
-	-./mirror.sh pubmed/urls.pmc
-	-./mirror.sh pubmed/urls.openaccess
-	-./mirror.sh pubmed/urls.medline
+	#-./mirror.sh pubmed/urls.medline
+	#-./mirror.sh pubmed/urls.fulltext	
+	-./mirror.sh pubmed/urls.pmc	
 	./unpack.sh pubmed
 	./create_database.sh pubmed
 	./load_database.sh pubmed
