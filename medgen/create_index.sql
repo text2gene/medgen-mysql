@@ -5,14 +5,15 @@ call create_index('MGCONSO','SCUI');
 call create_index('MGDEF',   'CUI');
 call create_index('NAMES',   'CUI');
 
--- OMIM References (directly from OMIM to PubMed)
-call create_index('omim_pubmed','MIM');  -- MIM
-call create_index('omim_pubmed','PMID'); -- PMID
-
 -- MedGen References (May include direct or indirect OMIM references) 
 call create_index('medgen_pubmed','UID');  -- MedGen primary key 
 call create_index('medgen_pubmed','CUI');  -- UMLS   primary key
 call create_index('medgen_pubmed','PMID'); -- PubMed primary key
+
+
+-- OMIM References (directly from OMIM to PubMed)
+call create_index('omim_pubmed','MIM');  -- MIM
+call create_index('omim_pubmed','PMID'); -- PMID
 
 -- MedGen to HPO SourceVocab Indexes
 call create_index('medgen_hpo','MedGenStr_SAB'); -- MedGen Source vocabulary 
