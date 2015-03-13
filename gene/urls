@@ -33,17 +33,16 @@ $WGET_CMD $BASE_URL/gene2pubmed.gz
 
 $WGET_CMD $BASE_URL/stopwords_gene  
 
-! echo "////////////////////////////////////////////"
-! echo "Gene transcripts: NCBI accession "
-! echo 
+# ! echo "////////////////////////////////////////////"
+# ! echo "Gene transcripts: NCBI accession "
+# ! echo 
 
 # $WGET_CMD $BASE_URL/gene2accession.gz  
 
-! echo "////////////////////////////////////////////"
-! echo "Gene transcripts: Ensembl"
-! echo 
-
-$WGET_CMD $BASE_URL/gene2ensembl.gz  
+# ! echo "////////////////////////////////////////////"
+# ! echo "Gene transcripts: Ensembl"
+# ! echo 
+# $WGET_CMD $BASE_URL/gene2ensembl.gz  
 
 # ! echo "////////////////////////////////////////////"
 # ! echo "Genes to transcripts (RefSeq, uta?)"
@@ -86,8 +85,9 @@ $WGET_CMD $BASE_URL/mim2gene_medgen
 GENERIF_BASE_URL="ftp://ftp.ncbi.nlm.nih.gov/gene/GeneRIF"
 
 $WGET_CMD $GENERIF_BASE_URL/generifs_basic.gz
-#$WGET_CMD $GENERIF_BASE_URL/interactions.gz
-#$WGET_CMD $GENERIF_BASE_URL/interaction_sources
+
+# $WGET_CMD $GENERIF_BASE_URL/interactions.gz
+# $WGET_CMD $GENERIF_BASE_URL/interaction_sources
 
 ! echo "////////////////////////////////////////////"
 ! echo "[ gene download complete ]"
