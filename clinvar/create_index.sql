@@ -9,6 +9,7 @@ call create_index('var_citations', 'citation_id');
 
 
 call create_index('variant_summary', 'AlleleID');
+call create_index('variant_summary', 'variant_name');
 call create_index('variant_summary', 'HGVS_c');
 call create_index('variant_summary', 'HGVS_p');
 call create_index('variant_summary', 'TestedInGTR');
