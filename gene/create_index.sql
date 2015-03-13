@@ -22,7 +22,8 @@ call create_index('gene_group','tax_id');
 call create_index('gene_group','GeneID'); 
 
 call create_index('gene_info','tax_id'); 
-call create_index('gene_info','GeneID'); 
+call create_index('gene_info','GeneID');
+call create_index('gene_info','Symbol'); 
 
 -- call create_index('gene2accession','tax_id'); 
 -- call create_index('gene2accession','GeneID'); 
