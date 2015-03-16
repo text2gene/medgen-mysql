@@ -78,7 +78,7 @@ drop table if exists variant_summary;
 create table variant_summary (
        AlleleID         integer not null, 
        variant_type     varchar(50) not null, 
-       variant_name     text, 
+       variant_name     varchar(500), 
        GeneID           integer  not null,   
        Symbol           varchar(20)  not null,  
        ClinicalSignificance varchar(200), 
