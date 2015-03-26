@@ -14,7 +14,7 @@ call create_index('variant_summary', 'HGVS_c');
 call create_index('variant_summary', 'HGVS_p');
 call create_index('variant_summary', 'TestedInGTR');
 
-call create_index('variant_summary', 'PhenotypeIDs');
+-- call create_index('variant_summary', 'PhenotypeIDs');
 call create_index('variant_summary', 'ClinicalSignificance');
 
 call create_index('variant_summary', 'rs');
