@@ -21,7 +21,7 @@ for f in `find $DATASET | grep gz$`;
 do
   echo "attempting to gunzip $f" 
   STEM=$(basename "${f}" .gz)  
-  gunzip -cq "${f}" > $DATASET/mirror/"${STEM}" 2>&1
+  gunzip -fcq "${f}" > $DATASET/mirror/"${STEM}" 2>&1
 done
 
 for f in `find $DATASET | grep zip$`;
