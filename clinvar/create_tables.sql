@@ -25,7 +25,7 @@ create table gene_condition_source_id(
        GeneID		 int,
        Symbol          varchar(10),
        ConceptID       varchar(20),
-       DiseaseName     varchar(1000),
+       DiseaseName     varchar(255),
        SourceName      varchar(150),
        SourceID        varchar(50),
        DiseaseMIM      varchar(20),
@@ -41,7 +41,7 @@ call log('disease_names','refresh');
 drop table if exists disease_names; 
 
 create table disease_names(
-     DiseaseName     varchar(1000),
+     DiseaseName     varchar(255),
      SourceName      varchar(150),
      ConceptID       varchar(20),
      SourceID        varchar(50),
@@ -78,7 +78,7 @@ drop table if exists variant_summary;
 create table variant_summary (
        AlleleID         integer not null, 
        variant_type     varchar(50) not null, 
-       variant_name     varchar(500), 
+       variant_name     varchar(255) null, 
        GeneID           integer  not null,   
        Symbol           varchar(20)  not null,  
        ClinicalSignificance varchar(200), 
