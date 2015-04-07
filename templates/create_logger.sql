@@ -166,7 +166,34 @@ begin
 end//
 delimiter ;
 
+call log('etime', 'procedure created');
 
-call log('etime', 'procedure created');  
+drop procedure if exists last_loaded;
+
+delimiter //
+create procedure last_loaded()
+begin
+	select event_time as ID from log
+	where entity_name = 'load_database.sh' and message = 'done'
+	order by idx desc limit 1;
+end//
+delimiter ; 
+
+call log('last_loaded', 'procedure created');  
+
+
+drop procedure if exists last_loaded_comparable;
+
+delimiter //
+create procedure last_loaded_comparable()
+begin
+	select cast(event_time as unsigned) as ID from log
+	where entity_name = 'load_database.sh' and message = 'done'
+	order by idx desc limit 1;
+end//
+delimiter ; 
+
+call log('last_loaded_comparable', 'procedure created');  
+
 
 call DATASET( DATABASE() ); 

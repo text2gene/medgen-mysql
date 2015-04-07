@@ -31,7 +31,7 @@ create table         test_version(
 	facility_state           text null,   
 	facility_postcode        text null,        
 	facility_country         text null,         
-	genetests_laboratory_id  text null, 
+--	genetests_laboratory_id  text null, 
 	CLIA_number              text null,      
 	state_licenses           text null,   
 	state_license_numbers    text null,    

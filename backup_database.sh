@@ -2,7 +2,7 @@
 
 set -e
 
-export TODAY="$(date +%F)"
+export TODAY="$(date +%Y-%m-%d__h%Hm%Ms%S)"
 export BATCH="$TODAY" 
 
 source common.sh 
@@ -25,7 +25,8 @@ fi
 export DB_DUMP="mysqldump --skip-lock-tables -u $DB_USER -p$DB_PASS -h $DB_HOST --port $DB_PORT  $DATASET $DB_TABLE" 
 
 echo '##########################' 
-echo " DATASET  = $DATASET " 
+echo " DATASET  = $DATASET "
+echo " BATCH    = $BATCH" 
 echo " DB_TABLE = $DB_TABLE" 
 echo " DB_FILE  = $DB_FILE " 
 echo " DB_DUMP  = $DB_DUMP " 
