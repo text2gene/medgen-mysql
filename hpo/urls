@@ -14,7 +14,8 @@ BASE_URL_MAPPINGS="http://compbio.charite.de/svn/hpo/trunk/src/"
 ! echo "////////////////////////////////////////////"
 ! echo "HPO MySQL Database dump " 
 
-$WGET_CMD http://compbio.charite.de/hudson/job/hpo.annotations.monthly/lastStableBuild/artifact/annotation/MYHPO_12_2014.sql
+# hard-coded path wget expansion using the -A flag isn't working. The file in the archive.zip contains the current MYPHO*.sql file however
+# $WGET_CMD -A 'MYPHO*.sql' http://compbio.charite.de/hudson/job/hpo.annotations.monthly/lastStableBuild/artifact/annotation/MYHPO_12_2014.sql
 $WGET_CMD http://compbio.charite.de/svn/hpo/trunk/src/misc/hpo_db_schema.pdf
 
 ! echo "////////////////////////////////////////////"

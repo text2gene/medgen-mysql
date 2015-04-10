@@ -10,4 +10,4 @@ echo "######################################"
 load_table tsv gene2disease archive/annotation/genes_to_diseases.txt
 load_table tsv disease2gene archive/annotation/diseases_to_genes.txt
 
-$mysql_dataset < mirror/MYHPO_12_2014.sql
+$mysql_dataset < mirror/archive/annotation/MYHPO*.sql
