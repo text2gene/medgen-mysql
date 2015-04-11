@@ -42,4 +42,35 @@ create table disease2gene2phenotypes(
 call utf8_unicode('disease2gene2phenotypes');
 -- ###################################
 
+call log('phenotype2gene', 'begin');
+
+drop table if exists phenotype2gene; 
+
+create table phenotype2gene(
+       PhenotypeID    varchar(25)      default null, 
+       PhenotypeName  varchar(25)      default null,
+       GeneID         int(10) unsigned default 0, 
+       Symbol         varchar(25)      default null
+); 
+
+call utf8_unicode('phenotype2gene');
+
+
+-- ###################################
+
+call log('gene2phenotype', 'begin');
+
+drop table if exists gene2phenotype; 
+
+create table gene2phenotype(
+       GeneID         int(10) unsigned default 0,
+       Symbol         varchar(25)      default null,
+       PhenotypeName  varchar(25)      default null,
+       PhenotypeID    varchar(25)      default null
+); 
+
+call utf8_unicode('gene2phenotype');
+
+-- ###################################
+
 call log('create_tables.sql', 'done'); 
