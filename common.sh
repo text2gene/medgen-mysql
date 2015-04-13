@@ -15,7 +15,7 @@ function require()
 
 function escape()
 {
-  ESCAPED=$(echo "$1" | iconv -c -f utf-8 -t ascii | sed "s| |\\\ |g" | sed "s|\:|\\\:|g" | sed "s|\.|\\\.|g" | sed "s|\/|\\\/|g" )
+  ESCAPED=$(echo "$1" | iconv -c -f ascii -t utf-8 | sed "s| |\\\ |g" | sed "s|\:|\\\:|g" | sed "s|\.|\\\.|g" | sed "s|\/|\\\/|g" )
 }
 
 function interpolate_file()

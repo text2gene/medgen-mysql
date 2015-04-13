@@ -36,7 +36,7 @@ create table disease2gene2phenotypes(
        Symbol         varchar(25)      default null, 
        GeneID         int(10) unsigned default 0, 
        PhenotypeID    varchar(25)      default null, 
-       PhenotypeName  varchar(25)      default null
+       PhenotypeName  varchar(50)      default null
 ); 
 
 call utf8_unicode('disease2gene2phenotypes');
@@ -48,7 +48,7 @@ drop table if exists phenotype2gene;
 
 create table phenotype2gene(
        PhenotypeID    varchar(25)      default null, 
-       PhenotypeName  varchar(25)      default null,
+       PhenotypeName  varchar(50)      default null,
        GeneID         int(10) unsigned default 0, 
        Symbol         varchar(25)      default null
 ); 
@@ -65,7 +65,7 @@ drop table if exists gene2phenotype;
 create table gene2phenotype(
        GeneID         int(10) unsigned default 0,
        Symbol         varchar(25)      default null,
-       PhenotypeName  varchar(25)      default null,
+       PhenotypeName  varchar(50)      default null,
        PhenotypeID    varchar(25)      default null
 ); 
 
