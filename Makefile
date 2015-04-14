@@ -53,8 +53,7 @@ GO: FORCE
 	./create_database.sh GO
 	./load_database.sh GO
 	./index_database.sh GO
-	
-	
+
 hpo: FORCE
 	# partial.
 	-./mirror.sh hpo/urls
@@ -78,6 +77,10 @@ medgen: FORCE
 	./create_database.sh medgen
 	./load_database.sh medgen
 	./index_database.sh medgen
+	pushd .
+	cd medgen/views
+	create_views.sh
+	popd
 
 orphanet: FORCE
 	# complete (download-only).
