@@ -12,7 +12,8 @@ create table           var_citations
 	nsv		 integer null, 
 	citation_source  varchar(100),
 	citation_id	 integer
-); 
+)
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
 call utf8_unicode('var_citations');
 
 
@@ -24,13 +25,14 @@ drop table if exists gene_condition_source_id;
 create table gene_condition_source_id(
        GeneID		 int,
        Symbol          varchar(10),
-       ConceptID       varchar(20),
-       DiseaseName     varchar(255),
+       ConceptID       varchar(40),
+       DiseaseName     varchar(200),
        SourceName      varchar(150),
        SourceID        varchar(50),
        DiseaseMIM      varchar(20),
        LastModified    varchar(20)
-);
+)
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
 call utf8_unicode('gene_condition_source_id'); 
 
 -- end
@@ -45,9 +47,11 @@ create table disease_names(
      SourceName      varchar(150),
      ConceptID       varchar(20),
      SourceID        varchar(50),
-     DiseaseMIM      varchar(20),
-     LastModified    varchar(20)
-);
+     DiseaseMIM      varchar(100),
+     LastModified    varchar(20),
+     Category        varchar(100)
+)
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 call utf8_unicode('disease_names'); 
 
@@ -62,8 +66,10 @@ create table gene_specific_summary (
   Symbol   varchar(20)  not null,  
   GeneID       integer  not null,   
   Submissions  integer  not null, 	
-  Alleles      integer  not null 
-);
+  Alleles      integer  not null,
+  Submissions_reporting_this_gene integer
+)
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 call utf8_unicode('gene_specific_summary'); 
 
@@ -99,8 +105,10 @@ create table variant_summary (
        NumberSubmitters  integer, 
        LastEvaluated     text, 
        Guidelines        text, 
-       OtherIDs          varchar(500) 
-);
+       OtherIDs          varchar(500),
+       VariantID         INTEGER
+)
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
 call utf8_unicode('variant_summary'); 
 
 -- end 
@@ -114,7 +122,8 @@ create table molecular_consequences
        hgvs_text          varchar(100) not null,
        SequenceOntologyID varchar(20)  not null, 
        Value              varchar(100) not null 
-); 
+)
+  ENGINE=InnoDB DEFAULT CHARSET=utf8;
 call utf8_unicode('variant_summary'); 
 
 
@@ -130,7 +139,8 @@ create table cross_references
 	SourceVocab    varchar(20), 
 	SourceCode     varchar(20),
 	last_updated_  varchar(20)
-); 
+)
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 call utf8_unicode('cross_references'); 
 
@@ -155,7 +165,8 @@ create table clingen_gene_curation_list
        	haplo_insuf_pmid3  text,
        	triplosense_score  text, 
        	triplosense_desc   text
-); 
+)
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
 call utf8_unicode('clingen_gene_curation_list');
 
 call log('ClinGen gene_curation_list','done'); 
