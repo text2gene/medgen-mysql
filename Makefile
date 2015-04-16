@@ -77,10 +77,7 @@ medgen: FORCE
 	./create_database.sh medgen
 	./load_database.sh medgen
 	./index_database.sh medgen
-	pushd .
-	cd medgen/views
-	create_views.sh
-	popd
+	./medgen/create_views.sh
 
 orphanet: FORCE
 	# complete (download-only).

@@ -11,7 +11,13 @@ call utf8_unicode('evidence');
 call utf8_unicode('graph_path');
 --
 call utf8_unicode('seq');
+create table term_copy select * from term;
+drop table term;
+alter table term_copy rename to term;
+call create_index('term', 'name');
+call create_index('term', 'term_type');
 call utf8_unicode('term');
+
 call utf8_unicode('term2term');
 call utf8_unicode('term_definition');
 
