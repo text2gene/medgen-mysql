@@ -29,7 +29,6 @@ grant all privileges on umls.*         to 'medgen'@'%' with grant option;
 
 -- MedGen is able to link to Human Genetic Variation Society (HGVS) formatted datasources
 -- http://www.hgvs.org/mutnomen
-grant all privileges on hgvsquery.*       to 'medgen'@'%' with grant option;
 grant all privileges on v2p.*             to 'medgen'@'%' with grant option;
 grant all privileges on PubTator.*        to 'medgen'@'%' with grant option; 
 grant all privileges on SETH.*            to 'medgen'@'%' with grant option; 
