@@ -52,7 +52,7 @@ drop table if exists MGDEF;
 create table MGDEF( 
   CUI char(8) NOT NULL,
   DEF text NOT NULL,
-  SAB varchar(50) NOT NULL,
+  SAB varchar(75) NOT NULL,
   SUPPRESS char(1) NOT NULL
 ); 
 

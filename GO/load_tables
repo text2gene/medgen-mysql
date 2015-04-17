@@ -19,7 +19,7 @@ load_table tsv graph_path $GO_TERMS/graph_path.txt  $SKIP
 #############
 # ASSOCIATIONS 
 # 
-GO_ASSOC="go_20141025-assocdb-tables" 
+GO_ASSOC=$(basename $(ls -t -d mirror/go_*-assocdb-tables | head -1 ))
 
 $mysql_dataset < mirror/$GO_ASSOC/evidence.sql
 load_table tsv evidence $GO_ASSOC/evidence.txt  $SKIP
@@ -36,7 +36,7 @@ load_table tsv gene_product_count $GO_ASSOC/gene_product_count.txt  $SKIP
 #############
 # SEQUENCES
 # 
-GO_SEQ="go_20141025-seqdb-tables" 
+GO_SEQ=$(basename $(ls -t -d mirror/go_*-seqdb-tables | head -1 ))
 
 $mysql_dataset < mirror/$GO_SEQ/seq.sql 
 load_table tsv seq  $GO_SEQ/seq.txt  $SKIP

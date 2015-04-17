@@ -14,11 +14,11 @@ create table gene_info(
        Synonyms	 text, 
        dbXrefs   text, 
        chromosome varchar(50), 
-       map_loc    varchar(20), 
+       map_loc    varchar(40),
        GeneDesc  text, 
        GeneType  varchar(20), 
        Nomen_symbol varchar(25), 
-       Nomen_source varchar(20), 	
+       Nomen_source varchar(255),
        Nomen_status varchar(20), 	
        GeneOther    text, 
        LastModified varchar(10)

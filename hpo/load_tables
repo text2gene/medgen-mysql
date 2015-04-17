@@ -16,3 +16,8 @@ load_table tsv disease2gene archive/annotation/diseases_to_genes.txt
 
 
 $mysql_dataset < mirror/archive/annotation/MYHPO*.sql
+
+drop table abstract_sentence;
+drop table sentence2term;
+drop table disease2pubmedref;
+drop table external_object_pubmed;
