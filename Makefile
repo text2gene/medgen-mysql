@@ -22,6 +22,11 @@ clinvar: FORCE
 	./load_database.sh clinvar
 	./index_database.sh clinvar
 
+clinvarxml: FORCE
+	virtualenv ve
+	source ve/bin/activate && pip install lxml && python clinvar/parse_clinvar_xml.py
+
+
 GTR: FORCE
 	# complete.
 	-./mirror.sh GTR/urls
