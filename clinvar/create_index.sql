@@ -43,4 +43,9 @@ call create_index('gene_specific_summary','Symbol');
 
 call create_index('clingen_gene_curation_list','GeneID'); 
 
+call create_index('clinvar_hgvs', 'VariantID');
+call create_index('clinvar_hgvs', 'AlleleID');
+call create_index('clinvar_hgvs', 'RCVAccession');
+call create_index('clinvar_hgvs', 'hgvs_text');
+
 call log('create_index.sql', 'done'); 
