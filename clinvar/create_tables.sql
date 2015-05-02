@@ -1,5 +1,21 @@
 call log('ClinVar Clinical Variants', 'ncbi');
 
+--begin
+call log('clinvar_identifiers', 'refresh');
+
+drop   table if exists clinvar_identifiers;
+create table           clinvar_identifiers
+(
+	VariationID      integer not null, 	
+	AlleleID	 integer not null,
+	RCVaccession	 varchar(200) not null,
+        hgvs_text        varchar(100) not null
+)
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+call utf8_unicode('clinvar_identifiers');
+
+
 -- begin
 call log('var_citations', 'refresh');
 

@@ -35,9 +35,9 @@ call utf8_unicode('mutation2pubtator');
 drop table if exists gene2pubtator;
 create table gene2pubtator( 
        PMID      int(10) unsigned null, 
-       GeneID    int(10) unsigned, 
+       GeneID    int(10) unsigned,        
+       Mentions  Text not null,
        Annotator varchar(50), 
-       Mentions    Text not null
 );
 call utf8_unicode('gene2pubtator');
         
