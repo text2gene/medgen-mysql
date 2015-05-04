@@ -70,6 +70,12 @@ $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/cross_references.
 
 $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/dbVar/clingen/ClinGen_gene_curation_list.tsv
 
+! echo 
+! echo "////////////////////////////////////////////"
+! echo "ClinVar XML download (needed for clinvar_hgvs fixes)" 
+
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/xml/ClinVarFullRelease_00-latest.xml.gz
+
 ! echo "////////////////////////////////////////////"
 ! echo "[ clinvar download complete ]"
 ! echo "////////////////////////////////////////////"

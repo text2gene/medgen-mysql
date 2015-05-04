@@ -1,10 +1,11 @@
 call log('ClinVar Clinical Variants', 'ncbi');
 
---begin
-call log('clinvar_identifiers', 'refresh');
+-- begin
 
-drop   table if exists clinvar_identifiers;
-create table           clinvar_identifiers
+call log('clinvar_hgvs', 'refresh');
+
+drop   table if exists clinvar_hgvs;
+create table           clinvar_hgvs
 (
 	VariationID      integer not null, 	
 	AlleleID	 integer not null,
@@ -13,7 +14,7 @@ create table           clinvar_identifiers
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-call utf8_unicode('clinvar_identifiers');
+call utf8_unicode('clinvar_hgvs');
 
 
 -- begin
@@ -122,7 +123,7 @@ create table variant_summary (
        LastEvaluated     text, 
        Guidelines        text, 
        OtherIDs          varchar(500),
-       VariantID         INTEGER
+       VariationID       INTEGER
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 call utf8_unicode('variant_summary'); 
@@ -189,7 +190,7 @@ call log('clinvar_hgvs', 'refresh');
 drop   table if exists clinvar_hgvs;
 create table           clinvar_hgvs
 (
-  VariantID      integer not null,
+  VariationID      integer not null,
   AlleleID     integer not null,
   RCVaccession     varchar(200) not null,
   hgvs_text        varchar(100) not null

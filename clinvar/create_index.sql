@@ -7,12 +7,12 @@ call create_index('var_citations', 'nsv');
 call create_index('var_citations', 'citation_source');
 call create_index('var_citations', 'citation_id');
 
-
 call create_index('variant_summary', 'AlleleID');
 call create_index('variant_summary', 'variant_name');
 call create_index('variant_summary', 'HGVS_c');
 call create_index('variant_summary', 'HGVS_p');
 call create_index('variant_summary', 'TestedInGTR');
+call create_index('variant_summary', 'VariationID');
 
 -- call create_index('variant_summary', 'PhenotypeIDs');
 call create_index('variant_summary', 'ClinicalSignificance');
@@ -43,7 +43,7 @@ call create_index('gene_specific_summary','Symbol');
 
 call create_index('clingen_gene_curation_list','GeneID'); 
 
-call create_index('clinvar_hgvs', 'VariantID');
+call create_index('clinvar_hgvs', 'VariationID');
 call create_index('clinvar_hgvs', 'AlleleID');
 call create_index('clinvar_hgvs', 'RCVAccession');
 call create_index('clinvar_hgvs', 'hgvs_text');

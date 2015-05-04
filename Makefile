@@ -18,6 +18,7 @@ clinvar: FORCE
 	# complete.
 	-./mirror.sh clinvar/urls
 	./unpack.sh clinvar
+	-make clinvarxml 
 	./create_database.sh clinvar
 	./load_database.sh clinvar
 	./index_database.sh clinvar
