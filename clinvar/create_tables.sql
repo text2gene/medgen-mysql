@@ -183,8 +183,23 @@ create table clingen_gene_curation_list
        	triplosense_desc   text
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
-call utf8_unicode('clingen_gene_curation_list');
 
+call log('clinvar_hgvs', 'refresh');
+
+drop   table if exists clinvar_hgvs;
+create table           clinvar_hgvs
+(
+  VariantID      integer not null,
+  AlleleID     integer not null,
+  RCVaccession     varchar(200) not null,
+  hgvs_text        varchar(100) not null
+)
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+call utf8_unicode('clinvar_hgvs');
+
+
+call utf8_unicode('clingen_gene_curation_list');
 call log('ClinGen gene_curation_list','done'); 
 -- ###################################
 call log('ClinGen gene_curation_list','done'); 

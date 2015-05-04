@@ -24,7 +24,7 @@ clinvar: FORCE
 
 clinvarxml: FORCE
 	virtualenv ve
-	source ve/bin/activate && pip install lxml && python clinvar/parse_clinvar_xml.py
+	source ve/bin/activate && pip install lxml && python clinvar/clinvar_hgvs.py
 
 
 GTR: FORCE
