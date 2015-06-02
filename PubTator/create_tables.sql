@@ -37,7 +37,7 @@ create table gene2pubtator(
        PMID      int(10) unsigned null, 
        GeneID    int(10) unsigned,        
        Mentions  Text not null,
-       Annotator varchar(50), 
+       Annotator varchar(50)
 );
 call utf8_unicode('gene2pubtator');
         
