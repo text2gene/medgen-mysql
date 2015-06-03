@@ -101,58 +101,53 @@ Note also that datasets vary widely in how much disk space they require. Some da
 EXTREMELY LARGE.  Pubmed in particular will run you up to 50GB.
 
 
-MedGen links
-=========================================
-:medgen:
-   **Medical Genetics**
-
 Variants
-=========================================
+=========
 :clinvar:
    Clinical Variants
 
 :GTR:
    Genetic Testing Reference
 
-:LSDB:
-   Locus Specific Databases
-
+:PubTator:
+   NCBI curated Gene mutations in PubMed abstracts
+   
 :PersonalGenomes:
    (PGP Church Lab) interpretation of sequenced variants
 
-:PubTator:
-   NCBI curated Gene mutations in PubMed abstracts
 
-
-Gene
-=========================================
+Genes
+=======
 :gene:
    NCBI Entrez Gene database
 
 :GeneReviews:
    Gene Reviews
 
-:hugo:
-   Hugo Gene Naming Convention (GeneNames.org)
-
 :GO: 
-   Gene Ontology / Gene Function 
+   Gene Ontology / Gene Function
 
-
-PubMed annotated content
-===========================
-:pubmed:
-   Open Access Metadata
+:hugo:
+   Hugo Gene Naming Convention (GeneNames.org)   
 
 
 Phenotypes
 ==========
+:medgen:
+   **Medical Genetics** (including SNOMED-CT, UMLS concepts)
+
 :hpo:
    Human Phenotype Ontology
 
 :orphanet:
    Rare diseases
 
+   
+PubMed
+=======
+:pubmed:
+   Open Access Metadata
+   
 
 ####################################################################################################
 
@@ -242,19 +237,19 @@ SCHEMA
 To check on the status of the load see `processlist`_ and `logging`_ . 
 ::
 
-   mysql> call mem;
-   +--------------+--------+-------------------+------------+---------+-------------+----------+----------+
-   | table_schema | ENGINE | TABLE_NAME        | TABLE_ROWS | million | DATA_LENGTH | data_MB  | index_MB |
-   +--------------+--------+-------------------+------------+---------+-------------+----------+----------+
-   | PubTator     | InnoDB | disease2pubtator  |   25349552 | 25.35   |  1805647872 | 1722.00M | 3466.00M |
-   | PubTator     | InnoDB | gene2pubtator     |   15077099 | 15.08   |  1182793728 | 1128.00M | 2012.88M |
-   | PubTator     | InnoDB | log               |         50 | 0.00    |       16384 | 0.02M    | 0.00M    |
-   | PubTator     | InnoDB | mutation2hgvs     |          0 | 0.00    |       16384 | 0.02M    | 0.16M    |
-   | PubTator     | InnoDB | mutation2pubtator |          0 | 0.00    |       16384 | 0.02M    | 0.05M    |
-   | PubTator     | InnoDB | pubtator2hgvs     |          0 | 0.00    |       16384 | 0.02M    | 0.05M    |
-   | PubTator     | InnoDB | README            |         40 | 0.00    |       16384 | 0.02M    | 0.00M    |
-   | gene         | InnoDB | gene_info         |      49216 | 0.05    |    12075008 | 11.52M   | 5.55M    |
-   +--------------+--------+-------------------+------------+---------+-------------+----------+----------+
+   mysql> call mem; 
+   +--------------+--------+-------------------+------------+---------+----------+----------+-----------------+
+   | table_schema | ENGINE | TABLE_NAME        | TABLE_ROWS | million | data_MB  | index_MB | TABLE_COLLATION |
+   +--------------+--------+-------------------+------------+---------+----------+----------+-----------------+
+   | PubTator     | InnoDB | chemical2pubtator |   27453916 | 27.45   | 1549.00M | 0.00M    | utf8_unicode_ci |
+   | PubTator     | InnoDB | disease2pubtator  |   27825311 | 27.83   | 1870.00M | 0.00M    | utf8_unicode_ci |
+   | PubTator     | InnoDB | gene2pubtator     |   10800507 | 10.80   | 657.00M  | 0.00M    | utf8_unicode_ci |
+   | PubTator     | InnoDB | log               |         36 | 0.00    | 0.02M    | 0.00M    | utf8_unicode_ci |
+   | PubTator     | InnoDB | mutation2pubtator |     537030 | 0.54    | 29.56M   | 23.08M   | utf8_unicode_ci |
+   | PubTator     | InnoDB | README            |         11 | 0.00    | 0.02M    | 0.00M    | utf8_general_ci |
+   | PubTator     | InnoDB | species2pubtator  |   16563014 | 16.56   | 805.00M  | 0.00M    | utf8_unicode_ci |
+   +--------------+--------+-------------------+------------+---------+----------+----------+-----------------+
+   
 
 |
 
