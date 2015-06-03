@@ -105,7 +105,7 @@ call log('log', 'procedure created');
 
 drop procedure if exists DATASET;
 delimiter //
-create procedure DATASET(dataset varchar(10))
+create procedure DATASET(dataset varchar(30))
 begin
      select dataset into @DATASET; 
      call LOG('DATASET',@DATASET); 
