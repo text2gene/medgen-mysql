@@ -5,7 +5,8 @@
     ! mkdir -p hpo/mirror
     cd hpo/mirror
 
-WGET_CMD="wget -c -m -nH --cut-dirs=100"
+WGET_CMD="wget -c -nH --cut-dirs=100"
+WGET_SAFE="wget -nc"
 
 BASE_URL_ONTOLOGIES="http://compbio.charite.de/hudson/job/hpo/lastStableBuild/artifact/ontology/release"
 BASE_URL_ANNOTATIONS="http://compbio.charite.de/hudson/job/hpo.annotations/lastStableBuild/artifact/misc"
@@ -24,33 +25,23 @@ $WGET_CMD http://compbio.charite.de/svn/hpo/trunk/src/misc/hpo_db_schema.pdf
 $WGET_CMD http://compbio.charite.de/hudson/job/hpo.annotations.monthly/lastStableBuild/artifact/*zip*/archive.zip
 
 ! echo "////////////////////////////////////////////"
-! echo "HPO-data " 
-
-# TODO:AndyMC
-#
-# $WGET_CMD $BASE_URL_ONTOLOGIES/hp.obo
-# $WGET_CMD $BASE_URL_ONTOLOGIES/human-phenotype-ontology_xp.obo
-$WGET_CMD $BASE_URL_ONTOLOGIES/hp-reasoner-report.txt
-
-! echo "////////////////////////////////////////////"
 ! echo "HPO Annotations" 
 
-$WGET_CMD $BASE_URL_ANNOTATIONS/negative_phenotype_annotation.tab 
-$WGET_CMD $BASE_URL_ANNOTATIONS/phenotype_annotation.tab 
-$WGET_CMD $BASE_URL_ANNOTATIONS/phenotype_annotation_hpoteam.tab 
+$WGET_SAFE $BASE_URL_ANNOTATIONS/negative_phenotype_annotation.tab 
+$WGET_SAFE $BASE_URL_ANNOTATIONS/phenotype_annotation.tab 
+$WGET_SAFE $BASE_URL_ANNOTATIONS/phenotype_annotation_hpoteam.tab 
 
 ! echo "////////////////////////////////////////////"
 
 ! echo " HPO mappings to UMLS"
 
-$WGET_CMD $BASE_URL_MAPPINGS/mappings/term2umls.out 
+$WGET_SAFE $BASE_URL_MAPPINGS/mappings/term2umls.out 
 
 ! echo "////////////////////////////////////////////"
 ! echo "HPO Mappings (disease specific) " 
 
 $WGET_CMD  $BASE_URL_MAPPINGS/mappings/LDDB2HPO-v2.csv
 $WGET_CMD  $BASE_URL_MAPPINGS/mappings/onet_hpo.tsv
-#$WGET_CMD $BASE_URL_MAPPINGS/mappings/medraMapping.tsv 
 
 ! echo =================================================
 

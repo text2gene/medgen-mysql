@@ -153,8 +153,8 @@ PubMed
 
 USAGE
 =======
-- `mirror.sh`_ mirrors a dataset using LFTP as suggested by NCBI
-- `create_database.sh`_ creates a mysql database with common ETL procedures and logging
+- `mirror.sh`_ mirrors a dataset with wget
+- `create_database.sh`_ creates a mysql database with common loading procedures and logging
 - `unpack.sh`_ unzip and untar mirrored content
 - `load_database.sh`_ imports unpacked content into mysql database
 - `$mysql_dataset`_ opens mysql client for the current dataset
