@@ -133,11 +133,14 @@ Genes
 
 Phenotypes
 ==========
-:medgen:
-   **Medical Genetics** (including SNOMED-CT, UMLS concepts)
+:disgenet:
+   Disease Gene Network
 
 :hpo:
    Human Phenotype Ontology
+   
+:medgen:
+   **Medical Genetics** (including SNOMED-CT, UMLS concepts)
 
 :orphanet:
    Rare diseases
