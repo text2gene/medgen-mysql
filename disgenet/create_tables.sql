@@ -15,9 +15,9 @@ create table         disease2gene(
        GeneID        int(10) unsigned,
        Symbol        varchar(25),
        GeneText      text,
-       DiseaseCode   varchar(50),
-       DiseaseText   text,
-       score         float(5,4),
+       ConceptID     varchar(15),
+       ConceptName   varchar(255),
+       Score         float(5,4),
        PMID_count    int,
        AssocType     text, 
        SourceVocab   text
