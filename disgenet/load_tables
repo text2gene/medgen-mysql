@@ -1,0 +1,1 @@
+load_table	tsv	disease2gene		all_gene_disease_associations.txt

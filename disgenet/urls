@@ -1,0 +1,36 @@
+! echo "////////////////////////////////////////////"
+
+! echo " Disease Gene Network "
+
+! echo   http://disgenet.org/web/DisGeNET/menu/downloads#all
+
+! echo "////////////////////////////////////////////"
+
+! echo   ALL gene-disease associations
+! echo   The file contains all gene-disease associations in DisGeNET.
+
+! echo   1. Curated gene-disease associations
+! echo   HUMAN SUBSET The file contains gene-disease associations from UNIPROT and CTD
+
+! echo   2. Literature-based gene-disease associations
+! echo   The file contains gene-disease associations from BeFree, GAD, and LHGDN.
+
+! echo   3. BeFree gene-disease associations
+! echo   The file contains gene-disease associations obtained by text mining MEDLINE abstracts using the BeFree system.
+
+! echo "////////////////////////////////////////////"
+
+mkdir -p disgenet/mirror 
+cd disgenet/mirror
+
+! echo "////////////////////////////////////////////"
+
+WGET_CMD="wget -c -m -nH --cut-dirs=100"
+
+! echo "////////////////////////////////////////////"
+
+$WGET_CMD http://www.disgenet.org/ds/DisGeNET/results/all_gene_disease_associations.tar.gz
+
+! echo "////////////////////////////////////////////"
+! echo "[ disgnet download complete ]"
+! echo "////////////////////////////////////////////"
