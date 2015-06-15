@@ -24,9 +24,12 @@ WGET_CMD="wget -c -m -nH --cut-dirs=100"
 ! echo http://www.nlm.nih.gov/databases/journal.html
 ! echo =================================================================================
 
-# TODO: parse return from the following wget, display friendly message if 404.
 
 $WGET_CMD -A.gz ftp://ftp.nlm.nih.gov/nlmdata/.medleasebaseline/gz/
+
+! echo =================================================================================
+
+$WGET_CMD -A.gz ftp://ftp.nlm.nih.gov/nlmdata/.medlease/gz/
 
 ! echo =================================================================================
 
