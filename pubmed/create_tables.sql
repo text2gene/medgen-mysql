@@ -28,7 +28,34 @@ create table PMC (
   ManuscriptID	       varchar(20) null, 
   ReleaseDate	       varchar(20) null
 );
-call utf8_unicode('PMC'); 
+call utf8_unicode('PMC');
+
+
+-- ###################################
+call log('PMC', 'refresh');
+
+drop table if exists  DOAJ ; 
+
+create table DOAJ (
+  Title	     	       varchar(200) not null, 
+  TitleAlt	       varchar(200)     null, 
+  Identifier           varchar(255)     null, 
+  Publisher            varchar(200)     null, 
+  Language 	       varchar(100)	null,
+  ISSN 		       varchar(10)      null,
+  EISSN 	       varchar(10),
+  Keyword 	       varchar(255)     null, 
+  StartYear 	       int(4)           null,
+  EndYear 	       int(4)           null,
+  AddedDate 	       varchar(20)      null,      
+  Subjects 	       text             null, 
+  Country 	       varchar(50)      null,
+  PublicationFee       text             null,
+  FurtherInfo	       text             null,
+  CreativeCommons      varchar(10)      null,
+  ContentInDOAJ        varchar(200)     null 
+);
+call utf8_unicode('DOAJ'); 
 
 
 -- ###################################

@@ -1,5 +1,6 @@
 ! echo ================================================================
 ! echo " PUBMED OpenAccess Papers, metadata, and user engagement logs"
+! echo " http://www.ncbi.nlm.nih.gov/pmc/tools/ftp/#Data_Mining " 
 ! echo =================================================================
 
 WGET_CMD="wget -c -m -nH --cut-dirs=100"
