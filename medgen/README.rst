@@ -245,3 +245,38 @@ SCHEMA
    view_semantic_usage        |         87 | 0.00    | 0.02M    | 0.00M    | 
    view_vocab_usage           |         47 | 0.00    | 0.02M    | 0.00M    | 
    ---------------------------+------------+---------+----------+----------+-----------------+
+
+
+MGREL
+=======
+MedGen Relationships
+::
+
+   mysql> call freq('MGREL', 'REL');
+   
+   mysql>
+   select REL,count(*) as cnt
+   from MGREL group by REL order by cnt desc; 
+
+   +-----+--------+
+   | REL | cnt    |
+   +-----+--------+
+   | RO  | 734050 | Relate other
+   | RB  | 137350 | Relate broader
+   | RN  | 137350 | Relate narrower
+   | SY  | 112920 | Synonym
+   | SIB |  92898 | Sibling 
+   | CHD |  84123 | Child
+   | PAR |  84123 | Parent 
+   | AQ  |  21376 | Allowed Qualifier 
+   | QB  |  21376 | can be qualified by 
+   | RQ  |  18942 | related and possibly synonymous
+   +-----+--------+
+   
+   select RELA, count(*) as cnt from MGREL where REL = 'RO'
+   group by RELA order by cnt desc;
+
+   
+   
+
+   

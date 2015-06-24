@@ -1,26 +1,40 @@
 -- "GTR Genetic Test Registry ... "
 -- 
 --  ftp.ncbi.nlm.nih.gov/pub/GTR/_README.html
--- 
+--
 
+call log('create_tables.sql', 'begin');
+-- ###################################
+
+-- ###################################
+call log('mode_of_inheritance', 'refresh'); 
+
+drop table if exists mode_of_inheritance; 
+create table         mode_of_inheritance(
+     HPO_name  varchar(100), 
+     HPO_ID    varchar(10)
+); 
+
+call utf8_unicode('mode_of_inheritance'); 
+
+-- ###################################
 call log('test_condition_gene','refresh'); 
--- 
+
 drop table if exists test_condition_gene; 
 
 create table test_condition_gene(
-       test_accession_ver varchar(20),
-       GeneTestsID  	  varchar(20),
-       test_type          varchar(20),
-       concept_type	  varchar(20), 
-       GTR_identifier     varchar(20), 
-       MIM_number         varchar(20), 
-       umls_name     	  varchar(1000), 
-       gene_or_SNOMED_CT_ID varchar(20)
+       test_accession_ver    varchar(20),
+       test_type             varchar(20),
+       concept_type	     varchar(20), 
+       GTR_identifier        varchar(20), 
+       MIM_number            varchar(20), 
+       umls_name     	     varchar(1000), 
+       gene_or_SNOMED_CT_ID  varchar(20),
+       Symbol                varchar(25)
 ); 
 call utf8_unicode('test_condition_gene'); 
--- end
 
--- begin 
+-- ###################################
 call log('test_version', 'refresh'); 
 
 drop table if exists test_version; 
@@ -31,7 +45,6 @@ create table         test_version(
 	facility_state           text null,   
 	facility_postcode        text null,        
 	facility_country         text null,         
---	genetests_laboratory_id  text null, 
 	CLIA_number              text null,      
 	state_licenses           text null,   
 	state_license_numbers    text null,    
@@ -57,9 +70,9 @@ create table         test_version(
 	test_create_date         smallint null
 ); 
 call utf8_unicode('test_version'); 
--- end 
 
--- begin
+
+-- ###################################
 call log('tests_by_method_category','refresh'); 
 
 drop table if exists tests_by_method_category; 
@@ -78,36 +91,20 @@ create table tests_by_method_category(
        WithClinicalTestsUSA   	    int, 
        WithResearchTests   	    int,
        WithResearchTestsUSA   	    int
-); 
--- end 
+);
+call utf8_unicode('tests_by_method_category');
 
-
-
--- begin
+-- ###################################
 call log('labs_tests_by_country','refresh'); 
 
 drop table if exists labs_tests_by_country; 
-
-create table labs_tests_by_country(
+create table         labs_tests_by_country(
        Country             varchar(20), 
        RegisteredLabs	   int,
        WithClinicalTests   int, 
        WithResearchTests   int
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8; 
--- end
+);
+call utf8_unicode('labs_tests_by_country');
 
--- begin 
-call log('mode_of_inheritance', 'refresh'); 
-
-drop table if exists mode_of_inheritance; 
-
-create table mode_of_inheritance(
-     HPO_name  varchar(100), 
-     HPO_ID    varchar(10)
-); 
-
-call utf8_unicode('mode_of_inheritance'); 
--- end 
-
+-- ###################################
 call log('create_tables','done'); 
