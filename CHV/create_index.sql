@@ -2,8 +2,10 @@ call log('create_index.sql','begin');
 -- ###################################
 call create_index('term','CUI');
 call create_index('term','Term');
-call create_index('term','ConsumerText');
-call create_index('term','MedicalText');
+call create_index('term','PreferredNameCHV');
+call create_index('term','PreferredNameUMLS');
+call create_index('term','PreferredByCHV');
+call create_index('term','PreferredByUMLS');
 call create_index('term','ScoreCombo');
 call create_index('term','ScoreComboTop');
 call create_index('term','StringID');
