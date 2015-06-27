@@ -27,6 +27,15 @@ clinvarxml: FORCE
 	virtualenv ve
 	source ve/bin/activate && pip install lxml && python clinvar/clinvar_hgvs.py
 
+
+CHV: FORCE
+	-./mirror.sh         CHV/urls
+	./unpack.sh          CHV
+	./create_database.sh CHV
+	./load_database.sh   CHV
+	./index_database.sh  CHV 
+
+
 disgenet: FORCE
 	-./mirror.sh         disgenet/urls
 	./unpack.sh          disgenet
