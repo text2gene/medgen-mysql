@@ -1,0 +1,12 @@
+! echo =================================================
+! echo "CHV Consumer Health Vocabulary"
+! echo =================================================
+
+! mkdir -p CHV/mirror
+cd CHV/mirror
+
+wget -c http://consumerhealthvocab.org/chv_flat_files/CHV_flatfiles_all.zip 
+
+! echo " ///////////////////////////////////////////////////  "
+! echo "  CHV Consumer Health Vocabulary download complete    "
+! echo " ///////////////////////////////////////////////////  "
