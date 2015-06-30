@@ -1,0 +1,24 @@
+! echo ===========================================================
+! echo "PMC PubMed Central" 
+! echo ===========================================================
+
+WGET_CMD="wget -c -m -nH --cut-dirs=100"
+
+       ! mkdir -p pubmed/mirror 
+       cd pubmed/mirror
+
+! echo "////////////////////////////////////////////"
+
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/articles.A-B.tar.gz
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/articles.C-H.tar.gz
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/articles.I-N.tar.gz
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/pmc/articles.O-Z.tar.gz
+
+! echo ===========================================================
+! echo "Done" 
+! echo ===========================================================
+
+
+! echo "/////////////////////////////////////////////////"
+! echo "[ pubmed PMC PubMedCentral OA nxml download complete ]"
+! echo "////////////////////////////////////////////////"
