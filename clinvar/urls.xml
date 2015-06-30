@@ -1,26 +1,26 @@
-! echo =================================================
-! echo "XML of Clinical Variants ( ClinVar XML )"
-! echo
-! echo "Includes: " 
-! echo "   XML data for ClinVar variants."
-! echo =================================================
-! echo 
-! echo ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/README.txt
+echo =================================================
+echo "XML of Clinical Variants ( ClinVar XML )"
+echo
+echo "Includes: " 
+echo "   XML data for ClinVar variants."
+echo =================================================
+echo 
+echo ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/README.txt
 
 WGET_CMD="wget -c"
 BASE_URL="ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar"
 
-        ! mkdir -p clinvar/mirror 
+        mkdir -p clinvar/mirror 
         cd clinvar/mirror
 
 	
 $WGET_CMD $BASE_URL/README.txt
 
-! echo "////////////////////////////////////////////"
-! echo "ClinVar Full Release XML" 
+echo "////////////////////////////////////////////"
+echo "ClinVar Full Release XML" 
 
 wget ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/xml/ClinVarFullRelease_00-latest.xml.gz
 
-! echo "////////////////////////////////////////////"
-! echo "[ clinvar XML download complete ]"
-! echo "////////////////////////////////////////////"
+echo "////////////////////////////////////////////"
+echo "[ clinvar XML download complete ]"
+echo "////////////////////////////////////////////"

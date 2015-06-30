@@ -1,9 +1,9 @@
-! echo "////////////////////////////////////////////"
-! echo "### BIC Breast Cancer Information Core ###" 
+echo "////////////////////////////////////////////"
+echo "### BIC Breast Cancer Information Core ###" 
 
 WGET_CMD="wget -c"
 
-!   mkdir -p LSDB/mirror
+  mkdir -p LSDB/mirror
     cd LSDB/mirror
 
 echo "////////////////////////////////////////////"

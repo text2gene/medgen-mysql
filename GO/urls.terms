@@ -1,24 +1,24 @@
-! echo =================================================
-! echo "GO : GeneOntology TERMS " 
-! echo =================================================
-! echo http://www.geneontology.org/GO.downloads.ontology.shtml
+echo =================================================
+echo "GO : GeneOntology TERMS " 
+echo =================================================
+echo http://www.geneontology.org/GO.downloads.ontology.shtml
 
 mkdir -p GO/mirror 
 cd GO/mirror
 
-! echo =================================================
+echo =================================================
 
 WGET_CMD="wget -c -m -nH --cut-dirs=100"
 
 URL_GO_TERM_DB=http://archive.geneontology.org/latest-termdb/
 
-! echo "////////////////////////////////////////////"
-! echo "GO terms (termdb)" 
-! echo 
-! echo "ontologies, definitions and mappings to other DBS" 
+echo "////////////////////////////////////////////"
+echo "GO terms (termdb)" 
+echo 
+echo "ontologies, definitions and mappings to other DBS" 
        
        $WGET_CMD $URL_GO_TERM_DB/go_daily-termdb-tables.tar.gz 
 
-! echo "///////////////////////////////////////////////////////"
-! echo "[ GO GeneOntology TERMS download complete ]" 
-! echo "///////////////////////////////////////////////////////"
+echo "///////////////////////////////////////////////////////"
+echo "[ GO GeneOntology TERMS download complete ]" 
+echo "///////////////////////////////////////////////////////"

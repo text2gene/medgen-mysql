@@ -1,9 +1,9 @@
-! echo "////////////////////////////////////////////"
-! echo "### PhenCode ###" 
+echo "////////////////////////////////////////////"
+echo "### PhenCode ###" 
 
 WGET_CMD="wget -nv -c -m -nH --cut-dirs=100 -R '*html*'"
 
-!   mkdir -p LSDB/mirror
+  mkdir -p LSDB/mirror
     cd LSDB/mirror
 
 $WGET_CMD http://phencode.bx.psu.edu/dist/phencode/database/gvSrc.txt
@@ -19,4 +19,4 @@ $WGET_CMD http://phencode.bx.psu.edu/dist/phencode/database/tables.sql
 
 wget -c -nv http://globin.bx.psu.edu/phencode/otherLinks.html
 
-! echo "////////////////////////////////////////////"
+echo "////////////////////////////////////////////"
