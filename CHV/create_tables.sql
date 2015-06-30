@@ -7,8 +7,8 @@ drop   table if exists term;
 create table           term(
        CUI                char(8)	NOT NULL, -- UMLS concept id 
        Term               varchar(255) 	NOT NULL, -- UMLS concept string
+       PreferredNameUMLS  varchar(255) 	NOT NULL, -- UMLS Name (what doctors  say)       
        PreferredNameCHV   varchar(255) 	NOT NULL, -- CHV  Name (what patients say) 
-       PreferredNameUMLS  varchar(255) 	NOT NULL, -- UMLS Name (what doctors  say)
        Explanation        text,
        PreferredByUMLS    enum('yes', 'no') null, --  is UMLS preferred  
        PreferredByCHV     enum('yes', 'no') null, --  is CHV  preferred  
