@@ -1,43 +1,43 @@
-! echo ==============================================================================
-! echo "tmVar: NCBI TextMining for extracting sequence variants from literature"
-! echo
-! echo "pubTator --> (tmVar , DNorm , Medic) "
-! echo ==============================================================================
+echo ==============================================================================
+echo "tmVar: NCBI TextMining for extracting sequence variants from literature"
+echo
+echo "pubTator --> (tmVar , DNorm , Medic) "
+echo ==============================================================================
 
 WGET_CMD="wget -nv -c -m -nH --cut-dirs=100"
 
-! mkdir -p PubTator/mirror
+mkdir -p PubTator/mirror
 cd PubTator/mirror
 
 $WGET_CMD http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/pub/tmVar/mutation_annotation_guidelines.txt
 
-! echo "////////////////////////////////////////////"
-! echo " tmVar Software/Corpus "
-! echo
+echo "////////////////////////////////////////////"
+echo " tmVar Software/Corpus "
+echo
 $WGET_CMD http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/pub/tmVar/tmVar.zip
 $WGET_CMD http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/pub/tmVar/corpus.zip
 
-#! echo "////////////////////////////////////////////"
-#! echo "DNorm: disease name normalization with pairwise learning to rank" 
+#echo "////////////////////////////////////////////"
+#echo "DNorm: disease name normalization with pairwise learning to rank" 
 
 # TODO for Andy, make sense of this thing or whatever.
 #
 #$WGET_CMD -A *.tgz http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/Demo/DNorm/
 
-#! echo "////////////////////////////////////////////"
-#! echo "NCBI disease corpus: a resource for disease name recognition and concept normalization.
+#echo "////////////////////////////////////////////"
+#echo "NCBI disease corpus: a resource for disease name recognition and concept normalization.
 
 #$WGET_CMD http://www.ncbi.nlm.nih.gov/CBBresearch/Dogan/DISEASE/NCBI_corpus.zip
 #$WGET_CMD http://www.ncbi.nlm.nih.gov/CBBresearch/Dogan/DISEASE/NCBItrainset_corpus.zip
 #$WGET_CMD http://www.ncbi.nlm.nih.gov/CBBresearch/Dogan/DISEASE/NCBIdevelopset_corpus.zip
 #$WGET_CMD http://www.ncbi.nlm.nih.gov/CBBresearch/Dogan/DISEASE/NCBItestset_corpus.zip
 
-! echo "////////////////////////////////////////////"
-! echo "MEDIC: Comparative Toxicogenomics Database "
+echo "////////////////////////////////////////////"
+echo "MEDIC: Comparative Toxicogenomics Database "
 
 $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/lu/LabeledIn
 
-! echo ==============================================================================
-! echo " /////////////////////////////////////////////////// "
-! echo " [tmVar Text Mine Variant tools download complete ]  "
-! echo " /////////////////////////////////////////////////// "
+echo ==============================================================================
+echo " /////////////////////////////////////////////////// "
+echo " [tmVar Text Mine Variant tools download complete ]  "
+echo " /////////////////////////////////////////////////// "

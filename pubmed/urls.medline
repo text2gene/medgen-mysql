@@ -6,7 +6,7 @@ echo ==================================================================
 
 WGET_CMD="wget -c -m -nH --cut-dirs=100"
 
-       ! mkdir -p pubmed/mirror 
+       mkdir -p pubmed/mirror 
        cd pubmed/mirror
 
 echo =================================================================================

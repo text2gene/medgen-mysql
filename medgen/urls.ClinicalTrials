@@ -1,23 +1,23 @@
-! echo ====================================================
-! echo "ClinicalTrials.gov"
-! echo 
-! echo "README: http://www.ctti-clinicaltrials.org/what-we-do/analysis-dissemination/state-clinical-trials/aact-database" 
-! echo =====================================================
+echo ====================================================
+echo "ClinicalTrials.gov"
+echo 
+echo "README: http://www.ctti-clinicaltrials.org/what-we-do/analysis-dissemination/state-clinical-trials/aact-database" 
+echo =====================================================
 
-! echo "////////////////////////////////////////////"
-! echo "Data Dictionary (high level) "
+echo "////////////////////////////////////////////"
+echo "Data Dictionary (high level) "
 
-! wget http://www.ctti-clinicaltrials.org/files/State_of_Clinical_Trials/AACT_HighLevelDataDictionary2013_V5.0_20131223.xlsx
+wget http://www.ctti-clinicaltrials.org/files/State_of_Clinical_Trials/AACT_HighLevelDataDictionary2013_V5.0_20131223.xlsx
 
-! echo "////////////////////////////////////////////"
-! echo "Data Dictionary "
+echo "////////////////////////////////////////////"
+echo "Data Dictionary "
 
-! wget http://www.ctti-clinicaltrials.org/files/State_of_Clinical_Trials/AACT_ComprehensiveDataDictionaryV5_20131223.xlsx
+wget http://www.ctti-clinicaltrials.org/files/State_of_Clinical_Trials/AACT_ComprehensiveDataDictionaryV5_20131223.xlsx
 
-! echo "////////////////////////////////////////////"
-! echo "Data PIPE format"
+echo "////////////////////////////////////////////"
+echo "Data PIPE format"
 
-! http://library.dcri.duke.edu/dtmi/ctti/2013_AACT/AACT2013_Pipe_delimited_txt.zip  
+http://library.dcri.duke.edu/dtmi/ctti/2013_AACT/AACT2013_Pipe_delimited_txt.zip  
 
-! echo "////////////////////////////////////////////"
-! echo "[ClinicalTrials.gov download complete.]" 
+echo "////////////////////////////////////////////"
+echo "[ClinicalTrials.gov download complete.]" 
