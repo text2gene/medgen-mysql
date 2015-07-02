@@ -130,15 +130,12 @@ PubTator: FORCE
 	./load_database.sh   PubTator
 	./index_database.sh  PubTator
 
-SETH: FORCE
-	# blocked
-	-./mirror.sh         SETH/urls.emu
-	-./mirror.sh         SETH/urls.mutationfinder
-	# TODO for sasha (turn these on when ready)
-	#./unpack.sh SETH
-	#./create_database.sh SETH
-	#./load_database.sh SETH
-	#./index_database.sh SETH
+
+dbSNP: FORCE
+	./mirror.sh			 dbSNP/urls
+	./unpack.sh			 dbSNP
+	./create_database.sh dbSNP
+	./load_database.sh   dbSNP
 
 
 all: FORCE
@@ -153,6 +150,5 @@ all: FORCE
 	-make PersonalGenomes
 	-make pubmed
 	-make PubTator
-	-make SETH
-	
+
 .PHONY:  FORCE help user all clinvar GTR gene GeneReviews GO hugo medgen orphanet PersonalGenomes pubmed PubTator SETH 
