@@ -28,6 +28,15 @@ clinvarxml: FORCE
 	source ve/bin/activate && pip install lxml && python clinvar/clinvar_hgvs.py
 
 
+dbSNP: FORCE
+	# testing
+	-./mirror.sh          dbSNP/urls
+	./unpack.sh           dbSNP
+	./create_database.sh  dbSNP
+	./load_database.sh    dbSNP
+	./index_database.sh   dbSNP
+
+
 CHV: FORCE
 	-./mirror.sh         CHV/urls
 	./unpack.sh          CHV

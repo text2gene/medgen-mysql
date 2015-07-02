@@ -1,8 +1,14 @@
-DROP TABLE IF EXISTS `hgvs2dbSNP`;
+call log('create_tables.sql', 'begin');
+-- ###################################
 
-CREATE TABLE `hgvs2dbSNP` (
-  `hgvs` varchar(63) DEFAULT NULL,
-  `snp` int(11) DEFAULT NULL,
-  KEY `hgvs` (`hgvs`),
-  KEY `snp` (`snp`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+DROP   TABLE IF EXISTS hgvs2dbSNP;
+CREATE TABLE           hgvs2dbSNP(
+  hgvs     varchar(63) default null,
+  snp      int(11)     default null
+)
+ENGINE=MyISAM;
+
+call utf8_unicode('hgvs2dbSNP');
+
+-- ###################################
+call log('create_tables.sql', 'done');
