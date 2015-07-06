@@ -1,15 +1,15 @@
-! echo =================================================
-! echo "Genes (NCBI)"
-! echo -------------------------------------------------
-! echo "I.     DATA directory"
-! echo "II.    DATA directory, ASN_BINARY subdirectory"
-! echo "III.   DATA directory, GENE_INFO subdirectory"
-! echo "IV.    GeneRIF directory (includes interactions)"
-! echo "V.     tools directory"
-! echo "VI.    gene-related files from genome annotation"
-! echo "VII.   gene-GeneReviews relationships"
-! echo "VIII.   Archives"
-! echo =================================================
+echo =================================================
+echo "Genes (NCBI)"
+echo -------------------------------------------------
+echo "I.     DATA directory"
+echo "II.    DATA directory, ASN_BINARY subdirectory"
+echo "III.   DATA directory, GENE_INFO subdirectory"
+echo "IV.    GeneRIF directory (includes interactions)"
+echo "V.     tools directory"
+echo "VI.    gene-related files from genome annotation"
+echo "VII.   gene-GeneReviews relationships"
+echo "VIII.   Archives"
+echo =================================================
 
 ############################################################################################
 get http://www.ncbi.nlm.nih.gov/entrez/query/static/entrezlinks.html#gene -O gene2links.html
@@ -18,69 +18,69 @@ get http://www.ncbi.nlm.nih.gov/entrez/query/static/entrezlinks.html#gene -O gen
 WGET_CMD="wget -c -m -nH --cut-dirs=100"
 BASE_URL="ftp.ncbi.nlm.nih.gov/gene/DATA"
 
-! mkdir -p gene/mirror
+mkdir -p gene/mirror
 cd gene/mirror
 
 $WGET_CMD $BASE_URL/README
 
-! echo "////////////////////////////////////////////"
-! echo "Genes to PubMed" 
+echo "////////////////////////////////////////////"
+echo "Genes to PubMed" 
 
 $WGET_CMD $BASE_URL/gene2pubmed.gz 
 
-! echo "////////////////////////////////////////////"
-! echo "PubMed genes/stopwords" 
+echo "////////////////////////////////////////////"
+echo "PubMed genes/stopwords" 
 
 $WGET_CMD $BASE_URL/stopwords_gene  
 
-# ! echo "////////////////////////////////////////////"
-# ! echo "Gene transcripts: NCBI accession "
-# ! echo 
+# echo "////////////////////////////////////////////"
+# echo "Gene transcripts: NCBI accession "
+# echo 
 
 # $WGET_CMD $BASE_URL/gene2accession.gz  
 
-# ! echo "////////////////////////////////////////////"
-# ! echo "Gene transcripts: Ensembl"
-# ! echo 
+# echo "////////////////////////////////////////////"
+# echo "Gene transcripts: Ensembl"
+# echo 
 # $WGET_CMD $BASE_URL/gene2ensembl.gz  
 
-# ! echo "////////////////////////////////////////////"
-# ! echo "Genes to transcripts (RefSeq, uta?)"
-# ! echo 
+# echo "////////////////////////////////////////////"
+# echo "Genes to transcripts (RefSeq, uta?)"
+# echo 
 # $WGET_CMD $BASE_URL/gene2refseq.gz  
 
-! echo "////////////////////////////////////////////"
-! echo "Gene Info"
+echo "////////////////////////////////////////////"
+echo "Gene Info"
 
 $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/GENE_INFO/Mammalia/Homo_sapiens.gene_info.gz
 
-! echo "////////////////////////////////////////////"
-! echo "Gene History"
+echo "////////////////////////////////////////////"
+echo "Gene History"
 
 $WGET_CMD $BASE_URL/gene_history.gz  
 
-! echo "////////////////////////////////////////////"
-! echo "Gene Group"
+echo "////////////////////////////////////////////"
+echo "Gene Group"
 
 $WGET_CMD $BASE_URL/gene_group.gz  
 
-! echo "////////////////////////////////////////////"
-! echo "Gene Neighbors"
+echo "////////////////////////////////////////////"
+echo "Gene Neighbors"
 
 #$WGET_CMD $BASE_URL/gene_neighbors.gz  
 
-! echo "////////////////////////////////////////////"
-! echo "Gene Ontology (GO)"
+echo "////////////////////////////////////////////"
+echo "Gene Ontology (GO)"
 
 $WGET_CMD $BASE_URL/gene2go.gz  
 
-! echo "////////////////////////////////////////////"
-! echo "OMIM to MedGen"
+echo "////////////////////////////////////////////"
+echo "OMIM to MedGen"
 
 $WGET_CMD $BASE_URL/mim2gene_medgen  
 
-! echo "////////////////////////////////////////////"
-! echo "Gene Refence In Function (GeneRIF)"
+echo "////////////////////////////////////////////"
+echo "Gene Refence In Function (GeneRIF)"
 
 GENERIF_BASE_URL="ftp://ftp.ncbi.nlm.nih.gov/gene/GeneRIF"
 
@@ -89,6 +89,6 @@ $WGET_CMD $GENERIF_BASE_URL/generifs_basic.gz
 # $WGET_CMD $GENERIF_BASE_URL/interactions.gz
 # $WGET_CMD $GENERIF_BASE_URL/interaction_sources
 
-! echo "////////////////////////////////////////////"
-! echo "[ gene download complete ]"
-! echo "////////////////////////////////////////////"
+echo "////////////////////////////////////////////"
+echo "[ gene download complete ]"
+echo "////////////////////////////////////////////"
