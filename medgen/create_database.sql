@@ -112,7 +112,7 @@ call log('log', 'procedure created');
 
 drop procedure if exists DATASET;
 delimiter //
-create procedure DATASET(dataset varchar(10))
+create procedure DATASET(dataset varchar(30))
 begin
      select dataset into @DATASET; 
      call LOG('DATASET',@DATASET); 
@@ -200,8 +200,45 @@ begin
 end//
 delimiter ; 
 
-call log('last_loaded_comparable', 'procedure created');  
+select 'http://stackoverflow.com/questions/22421840/mysql-regex-search-and-replace' as note; 
 
+call log('regex_replace', 'create function'); 
+
+drop function if exists regex_replace;
+
+delimiter //
+CREATE FUNCTION  `regex_replace`(pattern VARCHAR(1000),replacement VARCHAR(1000),original VARCHAR(1000))
+
+RETURNS VARCHAR(1000)
+DETERMINISTIC
+BEGIN 
+ DECLARE temp VARCHAR(1000); 
+ DECLARE ch VARCHAR(1); 
+ DECLARE i INT;
+ SET i = 1;
+ SET temp = '';
+ IF original REGEXP pattern THEN 
+  loop_label: LOOP 
+   IF i>CHAR_LENGTH(original) THEN
+    LEAVE loop_label;  
+   END IF;
+   SET ch = SUBSTRING(original,i,1);
+   IF NOT ch REGEXP pattern THEN
+    SET temp = CONCAT(temp,ch);
+   ELSE
+    SET temp = CONCAT(temp,replacement);
+   END IF;
+   SET i=i+1;
+  END LOOP;
+ ELSE
+  SET temp = original;
+ END IF;
+ RETURN temp;
+end//
+
+delimiter ; 
+
+call log('regex_replace', 'function created'); 
 
 call DATASET( DATABASE() ); 
 insert into README values

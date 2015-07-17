@@ -85,7 +85,7 @@ $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/NAMES.RRF.gz
 ! echo "MedGen PubMed Annotations!     "
 ! echo "///////////////////////////////"
 
-$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/medgen_pubmed.lnk.gz
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/medgen/medgen_pubmed_lnk.txt.gz
 
 ! echo =================================================
 ! echo "Clinical Genetics [ClinGen]"
