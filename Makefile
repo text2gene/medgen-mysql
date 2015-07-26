@@ -17,38 +17,14 @@ user: FORCE
 clinvar: FORCE
 	-./mirror.sh clinvar/urls
 	./unpack.sh clinvar
-	-make clinvarxml
+	-make clinvar-xml
 	./create_database.sh clinvar
 	./load_database.sh clinvar
 	./index_database.sh clinvar
 
-clinvarxml: FORCE
+clinvar-xml: FORCE
 	virtualenv ve
 	source ve/bin/activate && pip install lxml && python clinvar/clinvar_hgvs.py
-
-
-dbSNP: FORCE
-	-./mirror.sh          dbSNP/urls
-	./unpack.sh           dbSNP
-	./create_database.sh  dbSNP
-	./load_database.sh    dbSNP
-	./index_database.sh   dbSNP
-
-
-CHV: FORCE
-	-./mirror.sh         CHV/urls
-	./unpack.sh          CHV
-	./create_database.sh CHV
-	./load_database.sh   CHV
-	./index_database.sh  CHV 
-
-
-disgenet: FORCE
-	-./mirror.sh         disgenet/urls
-	./unpack.sh          disgenet
-	./create_database.sh disgenet
-	./load_database.sh   disgenet
-	./index_database.sh  disgenet 
 
 GTR: FORCE
 	-./mirror.sh         GTR/urls
@@ -57,9 +33,31 @@ GTR: FORCE
 	./load_database.sh   GTR
 	./index_database.sh  GTR
 
-GTRxml: FORCE
+# Incomplete (some data in XML not in TSV downloads)
+GTR-xml: FORCE
 	virtualenv ve
 	source ve/bin/activate && pip install lxml && python GTR/gtr_xml_gapfill.py
+
+PubTator: FORCE
+	-./mirror.sh         PubTator/urls
+	./unpack.sh          PubTator
+	./create_database.sh PubTator
+	./load_database.sh   PubTator
+	./index_database.sh  PubTator
+
+dbSNP: FORCE
+	-./mirror.sh          dbSNP/urls
+	./unpack.sh           dbSNP
+	./create_database.sh  dbSNP
+	./load_database.sh    dbSNP
+	./index_database.sh   dbSNP
+
+PersonalGenomes: FORCE
+	-./mirror.sh         PersonalGenomes/urls
+	./unpack.sh          PersonalGenomes
+	./create_database.sh PersonalGenomes
+	./load_database.sh   PersonalGenomes
+	./index_database.sh  PersonalGenomes
 
 gene: FORCE
 	-./mirror.sh          gene/urls
@@ -69,7 +67,6 @@ gene: FORCE
 	./index_database.sh   gene
 
 GeneReviews: FORCE
-	# complete.
 	-./mirror.sh          GeneReviews/urls
 	./unpack.sh           GeneReviews
 	./create_database.sh  GeneReviews
@@ -83,6 +80,21 @@ GO: FORCE
 	./load_database.sh    GO
 	./index_database.sh   GO
 
+hugo: FORCE
+	-./mirror.sh          hugo/urls
+	./unpack.sh           hugo
+	./create_database.sh  hugo
+	./load_database.sh    hugo
+	./index_database.sh   hugo
+
+
+disgenet: FORCE
+	-./mirror.sh         disgenet/urls
+	./unpack.sh          disgenet
+	./create_database.sh disgenet
+	./load_database.sh   disgenet
+	./index_database.sh  disgenet 
+
 hpo: FORCE
 	-./mirror.sh          hpo/urls
 	./unpack.sh           hpo
@@ -90,12 +102,15 @@ hpo: FORCE
 	./load_database.sh    hpo
 	./index_database.sh   hpo
 
-hugo: FORCE
-	-./mirror.sh          hugo/urls
-	./unpack.sh           hugo
-	./create_database.sh  hugo
-	./load_database.sh    hugo
-	./index_database.sh   hugo
+orphanet: FORCE
+	-./mirror.sh         orphanet/urls
+
+CHV: FORCE
+	-./mirror.sh         CHV/urls
+	./unpack.sh          CHV
+	./create_database.sh CHV
+	./load_database.sh   CHV
+	./index_database.sh  CHV 
 
 medgen: FORCE
 	-./mirror.sh         medgen/urls
@@ -104,16 +119,6 @@ medgen: FORCE
 	./load_database.sh   medgen
 	./index_database.sh  medgen
 	./medgen/create_views.sh
-
-orphanet: FORCE
-	-./mirror.sh         orphanet/urls
-
-PersonalGenomes: FORCE
-	-./mirror.sh         PersonalGenomes/urls
-	./unpack.sh          PersonalGenomes
-	./create_database.sh PersonalGenomes
-	./load_database.sh   PersonalGenomes
-	./index_database.sh  PersonalGenomes
 
 pubmed: FORCE
 	#-./mirror.sh pubmed/urls.medline
@@ -124,28 +129,46 @@ pubmed: FORCE
 	./load_database.sh   pubmed
 	./index_database.sh  pubmed
 
-PubTator: FORCE
-	-./mirror.sh         PubTator/urls
-	./unpack.sh          PubTator
-	./create_database.sh PubTator
-	./load_database.sh   PubTator
-	./index_database.sh  PubTator
+clean: FORCE
+	-rm -rf PubTator/mirror
+	rm  -rf clinvar/mirror
+	rm  -rf GTR/mirror
+	rm  -rf dbSNP/mirror
+	rm  -rf gene/mirror
+	rm  -rf GeneReviews/mirror
+	rm  -rf GO/mirror
+	rm  -rf hugo/mirror
+	rm  -rf pubmed/mirror
+	rm  -rf medgen/mirror
+
+cleaner: FORCE
+	-./drop_database.sh  PubTator
+
+
+all-variants: FORCE
+	-make PubTator
+	make clinvar
+	make GTR
+	make dbSNP
+	make PersonalGenomes
+
+all-genes: FORCE
+	-make gene
+	make GeneReviews
+	make hugo
+	make GO
+
+all-phenotypes: FORCE
+	-make hpo
+	make disgenet
+	make CHV
+	make orphanet
+	make medgen 
 
 all: FORCE
-	-make medgen
-	-make hpo
-	-make orphanet
-	-make clinvar
-	-make GTR
-	-make gene
-	-make GeneReviews
-	-make hugo
-	-make GO
-	-make disgenet
-	-make PersonalGenomes
-	-make pubmed
-	-make PubTator
-	-make dbSNP
-	-make CHV
+	-make all-phenotypes
+	make  all-genes
+	make  all-variants
+	make  pubmed	
 
 .PHONY:  FORCE help user all clinvar clinvarxml GTR gene GeneReviews GO hugo medgen orphanet PersonalGenomes pubmed PubTator dbSNP
