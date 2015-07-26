@@ -1,8 +1,11 @@
+.. contents:: medgen-mysql	      
+
 ============
 medgen-mysql
 ============
+
 This package greatly simplifies the creation of local mirrors for NLM National Library of 
-Medicine sources, which currently includes:
+Medicine sources, which currently incluxsdes:
 
 - NCBI Medical Genetics linked sources
 - PubMed annotated content
@@ -15,6 +18,74 @@ have been rounded up, their data normalized for database manipulation, to provid
 access to as much open access medical genomics data as possible.
 
 ###########################################################################################
+
+Variants
+=========
+PubTator
+----------------
+   NCBI Text Mined mutations for all PubMed abstracts
+
+clinvar
+----------------
+   NCBI Clinical Variants
+
+GTR
+----------------
+   NCBI Genetic Testing Reference
+   
+PersonalGenomes
+----------------
+   Personal Genomes Project evidence and human annotations
+
+   
+Genes
+=======
+gene
+----------------
+   NCBI Entrez Gene database
+
+GeneReviews
+----------------
+   NCBI Gene Reviews
+
+GO
+----------------
+   http://GeneOntology.org
+
+hugo
+----------------
+   http://GeneNames.org
+
+
+Phenotypes
+==========
+
+medgen
+----------------
+   **NCBI Medical Genetics** 
+
+disgenet
+----------------
+   Disease Gene Network 
+
+hpo
+----------------
+   Human Phenotype Ontology
+
+orphanet
+----------------
+   Rare diseases
+
+CHV
+----------------
+   Consumer Health Vocabulary     
+   
+PubMed
+=======
+   PubMed PMID linkages to the above sources   
+
+   
+####################################################################################################
 
 Support and Licensing
 =====================
@@ -100,62 +171,6 @@ genetics databases without overusing your connection.
 
 Note also that datasets vary widely in how much disk space they require. Some datasets are 
 EXTREMELY LARGE.  Average use is usally ~ 50GB.
-
-
-Variants
-=========
-:PubTator:
-   NCBI Text Mined mutations for all PubMed abstracts
-
-:clinvar:
-   NCBI Clinical Variants
-
-:GTR:
-   NCBI Genetic Testing Reference
-   
-:PersonalGenomes:
-   PGP evidence and human annotations
-
-   
-Genes
-=======
-:gene:
-   NCBI Entrez Gene database
-
-:GeneReviews:
-   NCBI Gene Reviews
-
-:GO: 
-   http://GeneOntology.org
-
-:hugo:
-   http://GeneNames.org
-
-
-Phenotypes
-==========
-:medgen:
-   **NCBI Medical Genetics** 
-
-:disgenet:
-   Disease Gene Network 
-
-:hpo:
-   Human Phenotype Ontology  
-
-:orphanet:
-   Rare diseases
-
-:CHV:
-   Consumer Health Vocabulary     
-   
-PubMed
-=======
-:pubmed:
-   PubMed PMID linkages to the above sources   
-
-   
-####################################################################################################
 
 
 USAGE
@@ -334,3 +349,8 @@ insert a log message
 ::
 
    mysql> call log(entity_name, message)
+
+
+#####################################################################################################
+
+
