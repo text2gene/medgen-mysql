@@ -57,6 +57,10 @@ GTR: FORCE
 	./load_database.sh   GTR
 	./index_database.sh  GTR
 
+GTRxml: FORCE
+	virtualenv ve
+	source ve/bin/activate && pip install lxml && python GTR/gtr_xml_gapfill.py
+
 gene: FORCE
 	-./mirror.sh          gene/urls
 	./unpack.sh           gene
@@ -128,17 +132,20 @@ PubTator: FORCE
 	./index_database.sh  PubTator
 
 all: FORCE
-	-make clinvar
-	-make disgenet
-	-make GTR
-	-make GeneReviews
-	-make GO
-	-make hugo
 	-make medgen
+	-make hpo
 	-make orphanet
+	-make clinvar
+	-make GTR
+	-make gene
+	-make GeneReviews
+	-make hugo
+	-make GO
+	-make disgenet
 	-make PersonalGenomes
 	-make pubmed
 	-make PubTator
 	-make dbSNP
+	-make CHV
 
-.PHONY:  FORCE help user all clinvar GTR gene GeneReviews GO hugo medgen orphanet PersonalGenomes pubmed PubTator SETH 
+.PHONY:  FORCE help user all clinvar clinvarxml GTR gene GeneReviews GO hugo medgen orphanet PersonalGenomes pubmed PubTator dbSNP
