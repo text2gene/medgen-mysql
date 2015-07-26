@@ -15,6 +15,7 @@ have been rounded up, their data normalized for database manipulation, to provid
 access to as much open access medical genomics data as possible.
 
 ###########################################################################################
+
 Support and Licensing
 =====================
 
@@ -98,61 +99,64 @@ This conservative updating means that you can schedule regular updates of your m
 genetics databases without overusing your connection.
 
 Note also that datasets vary widely in how much disk space they require. Some datasets are 
-EXTREMELY LARGE.  Pubmed in particular will run you up to 50GB.
+EXTREMELY LARGE.  Average use is usally ~ 50GB.
 
 
 Variants
 =========
+:PubTator:
+   NCBI Text Mined mutations for all PubMed abstracts
+
 :clinvar:
-   Clinical Variants
+   NCBI Clinical Variants
 
 :GTR:
-   Genetic Testing Reference
-
-:PubTator:
-   NCBI curated Gene mutations in PubMed abstracts
+   NCBI Genetic Testing Reference
    
 :PersonalGenomes:
-   (PGP Church Lab) interpretation of sequenced variants
+   PGP evidence and human annotations
 
-
+   
 Genes
 =======
 :gene:
    NCBI Entrez Gene database
 
 :GeneReviews:
-   Gene Reviews
+   NCBI Gene Reviews
 
 :GO: 
-   Gene Ontology / Gene Function
+   http://GeneOntology.org
 
 :hugo:
-   Hugo Gene Naming Convention (GeneNames.org)   
+   http://GeneNames.org
 
 
 Phenotypes
 ==========
+:medgen:
+   **NCBI Medical Genetics** 
+
 :disgenet:
-   Disease Gene Network
+   Disease Gene Network 
 
 :hpo:
-   Human Phenotype Ontology
-   
-:medgen:
-   **Medical Genetics** (including SNOMED-CT, UMLS concepts)
+   Human Phenotype Ontology  
 
 :orphanet:
    Rare diseases
 
+:CHV:
+   Consumer Health Vocabulary     
    
 PubMed
 =======
 :pubmed:
-   Open Access Metadata
-   
+   PubMed PMID linkages to the above sources   
 
+   
 ####################################################################################################
+
 
 USAGE
 =======
@@ -226,9 +230,7 @@ $mysql_dataset
 *example*: open a mysql client for the PubTator database
 ::
 
-   cd ncbi-data-mirrors
-   cd PubTator
-   . db.config
+   source ./PubTator/db.config
    $mysql_dataset
 
 |
