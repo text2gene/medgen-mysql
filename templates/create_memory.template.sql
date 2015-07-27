@@ -25,6 +25,15 @@ begin
 end//
 delimiter ;
 
+-- alias for "call mem" 
+drop procedure if exists info;
+delimiter //
+create procedure info()
+begin
+  call mem; 
+end//
+delimiter ;
+
 drop procedure if exists ps;
 delimiter //
 create procedure ps()

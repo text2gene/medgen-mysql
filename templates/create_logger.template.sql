@@ -81,7 +81,8 @@ CREATE TABLE log
   entity_name  varchar(100) NOT NULL,
   message      varchar(100) NULL,
   DATASET      varchar(30)  null
-);
+)
+Engine InnoDB;
 
 ALTER TABLE log add idx smallint UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY;
 
@@ -192,8 +193,6 @@ begin
 	order by idx desc limit 1;
 end//
 delimiter ; 
-
-select 'http://stackoverflow.com/questions/22421840/mysql-regex-search-and-replace' as note; 
 
 call log('regex_replace', 'create function'); 
 
