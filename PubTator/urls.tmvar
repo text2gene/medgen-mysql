@@ -9,8 +9,6 @@ WGET_CMD="wget -nv -c -m -nH --cut-dirs=100"
 mkdir -p PubTator/mirror
 cd PubTator/mirror
 
-$WGET_CMD http://www.ncbi.nlm.nih.gov/CBBresearch/Lu/pub/tmVar/mutation_annotation_guidelines.txt
-
 echo "////////////////////////////////////////////"
 echo " tmVar Software/Corpus "
 echo
