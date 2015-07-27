@@ -1,12 +1,48 @@
-=========================================
-GO Gene Ontology
-=========================================
+.. contents:: GO
+	      
+What is the Gene Ontology? 
+===========================
+http://GeneOntology.org groups and relates genes into functional groups. GO is a major source of relationships in HPO (Human Phenotype Ontology). 
 
-.. contents:: Terms, Assoc, Sequence
+
+links
+======
+* hugo gene naming conventions (GeneID, Symbol) 
+* pubmed identifiers (PMID) 
 
 
------------------
+info schema
+===========
+::
 
+   mysql> call info;
+
+   +--------------+--------+--------------------+------------+---------+---------+----------+-------------------+
+   | table_schema | ENGINE | TABLE_NAME         | TABLE_ROWS | million | data_MB | index_MB | TABLE_COLLATION   |
+   +--------------+--------+--------------------+------------+---------+---------+----------+-------------------+
+   | GO           | InnoDB | evidence_codes     |         21 | 0.00    | 0.02M   | 0.00M    | utf8_unicode_ci   |
+   | GO           | InnoDB | evidence_provider  |          0 | 0.00    | 0.02M   | 0.00M    | utf8_unicode_ci   |
+   | GO           | InnoDB | log                |         31 | 0.00    | 0.02M   | 0.00M    | utf8_unicode_ci   |
+   | GO           | InnoDB | README             |         33 | 0.00    | 0.02M   | 0.00M    | utf8_general_ci   |
+   | GO           | MyISAM | association        |    6878037 | 6.88    | 190.22M | 857.85M  | utf8_unicode_ci   |
+   | GO           | MyISAM | evidence           |          0 | 0.00    | 0.00M   | 0.00M    | latin1_swedish_ci |
+   | GO           | MyISAM | gene_product       |    1001078 | 1.00    | 47.28M  | 146.07M  | utf8_unicode_ci   |
+   | GO           | MyISAM | gene_product_count |    2238975 | 2.24    | 47.49M  | 105.87M  | utf8_unicode_ci   |
+   | GO           | MyISAM | gene_product_seq   |     568907 | 0.57    | 7.05M   | 18.84M   | utf8_unicode_ci   |
+   | GO           | MyISAM | graph_path         |    1218243 | 1.22    | 29.05M  | 189.22M  | latin1_swedish_ci |
+   | GO           | MyISAM | seq                |     482603 | 0.48    | 299.60M | 59.33M   | utf8_unicode_ci   |
+   | GO           | MyISAM | term               |      43520 | 0.04    | 3.44M   | 11.88M   | latin1_swedish_ci |
+   | GO           | MyISAM | term2term          |      88604 | 0.09    | 1.77M   | 6.53M    | latin1_swedish_ci |
+   | GO           | MyISAM | term_definition    |      43484 | 0.04    | 8.22M   | 1.36M    | latin1_swedish_ci |
+   +--------------+--------+--------------------+------------+---------+---------+----------+-------------------+
+
+|
+|
+
+####################################################################################################
+
+|
+|
 
 termdb
 ======
