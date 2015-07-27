@@ -1,19 +1,33 @@
-==============================
-GTR Genetic Test Reference 
-==============================
+.. contents:: GTR	      
+	      
+what is the  Genetic Test Reference? 
+======================================
+The Genetic Testing Registry (`GTR <ftp://ftp.ncbi.nlm.nih.gov/pub/GTR/data/_README.html>`_) provides a central location for voluntary submission of genetic test information by providers. The scope includes the test's purpose, methodology, validity, evidence of the test's usefulness, and laboratory contacts and credentials. The overarching goal of the GTR is to advance the public health and research into the genetic basis of health and disease.
 
-readme
-----------
-* `GTR README <ftp://ftp.ncbi.nlm.nih.gov/pub/GTR/data/_README.html>`_
-* see ../clinvar/README.rst 
+links
+======
+* GTR links to ClinVar and MedGen Concepts identifiers (**medgen.MGCONSO.CUI**)
+* GTR links to gene sources using gene ids and names (**GeneID**, **Symbol**)  
+  
+info schema
+=============
+::
+   
+   +--------------+--------+--------------------------+------------+---------+---------+----------+-----------------+
+   | table_schema | ENGINE | TABLE_NAME               | TABLE_ROWS | million | data_MB | index_MB | TABLE_COLLATION |
+   +--------------+--------+--------------------------+------------+---------+---------+----------+-----------------+
+   | GTR          | InnoDB | labs_tests_by_country    |         40 | 0.00    | 0.02M   | 0.00M    | utf8_unicode_ci |
+   | GTR          | InnoDB | log                      |         59 | 0.00    | 0.02M   | 0.00M    | utf8_unicode_ci |
+   | GTR          | InnoDB | mode_of_inheritance      |         18 | 0.00    | 0.02M   | 0.00M    | utf8_unicode_ci |
+   | GTR          | InnoDB | README                   |         22 | 0.00    | 0.02M   | 0.00M    | utf8_general_ci |
+   | GTR          | InnoDB | tests_by_method_category |          0 | 0.00    | 0.02M   | 0.00M    | utf8_unicode_ci |
+   | GTR          | InnoDB | test_condition_gene      |     155675 | 0.16    | 19.55M  | 29.13M   | utf8_unicode_ci |
+   | GTR          | InnoDB | test_version             |      49224 | 0.05    | 34.56M  | 3.03M    | utf8_unicode_ci |
+   +--------------+--------+--------------------------+------------+---------+---------+----------+-----------------+
 
-GTR tables
-----------
-* `test_condition_gene`_ 
-* `tests_by_method_category`_ 
-* `labs_tests_by_country`_
+   
+####################################################################################################
 
-------------
 
 *test_condition_gene*
 ============================
@@ -26,47 +40,6 @@ GTR tables
   The descripion of the test may require more than one line; 
   they lines are linked by the value of the accession_version column.
 
-* `accession_version`_ 
-* `GeneTestsID`_ 
-* `test_type`_ 
-* `concept_type`_ 
-* `GTR_identifier`_ 
-* `MIM_number`_ 
-* `gene_or_SNOMED_CT_ID`_ 
-
-
-accession_version
---------------------
-   GTR accession assigned (current version number). If GeneTests, 'N/A' is reported.
-
-GeneTestsID
------------------
-   Assigned by GeneTests. If GTR, 'N/A' is reported.
-
-test_type
------------------
-   The values are Clinical or Research
-
-concept_type
------------------
-   A description of the object of the test. The values are condition or gene.
-
-GTR_identifier
------------------
-   Identifier GTR uses for the condition. This is concept (CUI) in MedGen.
-
-MIM_number
------------------
-    Identifier assigned by OMIM to this object
-
-gene_or_SNOMED_CT_ID
----------------------
-   If  gene, then GeneID from NCBI's gene database; if condtion, then SNOMED_CT identifier if available.
-
-
-
-------------
-
 
 |
 *tests_by_method_category*
@@ -77,36 +50,6 @@ gene_or_SNOMED_CT_ID
   The file is tab-delimited and regenerated daily. 
 
 
-* `CategoryMajor`_
-* `Category`_
-* `WithClinicalTests`_  WithClinicalTestsUSA 
-* `WithResearchTests`_  WithResearchTestsUSA
-
-|
-|
-
-
-CategoryMajor 
-----------------------
-Major method category for test 
-
-Category
-----------------------
-Method category for test 
-
-
-WithClinicalTests
-----------------------
-the number of the labs in the second column registering clinical tests
-
-WithResearchTests
-----------------------
-the number of the labs in the second column registering research tests
-
-
-------------
-
-
 *labs_tests_by_country*
 ============================
 ::
@@ -115,15 +58,3 @@ the number of the labs in the second column registering research tests
    with a breakdown by clinical or research tests. 
    The top data line reports the sum. 
    The file is tab-delimited and regenerated weekly. 
-
-
-* Country 
-* `RegisteredLabs`_  
-* `WithClinicalTests`_ 
-* `WithResearchTests`_
-
-
-
-RegisteredLabs
-----------------------
-Total laboratories registered in the GTR
