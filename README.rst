@@ -250,14 +250,14 @@ $mysql_dataset
 
 |
 
-SCHEMA
+SCHEMA INFO 
 --------------
 *example*: show PubTator tables and statistics. *Make you have sufficent MEMORY for the indexes!*
 |
 To check on the status of the load see `processlist`_ and `logging`_ . 
 ::
 
-   mysql> call mem; 
+   mysql> call info; 
    +--------------+--------+-------------------+------------+---------+----------+----------+-----------------+
    | table_schema | ENGINE | TABLE_NAME        | TABLE_ROWS | million | data_MB  | index_MB | TABLE_COLLATION |
    +--------------+--------+-------------------+------------+---------+----------+----------+-----------------+
@@ -295,62 +295,4 @@ show active SQL commands (processlist) running for this dataset.
    +-----+----------+-----------+----------+---------+------+-------+-----------+
 
 
-logging
-=========
-show all log messages for dataset load
-::
-
-   mysql> select * from log; 
-
-|
-
-mysql>call etime
-------------------
-show elapsed time between log entries, *example* time between load_data and "rows loaded #" confirmation. 
-::
-
-   mysql> call etime; 
-   +-----+---------------------+-------------------+------------------------+---------------------+-------+
-   | idx | event_time(start)   | entity_name       | message                | event_time(end)     | etime |
-   +-----+---------------------+-------------------+------------------------+---------------------+-------+
-   | ... |                     |                   |                        |                     |       |
-   |  11 | 2014-05-23 00:12:08 | load_tables       | refresh                | 2014-05-23 00:12:07 |     1 |
-   |  12 | 2014-05-23 00:12:08 | mutation2pubtator | load_data              | 2014-05-23 00:12:08 |     0 |
-   |  13 | 2014-05-23 00:12:16 | mutation2pubtator | rows loaded 464323     | 2014-05-23 00:12:08 |     8 |
-   |  14 | 2014-05-23 00:12:16 | gene2pubtator     | load_data              | 2014-05-23 00:12:16 |     0 |
-   |  15 | 2014-05-23 00:30:48 | gene2pubtator     | rows loaded 16035055   | 2014-05-23 00:12:16 |  1112 |
-   +-----+---------------------+-------------------+------------------------+---------------------+-------+
-
-|
-
-mysql>call tail
-------------------
-show recent log entries 
-::
-
-   mysql> call tail;
-   +---------------------+-------------------+------------------------------------------------------+----------+-----+
-   | event_time          | entity_name       | message                                              | DATASET  | idx |
-   +---------------------+-------------------+------------------------------------------------------+----------+-----+
-   | 2014-05-23 00:12:07 | DATASET           | PubTator                                             | PubTator |   8 |
-   | 2014-05-23 00:12:07 | readme            | ftp://ftp.ncbi.nlm.nih.gov/pub/lu/PubTator/readme.txt| PubTator |   9 |
-   | 2014-05-23 00:12:07 | PubTator          | load                                                 | PubTator |  10 |
-   | 2014-05-23 00:12:08 | load_tables       | refresh                                              | PubTator |  11 |
-   | 2014-05-23 00:12:08 | mutation2pubtator | load_data                                            | PubTator |  12 |
-   | 2014-05-23 00:12:16 | mutation2pubtator | rows loaded 464323                                   | PubTator |  13 |
-   | 2014-05-23 00:12:16 | gene2pubtator     | load_data                                            | PubTator |  14 |
-   +---------------------+-------------------+------------------------------------------------------+----------+-----+
-
-|
-
-insert a log message
----------------------
-(convenience method) 
-::
-
-   mysql> call log(entity_name, message)
-
-
 #####################################################################################################
-
-
