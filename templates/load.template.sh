@@ -13,5 +13,5 @@ $mysql_dataset -e "call log('DATABASE()','load')"
 
 echo ======================================================
 
-$mysql_dataset -e "call log('load_tables','refresh')" 
+$mysql_dataset -e "call log('load_tables.sh','refresh')" 
 
