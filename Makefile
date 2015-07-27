@@ -145,7 +145,10 @@ medgen: FORCE
 	./create_database.sh medgen
 	./load_database.sh   medgen
 	./index_database.sh  medgen
-	./medgen/create_views.sh
+
+medgen-views: FORCE
+	-cd medgen/views
+	ls -lah 
 
 # NCBI pubmed we provide links only to PubMedCentral.
 #             https://www.nlm.nih.gov/databases/license/weblic/index.html  
@@ -157,6 +160,37 @@ pubmed: FORCE
 	./create_database.sh pubmed
 	./load_database.sh   pubmed
 	./index_database.sh  pubmed
+
+# all-variants : convenience function  
+all-variants: FORCE
+	-make PubTator
+	make  clinvar
+	make  GTR
+	make  dbSNP
+	make  PersonalGenomes
+
+# all-genes : convenience function  
+all-genes: FORCE
+	-make gene
+	make  GeneReviews
+	make  hugo
+	make  GO
+
+# all-phenotypes : convenience function  
+all-phenotypes: FORCE
+	-make hpo
+	make  disgenet
+	make  CHV
+	make  orphanet
+	make  medgen
+
+# all : convenience function  
+all: FORCE
+	-make all-phenotypes
+	make  all-genes
+	make  all-variants
+	make  pubmed	
+
 
 # backup all existing databases
 backup: FORCE
@@ -225,36 +259,6 @@ cleanest: cleaner
 	rm  -rf CHV/mysqldump
 	rm  -rf medgen/mysqldump
 	rm  -rf pubmed/mysqldump
-
-# all-variants : convenience function  
-all-variants: FORCE
-	-make PubTator
-	make  clinvar
-	make  GTR
-	make  dbSNP
-	make  PersonalGenomes
-
-# all-genes : convenience function  
-all-genes: FORCE
-	-make gene
-	make  GeneReviews
-	make  hugo
-	make  GO
-
-# all-phenotypes : convenience function  
-all-phenotypes: FORCE
-	-make hpo
-	make  disgenet
-	make  CHV
-	make  orphanet
-	make  medgen
-
-# all : convenience function  
-all: FORCE
-	-make all-phenotypes
-	make  all-genes
-	make  all-variants
-	make  pubmed	
 
 
 .PHONY:  FORCE help user all clinvar clinvarxml GTR gene GeneReviews GO hugo medgen orphanet PersonalGenomes pubmed PubTator dbSNP
