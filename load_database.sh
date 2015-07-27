@@ -15,7 +15,7 @@ require $DATASET  "which dataset?"
 $mysql_dataset -e "call log('load_database.sh', 'begin')"
 
 interpolate_file_config "templates/load.template.sh"  > $DATASET/load.sh
-cat $DATASET/load_table.template.sh                  >> $DATASET/load.sh
+cat $DATASET/load_tables.sh                          >> $DATASET/load.sh
 
 pushd . 
 cd $DATASET
