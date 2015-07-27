@@ -1,30 +1,58 @@
-=================================
-clinvar (NCBI clinical variants) 
-=================================
+what is clinvar? 
+==================================
+ClinVar is the **NCBI Clinical Variants** database.
 
-Contents
----------------
+
+ClinVar is a freely accessible, public archive of reports of the relationships among human variations and phenotypes, with supporting evidence.
+
+ClinVar thus facilitates access to and communication about the relationships asserted between human variation and observed health status, and the history of that interpretation. ClinVar collects reports of variants found in patient samples, assertions made regarding their clinical significance, information about the submitter, and other supporting data. The alleles described in submissions are mapped to reference sequences, and reported according to the HGVS standard. ClinVar then presents the data for interactive users as well as those wishing to use ClinVar in daily workflows and other local applications. ClinVar works in collaboration with interested organizations to meet the needs of the medical genetics community as efficiently and effectively as possible. 
+
+
+.. contents:: clinvar
+
+links
+======
 * `README <ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/README.txt>`_
 * `HGVS linkout <http://www.ncbi.nlm.nih.gov/clinvar/docs/hgvs_types/>`_
 * `Variation Sequence Ontology <https://www.ncbi.nlm.nih.gov/variation/docs/glossary>`_
 
-|
+
+info schema
+===========
+::
+
+   mysql> call info; 
+
+   +--------------+--------+----------------------------+------------+---------+---------+----------+-----------------+
+   | table_schema | ENGINE | TABLE_NAME                 | TABLE_ROWS | million | data_MB | index_MB | TABLE_COLLATION |
+   +--------------+--------+----------------------------+------------+---------+---------+----------+-----------------+
+   | clinvar      | InnoDB | clingen_gene_curation_list |        631 | 0.00    | 0.11M   | 0.02M    | utf8_unicode_ci |
+   | clinvar      | InnoDB | clinvar_hgvs               |     414618 | 0.41    | 29.56M  | 38.14M   | utf8_unicode_ci |
+   | clinvar      | InnoDB | cross_references           |     172566 | 0.17    | 10.52M  | 0.00M    | utf8_unicode_ci |
+   | clinvar      | InnoDB | disease_names              |      27775 | 0.03    | 3.52M   | 4.98M    | utf8_unicode_ci |
+   | clinvar      | InnoDB | gene_condition_source_id   |       6169 | 0.01    | 1.52M   | 1.19M    | utf8_unicode_ci |
+   | clinvar      | InnoDB | gene_specific_summary      |      26984 | 0.03    | 1.52M   | 0.94M    | utf8_unicode_ci |
+   | clinvar      | InnoDB | log                        |        133 | 0.00    | 0.02M   | 0.00M    | utf8_unicode_ci |
+   | clinvar      | InnoDB | molecular_consequences     |     127532 | 0.13    | 9.52M   | 11.55M   | utf8_general_ci |
+   | clinvar      | InnoDB | README                     |         11 | 0.00    | 0.02M   | 0.00M    | utf8_general_ci |
+   | clinvar      | InnoDB | variant_summary            |     308972 | 0.31    | 99.64M  | 74.31M   | utf8_unicode_ci |
+   | clinvar      | InnoDB | var_citations              |     117166 | 0.12    | 6.52M   | 15.09M   | utf8_unicode_ci |
+   +--------------+--------+----------------------------+------------+---------+---------+----------+-----------------+
+  
+
+   
+#####################################################################################################
+
+
+   
 ncbi standard terms
 ==============================
 * `disease_names`_ (+GTR, +clinvar)
 * `condition_source_id`_ (+GTR +gene +clinvar)
-* `population_group`_ (+clinvar)
 
-|
-clinvar tables 
-==============================
-* `gene_specific_summary`_
-* `variant_summary`_
 
-------------
-|
-*disease_names*
-======================================
+disease_names
+=============================
 :: 
 
   This document is updated daily, and is provided to report the names and
@@ -42,35 +70,32 @@ clinvar tables
 
 
 DiseaseName
------------------
+-----------
    Full name of the condition 
 
 SourceName
------------------
+-----------
    UMLS vocabulary, NCBI curation, Office of Rare Disease, etc 
 
 ConceptID
------------------
+---------
    If C#####, then UMLS; if CN* then "NCBI-based processing" 
 
 
 SourceID
------------------
+--------
    ID of SourceName 
 
 DiseaseMIM
------------------
+----------
    OMIM condition 
 
 LastUpdated
------------------
+-----------
    Last modified by NCBI staff 
 
 
-
-------------
-
-*condition_source_id*
+condition_source_id
 =================================================
 ::
 
@@ -91,35 +116,35 @@ LastUpdated
 
 
 GeneID
------------------
-   integer, GeneID in NCBI's Gene database
+------
+   integer, GeneID in NCBI's Gene database   
 
 GeneSymbol
------------------
+----------
    Preferred symbol corresponding to GeneID. 
    character, comma-separated list of GeneIDs overlapping the variation
 
 
-*gene_specific_summary*
-============================
+gene_specific_summary
+======================
 Symbol | GeneID  | Submissions  | Alleles
 
-------------
 
+variant_summary
+===============
 
-*variant_summary*
-============================
-
-AlleleID 
--------------
+AlleleID
+--------
 integer value as stored in the AlleleID field in ClinVar
 
+
 variant_type
---------------------
+------------
 character, the type of variation
 
+
 variant_name
---------------------
+------------
 character, the preferred name for the variation
 
 
@@ -127,17 +152,18 @@ ClinicalSignificance
 --------------------
 character, comma-separated list of values of clinical significance reported for this variation
 
+
 RS# (dbSNP) 
---------------------
+------------
 integer, rs# in dbSNP
 
 dbvar_nsv
---------------------                       
+---------
 character, the NSV identifier for the region in dbVar
 
 
 RCVaccession
---------------------
+------------
 character, list of RCV accessions that report this variant
 
 TestedInGTR            
@@ -199,22 +225,3 @@ character, ACMG only right now, for the reporting of incidental variation in a G
 OtherIDs
 --------------------
 character, list of other identifiers or sources of information about this Gene
-
-
-
-------------
-
-population_group
-----------------------------------
-#.  MedGen:C0085756 African American
-#.  MedGen:C1515945 American Indian or Alaska Native
-#.  MedGen:C0337704 Ashkenazi Jew
-#.  MedGen:C0043157 Causasians
-#.  MedGen:C0152035 Chinese 
-#.  MedGen:C0682087 European Caucasoid
-#.  MedGen:C0019576 Hispanic Americans
-#.  MedGen:C1513907 Native Hawaiian or Other Pacific Islander
-#.  MedGen:C0238697 South East Asian
-#.  MedGen:C0682086 mixed ethnic group
-#.  none
-#.  unspecified
