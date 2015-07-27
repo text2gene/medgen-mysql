@@ -89,7 +89,7 @@ function load_table()
     echo 
     echo "-- begin table"
 
-    interpolate_file "../templates/load_table" "@@@TABLE" $TABLE | \
+    interpolate_file "../templates/load_table.template.sql" "@@@TABLE" $TABLE | \
 	interpolate "@@@FILE"   mirror/$FILE | \
 	interpolate "@@@SEP"    $SEP  | \
 	interpolate "@@@SKIP"   $SKIP | \
@@ -126,23 +126,4 @@ function create_index()
 
     interpolate_file "../templates/create_index" "@@@TABLE" $SQL_TABLE | \
 	interpolate "@@@INDEX"   $SQL_INDEX
-}
-
-
-function show_usage() 
-{
-    export SQL_TABLE=$1
-    export SQL_BY=$2
-    export SQL_CNT=$3
-
-    if [ "$#" -lt 3 ]; then 
-	SQL_CNT='*'
-    fi 
-
-    require  $SQL_TABLE  " table name ? "
-    require  $SQL_BY     " group by   ? " 
-
-    interpolate_file "../templates/show_usage" "@@@TABLE" $SQL_TABLE | \
-	interpolate "@@@BY"     $SQL_BY    | \
-	interpolate "@@@CNT"    $SQL_CNT
 }

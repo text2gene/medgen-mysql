@@ -186,9 +186,7 @@ USAGE
 check load status
 --------------------
 - `processlist`_ show active SQL commands with elapsed time (selects, DML, indexes)
-- `SCHEMA`_ table schema with load statistics
-- `logging`_ log messages from dataset load with timestamp
-
+- `SCHEMA INFO`_ table schema with load statistics
 
 #####################################################################################################
 
@@ -254,7 +252,7 @@ SCHEMA INFO
 --------------
 *example*: show PubTator tables and statistics. *Make you have sufficent MEMORY for the indexes!*
 |
-To check on the status of the load see `processlist`_ and `logging`_ . 
+To check on the status of the load see `processlist`_ . 
 ::
 
    mysql> call info; 
