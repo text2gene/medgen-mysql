@@ -191,11 +191,40 @@ clean: FORCE
 	rm  -rf medgen/mirror
 	rm  -rf pubmed/mirror
 
-# cleaner drops the databases and removes mirror files  
-cleaner: FORCE	 
-	-./make clean 
-	./drop_database.sh  clinvar
+# clean ./drop_database.sh 
+cleaner: clean
+	-./drop_database.sh clinvar
+	./drop_database.sh  GTR
 	./drop_database.sh  PubTator
+	./drop_database.sh  dbSNP
+	./drop_database.sh  PersonalGenomes
+	./drop_database.sh  gene
+	./drop_database.sh  GeneReviews
+	./drop_database.sh  GO
+	./drop_database.sh  hugo
+	./drop_database.sh  disgenet
+	./drop_database.sh  hpo
+	./drop_database.sh  CHV
+	./drop_database.sh  medgen
+	./drop_database.sh  pubmed
+
+
+# clean mirror download zip contents and uncompressed files 
+cleanest: cleaner
+	-rm -rf clinvar/mysqldump
+	rm  -rf GTR/mysqldump
+	rm  -rf PubTator/mysqldump
+	rm  -rf dbSNP/mysqldump
+	rm  -rf PersonalGenomes/mysqldump
+	rm  -rf gene/mysqldump
+	rm  -rf GeneReviews/mysqldump
+	rm  -rf GO/mysqldump
+	rm  -rf hugo/mysqldump
+	rm  -rf disgenet/mysqldump
+	rm  -rf hpo/mysqldump
+	rm  -rf CHV/mysqldump
+	rm  -rf medgen/mysqldump
+	rm  -rf pubmed/mysqldump
 
 # all-variants : convenience function  
 all-variants: FORCE
