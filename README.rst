@@ -1,8 +1,8 @@
 .. contents:: medgen-mysql	      
 
-============
-medgen-mysql
-============
+
+what is medgen-mysql?
+========================
 
 This package greatly simplifies the creation of local mirrors for NLM National Library of 
 Medicine sources, which currently incluxsdes:
@@ -16,78 +16,10 @@ MySQL database.
 medgen-mysql was made with simplicity and automation in mind. Over 100 URLs (and counting)
 have been rounded up, their data normalized for database manipulation, to provide ease of
 access to as much open access medical genomics data as possible.
-
-###########################################################################################
-
-Variants
-=========
-PubTator
-----------------
-   NCBI Text Mined mutations for all PubMed abstracts
-
-clinvar
-----------------
-   NCBI Clinical Variants
-
-GTR
-----------------
-   NCBI Genetic Testing Reference
-   
-PersonalGenomes
-----------------
-   Personal Genomes Project evidence and human annotations
-
-   
-Genes
-=======
-gene
-----------------
-   NCBI Entrez Gene database
-
-GeneReviews
-----------------
-   NCBI Gene Reviews
-
-GO
-----------------
-   http://GeneOntology.org
-
-hugo
-----------------
-   http://GeneNames.org
-
-
-Phenotypes
-==========
-
-medgen
-----------------
-   **NCBI Medical Genetics** 
-
-disgenet
-----------------
-   Disease Gene Network 
-
-hpo
-----------------
-   Human Phenotype Ontology
-
-orphanet
-----------------
-   Rare diseases
-
-CHV
-----------------
-   Consumer Health Vocabulary     
-   
-PubMed
-=======
-   PubMed PMID linkages to the above sources   
-
    
 ####################################################################################################
 
-Support and Licensing
+support and licensing
 =====================
 
 medgen-mysql is a free and open source library provided by Invitae under the [Apache 2.0 License](http://www.apache.org/licenses/), a copy of which is included within the repository.
@@ -100,7 +32,7 @@ when attached to nicely written emails.
 
 ###########################################################################################
 
-Requirements
+requirements
 ============
 
 Any Unix-like operating system (including OS X) will run medgen-mysql.
@@ -116,7 +48,7 @@ It's possible to use this repository for downloading purposes only. See "USAGE" 
 
 ###########################################################################################
 
-Initial Setup
+setup
 =============
 
 Clone this repository using Mercurial::
@@ -131,7 +63,7 @@ a mysql user that will be able to load the medgen databases::
 
 (Note that MySQL must be running and you must have the ability to use the "root" superuser.)
 
-Making Databases
+Makefile usage
 ================
 
 ``make all``
@@ -172,23 +104,68 @@ genetics databases without overusing your connection.
 Note also that datasets vary widely in how much disk space they require. Some datasets are 
 EXTREMELY LARGE.  Average use is usally ~ 50GB.
 
+all-variants
+--------------
 
-USAGE
-=======
+:PubTator:
+   NCBI Text Mined mutations for all PubMed abstracts
+
+:clinvar:
+   NCBI Clinical Variants
+
+:GTR:
+   NCBI Genetic Testing Reference
+   
+:PersonalGenomes:
+   Personal Genomes Project evidence and human annotations
+
+   
+all-genes
+---------------
+
+:gene:
+   NCBI Entrez Gene database
+
+:GeneReviews:
+   NCBI Gene Reviews
+
+:GO:
+   http://GeneOntology.org
+
+:hugo:
+   http://GeneNames.org
+
+
+all-phenotypes
+-----------------
+
+:medgen:
+   **NCBI Medical Genetics** 
+
+:disgenet:
+   Disease Gene Network 
+
+:hpo:
+   Human Phenotype Ontology
+
+:orphanet:
+   Rare diseases
+
+:CHV:
+   Consumer Health Vocabulary     
+   
+pubmed
+-------
+   PubMed PMID linkages to the above sources   
+
+
+BASH usage
+============
 - `mirror.sh`_ mirrors a dataset with wget
 - `create_database.sh`_ creates a mysql database with common loading procedures and logging
 - `unpack.sh`_ unzip and untar mirrored content
 - `load_database.sh`_ imports unpacked content into mysql database
 - `$mysql_dataset`_ opens mysql client for the current dataset
-
-|
-
-check load status
---------------------
-- `processlist`_ show active SQL commands with elapsed time (selects, DML, indexes)
-- `info`_ table schema with load statistics
-
-#####################################################################################################
 
 mirror.sh
 ---------
@@ -235,6 +212,16 @@ load_database.sh
 ::
 
    $./load_database.sh PubTator
+
+
+#####################################################################################################
+
+
+MySQL usage
+=============
+- `$mysql_dataset`_ opens mysql client for the current dataset
+- `processlist`_ show active SQL commands with elapsed time (selects, DML, indexes)
+- `info`_ table schema with load statistics
 
 |
 
