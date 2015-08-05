@@ -17,3 +17,9 @@ load_table tsv          clinvar_hgvs      clinvar_hgvs.tsv
 
 ## clingen summaries 
 load_table tsv  clingen_gene_curation_list  ClinGen_gene_curation_list.tsv  7
+
+
+source db.config
+echo 'BIOMED-769: deleting clinvar citations that have no pubmed identifier (PMID)' 
+$mysql_dataset -e 'select * from var_citations where citation_id = 0' 
+$mysql_dataset -e 'delete from var_citations where citation_id = 0' 
