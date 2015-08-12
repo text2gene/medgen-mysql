@@ -87,5 +87,6 @@ if __name__ == '__main__':
                 hgvs = get_hgvs_from_clinvarset(elem)
                 clinvarAccession = get_clinvar_accession_from_clinvarset( elem )
                 for h in hgvs:
+                    h = h.replace('"', '')
                     f.write( "%s\t%s\t%s\t%s\n"% (variantID, alleleID, clinvarAccession, h) )
                 root.clear()
