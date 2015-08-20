@@ -19,7 +19,7 @@ user: FORCE
 clinvar: FORCE
 	-./mirror.sh clinvar/urls
 	./unpack.sh clinvar
-	-make clinvar-xml
+	make clinvar-xml
 	./create_database.sh clinvar
 	./load_database.sh clinvar
 	./index_database.sh clinvar
