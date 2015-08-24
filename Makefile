@@ -187,6 +187,7 @@ all-genes: FORCE
 # all-phenotypes : convenience function  
 all-phenotypes: FORCE
 	-make hpo
+	make  ClinicalGenomics
 	make  disgenet
 	make  CHV
 	make  orphanet
