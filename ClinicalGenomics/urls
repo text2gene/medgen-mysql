@@ -3,8 +3,8 @@ echo "### CGD: Clinical Genomics Database ###"
 
 WGET_CMD="wget -nv -c -m -nH --cut-dirs=100 -R '*html*'"
 
-  mkdir -p LSDB/mirror
-    cd LSDB/mirror
+  mkdir -p ClinicalGenomics/mirror
+    cd ClinicalGenomics/mirror
 
 $WGET_CMD http://research.nhgri.nih.gov/CGD/download/txt/CGD.txt.gz
 

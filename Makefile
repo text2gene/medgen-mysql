@@ -29,6 +29,14 @@ clinvar-xml: FORCE
 	virtualenv ve
 	source ve/bin/activate && pip install lxml && python clinvar/clinvar_hgvs.py
 
+# CGD: Clinical Genomics Databsae
+ClinicalGenomics: FORCE
+	-./mirror.sh         ClinicalGenomics/urls
+	./unpack.sh          ClinicalGenomics
+	./create_database.sh ClinicalGenomics
+	./load_database.sh   ClinicalGenomics
+	./index_database.sh  ClinicalGenomics
+
 # NCBI Genetic Testing Registry contains lab information for every genetic test you can order.  
 #                               ftp://ftp.ncbi.nlm.nih.gov/pub/GTR/
 GTR: FORCE
