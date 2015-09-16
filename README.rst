@@ -25,7 +25,7 @@ support and licensing
 medgen-mysql is a free and open source library provided by Invitae under the [Apache 2.0 License](http://www.apache.org/licenses/), a copy of which is included within the repository.
 
 All questions, concerns, support, and curse words should be directed to package maintainers
-Andrew McMurry (andrew.mcmurry@invitae.com) and Naomi Most (naomi.most@invitae.com).
+Andy McMurry ( AndyMC@apache.org ) and medgen-mysql contributors. 
 
 Contributions to this library are encouraged via fork and pull request. Diffs may be accepted
 when attached to nicely written emails.
