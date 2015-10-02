@@ -204,6 +204,7 @@ all: FORCE
 # backup all existing databases
 backup: FORCE
 	-./backup_database.sh clinvar
+	./backup_database.sh ClinicalGenomics
 	./backup_database.sh GTR
 	./backup_database.sh PubTator
 	./backup_database.sh dbSNP
@@ -220,6 +221,7 @@ backup: FORCE
 # clean mirror download zip contents and uncompressed files 
 clean: FORCE
 	-rm -rf clinvar/mirror
+	rm  -rf ClinicalGenomics/mirror 
 	rm  -rf GTR/mirror
 	rm  -rf PubTator/mirror
 	rm  -rf dbSNP/mirror
@@ -237,6 +239,7 @@ clean: FORCE
 # clean ./drop_database.sh 
 cleaner: clean
 	-./drop_database.sh clinvar
+	./drop_database.sh  ClinicalGenomics
 	./drop_database.sh  GTR
 	./drop_database.sh  PubTator
 	./drop_database.sh  dbSNP
@@ -254,7 +257,8 @@ cleaner: clean
 
 # clean mirror download zip contents and uncompressed files 
 cleanest: cleaner
-	-rm -rf clinvar/mysqldump
+	rm  -rf clinvar/mysqldump
+	rm  -rf ClinicalGenomics/mysqldump
 	rm  -rf GTR/mysqldump
 	rm  -rf PubTator/mysqldump
 	rm  -rf dbSNP/mysqldump

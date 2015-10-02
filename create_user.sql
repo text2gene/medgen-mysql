@@ -25,7 +25,7 @@ grant all privileges on hugo.*         to 'medgen'@'localhost' with grant option
 grant all privileges on medgen.*       to 'medgen'@'localhost' with grant option; 
 grant all privileges on orphanet.*     to 'medgen'@'localhost' with grant option; 
 grant all privileges on pubmed.*       to 'medgen'@'localhost' with grant option; 
-grant all privileges on umls.*         to 'medgen'@'localhost' with grant option; 
+grant all privileges on umls.*         to 'medgen'@'localhost' with grant option;
 
 -- MedGen is able to link to Human Genetic Variation Society (HGVS) formatted datasources
 -- http://www.hgvs.org/mutnomen
@@ -33,3 +33,6 @@ grant all privileges on v2p.*             to 'medgen'@'localhost' with grant opt
 grant all privileges on PubTator.*        to 'medgen'@'localhost' with grant option; 
 grant all privileges on SETH.*            to 'medgen'@'localhost' with grant option; 
 grant all privileges on PersonalGenomes.* to 'medgen'@'localhost' with grant option; 
+
+-- MedGen add-on package for indication2gene (clinical text processing with gene association) 
+grant all privileges on indication2gene.* to 'medgen'@'localhost' with grant option; 

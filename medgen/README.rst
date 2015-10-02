@@ -194,57 +194,40 @@ When I search by a MIM number, why do I sometimes get multiple records? ::
 
 SCHEMA 
 =========================
+call info; 
 ::
 
-   ---------------------------+------------+---------+----------+----------+-----------------+
-   TABLE_NAME                 | TABLE_ROWS | million | data_MB  | index_MB | TABLE_COLLATION |
-   ---------------------------+------------+---------+----------+----------+-----------------+
-   log                        |        119 | 0.00    | 0.02M    | 0.00M    |                 | 
-
-   medgen_hpo                 |      10302 | 0.01    | 1.52M    | 0.58M    | utf8_general_ci |
-   medgen_hpo_omim            |     120969 | 0.12    | 21.55M   | 27.61M   | utf8_general_ci |
-   medgen_pubmed              |   74905477 | 74.91   | 5390.00M | 6668.00M | utf8_general_ci |
-   medgen_uid                 |     147881 | 0.15    | 6.52M    | 7.03M    |
-
-   MERGED                     |       1938 | 0.00    | 0.13M    | 0.08M    | utf8_general_ci |
-   MGCONSO                    |     638644 | 0.64    | 78.61M   | 13.55M   | utf8_general_ci |
-   MGDEF                      |      49381 | 0.05    | 14.52M   | 1.52M    | utf8_general_ci |
-   MGREL                      |    1371039 | 1.37    | 155.69M  | 56.63M   | utf8_general_ci |
-   MGSAT                      |    1698563 | 1.70    | 164.70M  | 180.42M  | utf8_general_ci |
-   MGSTY                      |     396405 | 0.40    | 52.61M   | 36.13M   | utf8_general_ci |
-   NAMES                      |     264101 | 0.26    | 20.55M   | 5.52M    | utf8_general_ci |
-
-   README                     |         30 | 0.00    | 0.02M    | 0.00M    | utf8_general_ci |
-
-   view_pubmed                |   10552219 | 10.55   | 445.95M  | 204.83M  |  
-   view_pubmed_concept        |     146772 | 0.15    | 6.52M    | 0.00M    |  
-   view_pubmed_disease        |      17585 | 0.02    | 1.52M    | 1.13M    |  
-
-   view_concept               |     589246 | 0.59    | 79.61M   | 26.09M   | utf8_general_ci |
-   view_concept_child         |      71464 | 0.07    | 11.52M   | 11.06M   | utf8_general_ci |
-   view_concept_gtr           |      32066 | 0.03    | 4.52M    | 3.03M    | utf8_general_ci |
-   view_concept_preferred     |     276090 | 0.28    | 27.56M   | 6.52M    | 
-   view_concept_usage         |     259869 | 0.26    | 11.52M   | 0.00M    | 
-
-   view_curation_usage        |         21 | 0.00    | 0.02M    | 0.00M    | 
-   view_definition            |      35690 | 0.04    | 14.52M   | 0.00M    | 
-
-   view_disease_child         |      11185 | 0.01    | 1.52M    | 1.13M    | utf8_general_ci |
-   view_disease_preferred     |      22556 | 0.02    | 2.52M    | 0.50M    | 
-   view_disease_subtype       |      11815 | 0.01    | 1.52M    | 0.00M    | utf8_general_ci |
-
-   view_medgen_hpo            |       9420 | 0.01    | 1.52M    | 0.92M    | utf8_general_ci |
-   view_medgen_hpo_omim       |     119536 | 0.12    | 48.56M   | 23.09M   | utf8_general_ci |
-   view_medgen_hpo_omim_usage |        443 | 0.00    | 0.08M    | 0.00M    |  
-   view_medgen_uid            |     145893 | 0.15    | 6.52M    | 7.03M    | utf8_general_ci |
-
-   view_mode_of_inheritance   |       7527 | 0.01    | 1.52M    | 0.20M    |  
-   view_preferred_usage       |        237 | 0.00    | 0.05M    | 0.00M    |
-
-   view_relate_usage          |        134 | 0.00    | 0.02M    | 0.00M    | 
-   view_semantic_usage        |         87 | 0.00    | 0.02M    | 0.00M    | 
-   view_vocab_usage           |         47 | 0.00    | 0.02M    | 0.00M    | 
-   ---------------------------+------------+---------+----------+----------+-----------------+
+   +--------------------------+------------+---------+----------+----------+
+   | TABLE_NAME               | TABLE_ROWS | million | data_MB  | index_MB |
+   +--------------------------+------------+---------+----------+----------+
+   | log                      |        102 | 0.00    | 0.02M    | 0.00M    |
+   | README                   |         22 | 0.00    | 0.02M    | 0.00M    | 
+   | count_pubmed             |   11165454 | 11.17   | 138.43M  | 120.43M  |
+   | count_pubmed_concept     |     149407 | 0.15    | 4.70M    | 1.39M    |
+   | medgen_hpo               |      11634 | 0.01    | 1.14M    | 0.17M    |
+   | medgen_hpo_omim          |     118167 | 0.12    | 17.73M   | 3.42M    |
+   | medgen_pubmed            |   86626024 | 86.63   | 3679.57M | 1716.03M |
+   | MGCONSO                  |     399562 | 0.40    | 39.92M   | 5.12M    |
+   | MGDEF                    |      44067 | 0.04    | 13.16M   | 0.42M    |
+   | MGHISTORY                |       2225 | 0.00    | 0.04M    | 0.00M    |
+   | MGMERGED                 |       2210 | 0.00    | 0.10M    | 0.02M    |
+   | MGREL                    |    1452592 | 1.45    | 122.25M  | 27.74M   |
+   | MGSAT                    |     377710 | 0.38    | 29.40M   | 5.94M    |
+   | MGSTY                    |     393390 | 0.39    | 21.97M   | 9.78M    |
+   | NAMES                    |     174348 | 0.17    | 9.56M    | 1.59M    |
+   | omim_pubmed              |     177869 | 0.18    | 2.21M    | 3.84M    |
+   | view_concept             |     398033 | 0.40    | 39.52M   | 26.02M   |
+   | view_concept_def         |      43932 | 0.04    | 13.00M   | 0.54M    |
+   | view_concept_tree        |      85812 | 0.09    | 6.58M    | 1.98M    |
+   | view_disease_subtype     |       5736 | 0.01    | 0.64M    | 0.00M    |
+   | view_disease_tree        |      19112 | 0.02    | 0.87M    | 0.40M    |
+   | view_genetic_tests       |      12045 | 0.01    | 0.55M    | 0.00M    |
+   | view_medgen_hpo          |      11344 | 0.01    | 1.10M    | 0.26M    |
+   | view_medgen_hpo_omim     |     133881 | 0.13    | 23.37M   | 3.50M    |
+   | view_medgen_uid          |     149407 | 0.15    | 2.85M    | 2.76M    |
+   | view_mode_of_inheritance |       7857 | 0.01    | 1.26M    | 0.00M    |
+   | view_semantics           |     240917 | 0.24    | 17.21M   | 3.23M    |
+   +--------------------------+------------+---------+----------+----------+
 
 
 MGREL
