@@ -5,7 +5,7 @@ what is medgen-mysql?
 ========================
 
 This package greatly simplifies the creation of local mirrors for NLM National Library of 
-Medicine sources, which currently incluxsdes:
+Medicine sources, which currently includes:
 
 - NCBI Medical Genetics linked sources
 - PubMed annotated content
