@@ -260,6 +260,31 @@ MedGen Relationships
    group by RELA order by cnt desc;
 
    
+MGSTY
+==========
+MedGen Semantic Types
+::
+
+   call freq('MGSTY', 'STY');
    
+   select STY,count(*) as cnt
+   from MGSTY group by STY order by cnt desc
+
+   +-------------------------------------------+--------+
+   | STY                                       | cnt    |
+   +-------------------------------------------+--------+
+   | Pharmacologic Substance                   | 102511 |
+   | Finding                                   |  90413 |
+   | Organic Chemical                          |  81329 |
+   | Disease or Syndrome                       |  47223 |
+   | Neoplastic Process                        |  16151 |
+   | Amino Acid, Peptide, or Protein           |   9383 |
+   | Congenital Abnormality                    |   6536 |
+   | Pathologic Function                       |   5655 |
+   | Steroid                                   |   3919 |
+   | Sign or Symptom                           |   2909 |
+   | ...                                       |   ...  |
+   +-------------------------------------------+--------+
+
 
    
