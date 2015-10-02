@@ -2,6 +2,24 @@ call log('ClinVar Clinical Variants', 'ncbi');
 
 -- begin
 
+call log('version_info', 'create table');
+
+drop table if exists version_info; 
+
+create table version_info
+(
+  version     varchar(100),
+  note        text, 
+  last_loaded timestamp default CURRENT_TIMESTAMP
+);
+
+call utf8_unicode('version_info');
+
+insert into version_info (version, note)
+values (curdate(), 'Updated automatically by MedGen-MySQL'); 
+call log('version_info', 'done');
+
+
 call log('clinvar_hgvs', 'refresh');
 
 drop   table if exists clinvar_hgvs;
