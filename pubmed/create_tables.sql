@@ -73,6 +73,14 @@ call utf8_unicode('deleted');
 
 -- ###################################
 
+
+CREATE TABLE medline_xml_filename (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  filename varchar(32) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+
 call log('medline_xml', 'refresh');
 drop table if exists medline_xml; 
 
@@ -82,6 +90,19 @@ create table medline_xml
   XML  longtext null, 
   Tstamp   timestamp  not null default CURRENT_TIMESTAMP  
 ); 
+
+CREATE TABLE medline_xml (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  PMID int(10) unsigned NOT NULL,
+  XML longtext,
+  medline_xml_filename_id int(11) NOT NULL,
+  Tstamp date DEFAULT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY `uc_PMID` (PMID),
+  KEY PMID (`PMID`),
+  KEY `medline_xml_filename_id` (`medline_xml_filename_id`),
+  CONSTRAINT `medline_xml_to_filename` FOREIGN KEY (`medline_xml_filename_id`) REFERENCES `medline_xml_filename` (`id`) ON DELETE CASCADE
+)
 
 call utf8_unicode('medline_xml'); 
 
