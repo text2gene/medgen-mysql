@@ -67,16 +67,18 @@ create table bic_brca1 (
 call utf8_unicode('bic_brca1'); 
 
 -- #############################################
-call log('umd_webcache', 'UMD'); 
-
-drop table if exists umd_webcache; 
-create table umd_webcache (
-       HGNC      varchar(25), 
-       HTML      text, 
-       URL       text 
-);
-
-call utf8_unicode('umd_webcache'); 
+# Not currently in use
+#
+# call log('umd_webcache', 'UMD'); 
+#
+# drop table if exists umd_webcache; 
+# create table umd_webcache (
+#       HGNC      varchar(25), 
+#       HTML      text, 
+#       URL       text 
+# );
+#
+#call utf8_unicode('umd_webcache'); 
 
 -- #############################################
 call log('bic_brca2', 'Breast Information Core (BRCA2)  '); 
