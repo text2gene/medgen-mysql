@@ -3,26 +3,6 @@
 call log('create_tables.sql', 'begin');
 
 -- #############################################
-call log('CGD', 'Clinical Genomics Database'); 
-
-drop table if exists CGD; 
-create table CGD (
-       hgnc  	     varchar(25), 
-       hgnc_id       text, 
-       GeneID	     int(10), 
-       ClinicalCond  text,       
-       Inheritance   text, 
-       Age           text,
-       AllelicCond   text,
-       Manifestation text,         
-       Intervention  text,         
-       Rationale     text,  
-       Pubmeds       text
-); 
-
-call utf8_unicode('CGD'); 
-
--- #############################################
 call log('bic_brca1', 'Breast Information Core (BRCA1)  '); 
 
 drop table if exists bic_brca1; 
@@ -65,20 +45,6 @@ create table bic_brca1 (
 );
 
 call utf8_unicode('bic_brca1'); 
-
--- #############################################
--- # Not currently in use
--- #
--- # call log('umd_webcache', 'UMD'); 
--- #
--- # drop table if exists umd_webcache; 
--- # create table umd_webcache (
--- #       HGNC      varchar(25), 
--- #       HTML      text, 
--- #       URL       text 
--- # );
--- #
--- #call utf8_unicode('umd_webcache'); 
 
 -- #############################################
 call log('bic_brca2', 'Breast Information Core (BRCA2)  '); 
