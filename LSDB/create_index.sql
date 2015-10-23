@@ -14,5 +14,9 @@ call create_index('bic_brca1','HGVS_c_posedit');
 call create_index('bic_brca1','HGVS_p_posedit'); 
 call create_index('bic_brca1','HGVS_g_posedit'); 
 
+call create_index('lovd_installation', 'DbName');
+call create_index('lovd_installation', 'DbLocation');
+
+
 -- #############################################
 call log('create_index.sql','done'); 
