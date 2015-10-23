@@ -67,7 +67,7 @@ create table lovd_installation (
        NumUniqueVariants       int default null,
        DbName		       varchar(125) default null,
        DbLocation	       varchar(125) default null,
-       Genes		       text default null
+       Genes		       longtext default null
 );
 
 call utf8_unicode('lovd_installation'); 
