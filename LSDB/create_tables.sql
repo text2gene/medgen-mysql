@@ -53,4 +53,24 @@ drop table if exists bic_brca2;
 create table bic_brca2 like bic_brca1; 
 
 -- #############################################
+call log('lovd_installation', 'LOVD Installations'); 
+
+-- # Header:
+-- # "Date last seen"	      "Version"		     "# genes"	"# individuals"	"# variants"	"# unique variants"	"DB name" "DB location" "Genes"
+drop table if exists lovd_installation; 
+create table lovd_installation (
+       DateLastSeen	       date default null,
+       Version		       varchar(25) default null,
+       NumGenes	       	       int default null,
+       NumIndividuals	       int default null,
+       NumVariants	       int default null,
+       NumUniqueVariants       int default null,
+       DbName		       varchar(125) default null,
+       DbLocation	       varchar(125) default null,
+       Genes		       text default null
+);
+
+call utf8_unicode('lovd_installation'); 
+
+-- #############################################
 call log('create_tables.sql', 'done');
