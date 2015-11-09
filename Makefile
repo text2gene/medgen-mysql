@@ -41,7 +41,7 @@ ClinicalGenomics: FORCE
 # NCBI dbSNP is deliberately limited to only HGVS mappings to RS# for a full dbSNP dump
 #            ftp://ftp.ncbi.nih.gov/snp
 dbSNP: FORCE
-        rm -rf                dbSNP/mirror
+	rm -rf                dbSNP/mirror
 	-./mirror.sh          dbSNP/urls
 	./unpack.sh           dbSNP
 	./create_database.sh  dbSNP
@@ -61,6 +61,19 @@ GTR: FORCE
 GTR-xml: FORCE
 	virtualenv ve
 	source ve/bin/activate && pip install lxml && python GTR/gtr_xml_gapfill.py
+
+# LSDB contains BIC and LOVD installation data
+# Will need to set the 
+LSDB: FORCE
+	rm -rf          mirror
+	@if [ "${LSDB_USER}" = "" ]; then echo "Fatal error.  Need to set LSDB_USER."; exit 1; fi
+	@if [ "${LSDB_PASS}" = "" ]; then echo "Fatal error.  Need to set LSDB_PASS."; exit 1; fi
+	./mirror.sh    LSDB/urls.bic_breast_cancer_core
+	./mirror.sh    LSDB/urls.lovd
+	./unpack.sh          LSDB
+	./create_database.sh LSDB
+	./load_database.sh   LSDB
+	./index_database.sh  LSDB
 
 # NCBI PubTator links PubMed PMIDs to Text Mined Variants(tmVar), Genes(GenNorm), and other BioConcepts. 
 #               ftp://ftp.ncbi.nlm.nih.gov/pub/lu/PubTator

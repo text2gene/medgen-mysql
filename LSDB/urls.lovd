@@ -14,3 +14,5 @@ echo "Fetching lovd_installation data"
 echo $LOVD_LIST
 $WGET_CMD $LOVD_LIST -O lovd_installation.txt
 
+if ! [ -e lovd_installation.txt ] ; then echo "Failed to download file LSDB/mirror/lovd_installation.txt"; exit 1;  fi
+if ! [ -s lovd_installation.txt ] ; then echo "Failed to download file LSDB/mirror/lovd_installation.txt"; exit 1;  fi

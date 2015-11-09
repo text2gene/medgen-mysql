@@ -1,7 +1,7 @@
 echo "////////////////////////////////////////////"
 echo "### BIC Breast Cancer Information Core ###" 
 
-WGET_CMD="wget -c"
+WGET_CMD="wget --no-http-keep-alive -c"
 
   mkdir -p LSDB/mirror
     cd LSDB/mirror
@@ -24,12 +24,19 @@ echo "////////////////////////////////////////////"
 
 echo "Fetching BIC_BRCA1" 
 echo $BIC_BRCA1
+echo $WGET_CMD $BIC_BRCA1 -O brca1_data.txt
 $WGET_CMD $BIC_BRCA1 -O brca1_data.txt
+
+if ! [ -e brca1_data.txt ]; then echo "Failed to download file LSDB/mirror/brca1_data.txt"; exit 1;  fi
+if ! [ -s brca1_data.txt ]; then echo "Failed to download file LSDB/mirror/brca1_data.txt"; exit 1;  fi
 
 echo "////////////////////////////////////////////"
 
 echo "Fetching BIC_BRCA2" 
 echo $BIC_BRCA2
 $WGET_CMD $BIC_BRCA2 -O brca2_data.txt 
+
+if ! [ -e brca2_data.txt ]; then echo "Failed to download file LSDB/mirror/brca2_data.txt"; exit 1;  fi
+if ! [ -s brca2_data.txt ]; then echo "Failed to download file LSDB/mirror/brca2_data.txt"; exit 1;  fi
 
 echo "////////////////////////////////////////////"
