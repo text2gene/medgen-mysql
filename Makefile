@@ -17,12 +17,13 @@ user: FORCE
 # NCBI ClinVar provides  "Clinical Variants" with phenotypes and gene linkages.
 #              ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar
 clinvar: FORCE
-	-./mirror.sh clinvar/urls
-	./unpack.sh clinvar
-	make clinvar-xml
+	rm -rf               clinvar/mirror
+	-./mirror.sh         clinvar/urls
+	./unpack.sh          clinvar
+	make                 clinvar-xml
 	./create_database.sh clinvar
-	./load_database.sh clinvar
-	./index_database.sh clinvar
+	./load_database.sh   clinvar
+	./index_database.sh  clinvar
 
 # NCBI clinvar-xml : clinvar IDs to HGVS labels . 
 clinvar-xml: FORCE
@@ -36,6 +37,16 @@ ClinicalGenomics: FORCE
 	./create_database.sh ClinicalGenomics
 	./load_database.sh   ClinicalGenomics
 	./index_database.sh  ClinicalGenomics
+
+# NCBI dbSNP is deliberately limited to only HGVS mappings to RS# for a full dbSNP dump
+#            ftp://ftp.ncbi.nih.gov/snp
+dbSNP: FORCE
+        rm -rf                dbSNP/mirror
+	-./mirror.sh          dbSNP/urls
+	./unpack.sh           dbSNP
+	./create_database.sh  dbSNP
+	./load_database.sh    dbSNP
+	./index_database.sh   dbSNP
 
 # NCBI Genetic Testing Registry contains lab information for every genetic test you can order.  
 #                               ftp://ftp.ncbi.nlm.nih.gov/pub/GTR/
@@ -54,20 +65,12 @@ GTR-xml: FORCE
 # NCBI PubTator links PubMed PMIDs to Text Mined Variants(tmVar), Genes(GenNorm), and other BioConcepts. 
 #               ftp://ftp.ncbi.nlm.nih.gov/pub/lu/PubTator
 PubTator: FORCE
+	rm -rf               PubTator/mirror
 	-./mirror.sh         PubTator/urls
 	./unpack.sh          PubTator
 	./create_database.sh PubTator
 	./load_database.sh   PubTator
 	./index_database.sh  PubTator
-
-# NCBI dbSNP is deliberately limited to only HGVS mappings to RS# for a full dbSNP dump
-#            ftp://ftp.ncbi.nih.gov/snp
-dbSNP: FORCE
-	-./mirror.sh          dbSNP/urls
-	./unpack.sh           dbSNP
-	./create_database.sh  dbSNP
-	./load_database.sh    dbSNP
-	./index_database.sh   dbSNP
 
 # PersonalGenomes loads the MySQL dump
 #                  http://evidence.pgp-hms.org
@@ -81,6 +84,7 @@ PersonalGenomes: FORCE
 #  NCBI Gene is the Entrez Gene Database 
 #            ftp://ftp.ncbi.nih.gov/gene/
 gene: FORCE
+	rm -rf                gene/mirror
 	-./mirror.sh          gene/urls
 	./unpack.sh           gene
 	./create_database.sh  gene
