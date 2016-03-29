@@ -10,11 +10,6 @@ WGET_CMD="wget -c -m -nH --cut-dirs=100"
        cd pubmed/mirror
 
 echo =================================================================================
-echo SAMPLE DATA 
-
-       $WGET_CMD -A.gz ftp://ftp.nlm.nih.gov/nlmdata/sample/medline/
-
-echo =================================================================================
 echo 
 echo " NOTICE: This download is huge ( > 10GB+) and could take a while...." 
 echo 
@@ -24,15 +19,10 @@ echo
 echo http://www.nlm.nih.gov/databases/journal.html
 echo =================================================================================
 
-
 $WGET_CMD -A.gz ftp://ftp.nlm.nih.gov/nlmdata/.medleasebaseline/gz/
 
 echo =================================================================================
 
-$WGET_CMD -A.gz ftp://ftp.nlm.nih.gov/nlmdata/.medlease/gz/
-
-echo =================================================================================
-
 echo "////////////////////////////////////////////"
-echo "[pubmed medline download complete ]"
+echo "[pubmed medline baseline download complete ]"
 echo "////////////////////////////////////////////"

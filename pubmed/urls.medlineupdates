@@ -1,0 +1,29 @@
+echo ==================================================================
+echo " MEDLINE LICENSE "
+echo ==================================================================
+echo http://www.nlm.nih.gov/bsd/licensee/access/medline_pubmed.html
+echo ==================================================================
+
+WGET_CMD="wget -c -m -nH --cut-dirs=100"
+
+       mkdir -p pubmed/mirror 
+       cd pubmed/mirror
+
+echo =================================================================================
+echo 
+echo " NOTICE: This download is huge ( > 10GB+) and could take a while...." 
+echo 
+echo " To download MEDLINE: " 
+echo " Register your IP with the US National Library of Medicine (PubMed)" 
+echo 
+echo http://www.nlm.nih.gov/databases/journal.html
+echo =================================================================================
+
+
+$WGET_CMD -A.gz ftp://ftp.nlm.nih.gov/nlmdata/.medlease/gz/
+
+echo =================================================================================
+
+echo "////////////////////////////////////////////"
+echo "[pubmed medline updates download complete ]"
+echo "////////////////////////////////////////////"

@@ -178,7 +178,8 @@ medgen-views: FORCE
 # NCBI pubmed we provide links only to PubMedCentral.
 #             https://www.nlm.nih.gov/databases/license/weblic/index.html  
 pubmed: FORCE
-	#-./mirror.sh pubmed/urls.medline
+	#-./mirror.sh pubmed/urls.medlinebaseline
+	#-./mirror.sh pubmed/urls.medlineupdates
 	#-./mirror.sh pubmed/urls.fulltext	
 	-./mirror.sh         pubmed/urls.pmc	
 	./unpack.sh          pubmed
