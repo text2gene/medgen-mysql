@@ -1,8 +1,10 @@
+from __future__ import unicode_literals
+
 from lxml import etree
 import os.path
 
 
-def get_hgvs_from_clinvarset( elem ):
+def get_hgvs_from_clinvarset(elem):
     """
     Gets HGVS strings from a ClinVarSet element
     :param elem: ClinVarSet
@@ -17,7 +19,7 @@ def get_hgvs_from_clinvarset( elem ):
     return hgvs
 
 
-def get_variantid_from_clinvarset( elem ):
+def get_variantid_from_clinvarset(elem):
     """
     Gets variant ID from a ClinVarSet Element
     :param elem: ClinVarSet
@@ -33,7 +35,7 @@ def get_variantid_from_clinvarset( elem ):
         return ''
 
 
-def get_clinvar_accession_from_clinvarset( elem ):
+def get_clinvar_accession_from_clinvarset(elem):
     """
     Gets the Clinvar accession from a ClinVarSet element
     :param elem: ClinVarSet Element
@@ -50,7 +52,7 @@ def get_clinvar_accession_from_clinvarset( elem ):
         return ''
 
 
-def get_alleleid_from_clinvarset( elem ):
+def get_alleleid_from_clinvarset(elem):
     """
     Gets the allele ID from a ClinVarSet element in Clinvar XML
     :param elem: ClinVarSet xml element
@@ -78,15 +80,16 @@ if __name__ == '__main__':
     context = iter(context)
     event, root = context.next()
     print "Parsing Clinvar XML -- please wait."
-    with open( mirror_dir + "/clinvar_hgvs.tsv", 'w' ) as f:
+    with open(mirror_dir + "/clinvar_hgvs.tsv", 'w') as f:
         ## get each record
         for event, elem in context:
             if event == "end" and elem.tag == 'ClinVarSet':
                 variantID = get_variantid_from_clinvarset(elem)
                 alleleID = get_alleleid_from_clinvarset(elem)
                 hgvs = get_hgvs_from_clinvarset(elem)
-                clinvarAccession = get_clinvar_accession_from_clinvarset( elem )
+                clinvarAccession = get_clinvar_accession_from_clinvarset(elem)
                 for h in hgvs:
                     h = h.replace('"', '')
-                    f.write( "%s\t%s\t%s\t%s\n"% (variantID, alleleID, clinvarAccession, h) )
+                    f.write("%s\t%s\t%s\t%s\n" % (variantID, alleleID, clinvarAccession, h))
                 root.clear()
+
