@@ -1,7 +1,9 @@
 from __future__ import unicode_literals
 
-from lxml import etree
 import os.path
+import codecs
+
+from lxml import etree
 
 
 def get_hgvs_from_clinvarset(elem):
@@ -80,7 +82,8 @@ if __name__ == '__main__':
     context = iter(context)
     event, root = context.next()
     print "Parsing Clinvar XML -- please wait."
-    with open(mirror_dir + "/clinvar_hgvs.tsv", 'w') as f:
+    fname = mirror_dir + '/clinvar_hgvs.tsv'
+    with codecs.open(fname, 'w', encoding='utf8') as fh:
         ## get each record
         for event, elem in context:
             if event == "end" and elem.tag == 'ClinVarSet':
@@ -88,8 +91,8 @@ if __name__ == '__main__':
                 alleleID = get_alleleid_from_clinvarset(elem)
                 hgvs = get_hgvs_from_clinvarset(elem)
                 clinvarAccession = get_clinvar_accession_from_clinvarset(elem)
-                for h in hgvs:
-                    h = h.replace('"', '')
-                    f.write("%s\t%s\t%s\t%s\n" % (variantID, alleleID, clinvarAccession, h))
+                for item in hgvs:
+                    item = item.replace('"', '')
+                    fh.write("%s\t%s\t%s\t%s\n" % (variantID, alleleID, clinvarAccession, item))
                 root.clear()
 
