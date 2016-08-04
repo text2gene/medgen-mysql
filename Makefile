@@ -31,13 +31,13 @@ clinvar-xml: FORCE
 	source ve/bin/activate && pip install lxml && python clinvar/clinvar_hgvs.py
 
 # ClinVitae: public variant database aggregated by Invitae 
-clinvitae: FORCE
-	rm -rf			clinvitae/mirror
-	-./mirror.sh		clinvitae/urls
-	./unpack.sh			clinvitae
-	./create_database.sh	clinvitae
-	./load_database.sh	clinvitae
-	./index_database.sh	clinvitae
+ClinVitae: FORCE
+	rm -rf			ClinVitae/mirror
+	-./mirror.sh		ClinVitae/urls
+	./unpack.sh			ClinVitae
+	./create_database.sh	ClinVitae
+	./load_database.sh	ClinVitae
+	./index_database.sh	ClinVitae
 
 # CGD: Clinical Genomics Databsae
 ClinicalGenomics: FORCE
@@ -200,7 +200,7 @@ pubmed: FORCE
 all-variants: FORCE
 	-make PubTator
 	make  clinvar
-	make  clinvitae
+	make  ClinVitae
 	make  GTR
 	make  dbSNP
 	make  PersonalGenomes
@@ -232,7 +232,7 @@ all: FORCE
 # backup all existing databases
 backup: FORCE
 	-./backup_database.sh clinvar
-	./backup_database.sh clinvitae
+	./backup_database.sh ClinVitae
 	./backup_database.sh ClinicalGenomics
 	./backup_database.sh GTR
 	./backup_database.sh PubTator
@@ -250,7 +250,7 @@ backup: FORCE
 # clean mirror download zip contents and uncompressed files 
 clean: FORCE
 	-rm -rf clinvar/mirror
-	rm  -rf clinvitae/mirror
+	rm  -rf ClinVitae/mirror
 	rm  -rf ClinicalGenomics/mirror 
 	rm  -rf GTR/mirror
 	rm  -rf PubTator/mirror
@@ -269,7 +269,7 @@ clean: FORCE
 # clean ./drop_database.sh 
 cleaner: clean
 	-./drop_database.sh clinvar
-	./drop_database.sh	clinvitae
+	./drop_database.sh	ClinVitae
 	./drop_database.sh  ClinicalGenomics
 	./drop_database.sh  GTR
 	./drop_database.sh  PubTator
@@ -289,6 +289,7 @@ cleaner: clean
 # clean mirror download zip contents and uncompressed files 
 cleanest: cleaner
 	rm  -rf clinvar/mysqldump
+	rm  -rf ClinVitae/mysqldump
 	rm  -rf ClinicalGenomics/mysqldump
 	rm  -rf GTR/mysqldump
 	rm  -rf PubTator/mysqldump
@@ -305,4 +306,4 @@ cleanest: cleaner
 	rm  -rf pubmed/mysqldump
 
 
-.PHONY:  FORCE help user all clinvar clinvarxml clinvitae GTR gene GeneReviews GO hugo medgen orphanet PersonalGenomes pubmed PubTator dbSNP
+.PHONY:  FORCE help user all clinvar clinvarxml ClinVitae GTR gene GeneReviews GO hugo medgen orphanet PersonalGenomes pubmed PubTator dbSNP
