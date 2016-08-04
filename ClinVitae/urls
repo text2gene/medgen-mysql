@@ -1,0 +1,18 @@
+! echo =================================================
+! echo "ClinVitae"
+! echo
+! echo "Entire data dump from clinvar.invitae.com/download"
+! echo =================================================
+! echo 
+! echo http://clinvitae.invitae.com/download
+
+WGET_CMD="wget -c"
+
+mkdir ClinVitae/mirror
+       
+$WGET_CMD -O ClinVitae/mirror/clinvitae_download.zip http://clinvitae.invitae.com/download
+
+
+! echo "////////////////////////////////////////////"
+! echo "[ ClinVitae download complete ]"
+! echo "////////////////////////////////////////////"
