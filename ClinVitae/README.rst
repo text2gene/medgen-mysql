@@ -11,7 +11,7 @@ CURRENT DATABASE SOURCES
 * Kathleen Cunningham Foundation Consortium for Research into Familial Breast Cancer
 
 
-.. contents:: clinvitae
+.. contents:: ClinVitae
 
 links
 ======
