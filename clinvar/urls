@@ -22,9 +22,13 @@ $WGET_CMD $BASE_URL/README.txt
 ! echo =================================================
 
 ! echo " //////////////////////////////////////////////  "
-! echo " ClinVar PubMed References ( AlleleID not HGVS ) " 
+! echo "ClinVar PubMed References ( AlleleID not HGVS ) " 
 
 $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/var_citations.txt
+
+! echo "////////////////////////////////////////////"
+! echo "ClinVar VariationID--AlleleID associations"
+$WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited/variation_allele.txt.gz
 
 ! echo 
 ! echo "////////////////////////////////////////////"
@@ -79,3 +83,5 @@ $WGET_CMD ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/xml/ClinVarFullRelease_00-lates
 ! echo "////////////////////////////////////////////"
 ! echo "[ clinvar download complete ]"
 ! echo "////////////////////////////////////////////"
+
+

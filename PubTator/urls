@@ -17,11 +17,11 @@ $WGET_CMD $BASE_URL/mutation2pubtator.gz
 
 $WGET_CMD $BASE_URL/gene2pubtator.gz
 
-$WGET_CMD $BASE_URL/chemical2pubtator.gz
+#$WGET_CMD $BASE_URL/chemical2pubtator.gz
 
-$WGET_CMD $BASE_URL/disease2pubtator.gz
+#$WGET_CMD $BASE_URL/disease2pubtator.gz
 
-$WGET_CMD $BASE_URL/species2pubtator.gz
+#$WGET_CMD $BASE_URL/species2pubtator.gz
 
 $WGET_CMD $BASE_URL/bioconcepts2pubtator.gz
 

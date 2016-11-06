@@ -10,6 +10,7 @@ load_table tsv  var_citations		  var_citations.txt
 load_table tsv  variant_summary           variant_summary.txt
 load_table tsv  gene_specific_summary     gene_specific_summary.txt
 load_table tsv  molecular_consequences    molecular_consequences.txt
+load_table tsv  variation_allele          variation_allele.txt
 
 ## load xml dump
 load_table tsv          clinvar_hgvs      clinvar_hgvs.tsv

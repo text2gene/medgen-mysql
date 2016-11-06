@@ -28,12 +28,11 @@ create table           clinvar_hgvs
 	VariationID      integer not null, 	
 	AlleleID	 integer not null,
 	RCVaccession	 varchar(200) not null,
-        hgvs_text        varchar(100) not null
+    hgvs_text        varchar(100) not null
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 call utf8_unicode('clinvar_hgvs');
-
 
 -- begin
 call log('var_citations', 'refresh');
@@ -217,6 +216,18 @@ ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 call utf8_unicode('clinvar_hgvs');
 
+call log('variation_allele', 'refresh');
+drop table if exists variation_allele;
+create table         variation_allele
+(
+  VariationID       integer not null,
+  VarType           varchar(100) not null,
+  AlleleID          integer not null,
+  Interpreted       varchar(100) default "yes"
+)
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+call utf8_unicode('variation_allele');
 
 call utf8_unicode('clingen_gene_curation_list');
 call log('ClinGen gene_curation_list','done'); 

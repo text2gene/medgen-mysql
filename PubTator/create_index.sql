@@ -17,32 +17,32 @@ call log('gene2pubtator', 'done');
 
 -- #################################################################
 
-call log('disease2pubtator', 'create index'); 
+#call log('disease2pubtator', 'create index'); 
 --
-call create_index('disease2pubtator','PMID'); 
-call create_index('disease2pubtator','PMID,MeshID'); 
-call create_index('disease2pubtator','MeshID'); 
+#call create_index('disease2pubtator','PMID'); 
+#call create_index('disease2pubtator','PMID,MeshID'); 
+#call create_index('disease2pubtator','MeshID'); 
 --
-call log('disease2pubtator', 'done'); 
+#call log('disease2pubtator', 'done'); 
 
 -- #################################################################
 
-call log('species2pubtator', 'create index'); 
+#call log('species2pubtator', 'create index'); 
 -- 
-call create_index('species2pubtator','PMID'); 
-call create_index('species2pubtator','PMID,TaxID'); 
+#call create_index('species2pubtator','PMID'); 
+#call create_index('species2pubtator','PMID,TaxID'); 
 --
-call log('species2pubtator', 'done'); 
+#call log('species2pubtator', 'done'); 
 
 -- #################################################################
 
-call log('chemical2pubtator', 'create index'); 
+#call log('chemical2pubtator', 'create index'); 
 --
-call create_index('chemical2pubtator','PMID'); 
-call create_index('chemical2pubtator','PMID,MeshID'); 
-call create_index('chemical2pubtator','MeshID'); 
+#call create_index('chemical2pubtator','PMID'); 
+#call create_index('chemical2pubtator','PMID,MeshID'); 
+#call create_index('chemical2pubtator','MeshID'); 
 --
-call log('chemical2pubtator', 'done'); 
+#call log('chemical2pubtator', 'done'); 
 
 -- #################################################################
 call log('create_index.sql','done'); 
