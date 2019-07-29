@@ -1,0 +1,25 @@
+! echo "////////////////////////////////////////////"
+
+! echo " Decipher "
+
+! echo   https://decipher.sanger.ac.uk/about#downloads/data
+
+! echo "////////////////////////////////////////////"
+
+mkdir -p decipher/mirror 
+cd decipher/mirror
+
+! echo "////////////////////////////////////////////"
+
+WGET_CMD="wget -c -m -nH -q -O DDG2P.csv.gz"
+
+! echo "////////////////////////////////////////////"
+
+# Updating this to the latest download URL
+# $WGET_CMD http://www.ebi.ac.uk/gene2phenotype/gene2phenotype-webcode/cgi-bin/handler.cgi?download=DD
+
+$WGET_CMD http://www.ebi.ac.uk/gene2phenotype/downloads/DDG2P.csv.gz
+
+! echo "////////////////////////////////////////////"
+! echo "[ decipher download complete ]"
+! echo "////////////////////////////////////////////"

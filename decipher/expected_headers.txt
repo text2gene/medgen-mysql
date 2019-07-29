@@ -1,0 +1,3 @@
+==> DDG2P.csv <==
+"gene symbol","gene mim","disease name","disease mim","DDD category","allelic requirement","mutation consequence",phenotypes,"organ specificity list",pmids,panel,"prev symbols","hgnc id","gene disease pair entry date"
+

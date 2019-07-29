@@ -149,6 +149,16 @@ disgenet: FORCE
 	./load_database.sh   disgenet
 	./index_database.sh  disgenet 
 
+# DECIPHER Database of Chromosomal Imbalance and Phenotype in Humans using Ensembl Resources
+# 			Provided by Sanger: https://www.sanger.ac.uk/science/tools/decipher-mapping-clinical-genome
+
+decipher: FORCE
+	-./mirror.sh		decipher/urls
+	./unpack.sh			decipher
+	./create_database.sh	decipher
+	./load_database.sh	decipher
+	./index_database.sh	decipher
+
 # Human Phenotype Ontology is used to associate phenotypes, even across organisms.
 #                          http://human-phenotype-ontology.org
 hpo: FORCE
