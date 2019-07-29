@@ -28,7 +28,7 @@ drop table if exists omim;
 create table omim(
   NBK_id          varchar(20) not null,
   GR_shortname    varchar(20) not null,
-  OMIM            varchar(1000) not null
+  OMIM            int(10) unsigned not null
 )
 Engine=InnoDB;
 

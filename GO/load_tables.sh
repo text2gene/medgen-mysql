@@ -1,6 +1,8 @@
 #############
 # TERMS 
 # 
+# GO_TERMS="go_weekly-termdb-tables"
+# 
 GO_TERMS=go_daily-termdb-tables
 SKIP=0
 
