@@ -1,0 +1,33 @@
+DisGeNET has reorganized their website.
+
+Available on http://www.disgenet.org/downloads :
+
+Tab separated files
+Gene-Disease Associations
+Curated gene-disease associations
+The file contains gene-disease associations from UNIPROT, CGI, ClinGen, Genomics England, CTD (human subset), PsyGeNET, and Orphanet.
+
+BeFree gene-disease associations
+The file contains gene-disease associations obtained by text mining MEDLINE abstracts using the BeFree system.
+
+ALL gene-disease associations
+The file contains all gene-disease associations in DisGeNET.
+
+ALL gene-disease-pmid associations
+The file contains all gene-disease-pmid associations in DisGeNET.
+
+Variant-Disease Associations
+Curated variant-disease associations
+The file contains variant-disease associations from UNIPROT, ClinVar, GWASdb, and the GWAS catalog.
+
+BeFree variant-disease associations
+The file contains variant-disease associations obtained by text mining MEDLINE abstracts using the BeFree system.
+
+ALL variant-disease associations
+The file contains all variant-disease associations in DisGeNET.
+
+ALL variant-disease-pmid associations
+The file contains all variant-disease-pmid associations in DisGeNET.
+
+
+

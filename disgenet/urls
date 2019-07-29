@@ -2,9 +2,9 @@
 
 ! echo " Disease Gene Network "
 
-! echo   http://disgenet.org/web/DisGeNET/menu/downloads#all
+! echo  http://www.disgenet.org/downloads
 
-! echo "////////////////////////////////////////////"
+! echo  "////////////////////////////////////////////"
 
 ! echo   ALL gene-disease associations
 ! echo   The file contains all gene-disease associations in DisGeNET.
@@ -29,7 +29,7 @@ WGET_CMD="wget -c -m -nH --cut-dirs=100"
 
 ! echo "////////////////////////////////////////////"
 
-$WGET_CMD http://www.disgenet.org/ds/DisGeNET/results/all_gene_disease_associations.tar.gz
+$WGET_CMD http://www.disgenet.org/static/disgenet_ap1/files/downloads/curated_gene_disease_associations.tsv.gz
 
 ! echo "////////////////////////////////////////////"
 
