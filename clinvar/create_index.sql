@@ -48,7 +48,6 @@ call create_index('clinvar_hgvs', 'AlleleID');
 call create_index('clinvar_hgvs', 'RCVAccession');
 call create_index('clinvar_hgvs', 'hgvs_text');
 
-call create_index('variation_allele', 'VariationID');
 call create_index('variation_allele', 'AlleleID');
 
 -- APPLYING HOTFIX FOR MISSING VariationID in variant_summary as of 10/2016
@@ -57,6 +56,8 @@ update variant_summary VS, variation_allele VA
     set VS.VariationID = VA.VariationID 
     where VS.AlleleID = VA.AlleleID;
 call log('variant_summary hotfix', 'done');
+
+call create_index('variation_allele', 'VariationID');
 
 call log('create_index.sql', 'done'); 
 

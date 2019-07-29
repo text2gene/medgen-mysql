@@ -27,7 +27,7 @@ clinvar: FORCE
 
 # NCBI clinvar-xml : clinvar IDs to HGVS labels . 
 clinvar-xml: FORCE
-	virtualenv ve
+ #	virtualenv ve
 	source ve/bin/activate && pip install lxml && python clinvar/clinvar_hgvs.py
 
 # ClinVitae: public variant database aggregated by Invitae 

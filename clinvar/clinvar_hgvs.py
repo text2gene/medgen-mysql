@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+from __future__ import unicode_literals, print_function
 
 import os.path
 import codecs
@@ -80,8 +80,8 @@ if __name__ == '__main__':
 
     context = etree.iterparse(xml, events=('start', 'end'))
     context = iter(context)
-    event, root = context.next()
-    print "Parsing Clinvar XML -- please wait."
+    event, root = next(context)
+    print("Parsing Clinvar XML -- please wait.")
     fname = mirror_dir + '/clinvar_hgvs.tsv'
     with codecs.open(fname, 'w', encoding='utf8') as fh:
         ## get each record

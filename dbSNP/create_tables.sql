@@ -3,7 +3,7 @@ call log('create_tables.sql', 'begin');
 
 DROP   TABLE IF EXISTS hgvs2dbSNP;
 CREATE TABLE           hgvs2dbSNP(
-  hgvs     varchar(63) default null,
+  hgvs     varchar(128) default null,
   snp      int(11)     default null
 )
 ENGINE=MyISAM;
