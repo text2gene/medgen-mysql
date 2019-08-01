@@ -160,7 +160,7 @@ drop table if exists molecular_consequences;
 
 create table molecular_consequences
 (
-       hgvs_text          varchar(100) not null,
+       HGVS               varchar(100) not null,
        SequenceOntologyID varchar(20)  not null, 
        Value              varchar(100) not null 
 )
@@ -196,16 +196,22 @@ drop table if exists clingen_gene_curation_list;
 create table clingen_gene_curation_list  
 (
 	Symbol             varchar(50), 
-       	GeneID             int(10)  unsigned, 
+    GeneID             int(10)  unsigned, 
 	cytoBand           text, 
-       	g_location         text,
-       	haplo_score        text,         
-       	haplo_desc         text, 
-       	haplo_insuf_pmid1  text,
-       	haplo_insuf_pmid2  text,
-       	haplo_insuf_pmid3  text,
-       	triplosense_score  text, 
-       	triplosense_desc   text
+    g_location         text,
+    haplo_score        text,         
+    haplo_desc         text, 
+    haplo_insuf_pmid1  text,
+    haplo_insuf_pmid2  text,
+    haplo_insuf_pmid3  text,
+    triplosense_score  text, 
+    triplosense_desc   text,
+    triplosense_pmid1  text,
+    triplosense_pmid2  text,
+    triplosense_pmid3  text,
+    last_evaluated     date,
+    loss_phx_omim_ID   varchar(90),
+    triplosense_omimID varchar(20)
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
