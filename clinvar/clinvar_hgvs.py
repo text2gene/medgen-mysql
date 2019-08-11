@@ -1,21 +1,28 @@
-from __future__ import unicode_literals, print_function
-
 import os.path
-import codecs
 
 from lxml import etree
 
+import hgvs.parser
+from hgvs.exceptions import HGVSParseError
+from hgvs.parser import Parser as HGVSParser
 
 def get_hgvs_from_clinvarset(elem):
     """
     Gets HGVS strings from a ClinVarSet element
+
     :param elem: ClinVarSet
     :return: List of HGVS strings
     """
     hgvs = []
     attributes = elem.xpath("ReferenceClinVarAssertion//Attribute[contains(@Type,'HGVS')]")
     for e in attributes:
-        hgvs.append(e.text)
+        hgvs_text = e.text.replace('"', '')
+        try:
+            hgvs_text = str(HGVSParser.parse_hgvs_variant(hgvs_text))
+        except HGVSParseError as err:
+            print(hgvs_text, 'failed hgvs.parser check with error:', err)
+            pass
+        hgvs.append(h)
     if len(hgvs) == 0:
         hgvs.append('')
     return hgvs
@@ -24,13 +31,17 @@ def get_hgvs_from_clinvarset(elem):
 def get_variantid_from_clinvarset(elem):
     """
     Gets variant ID from a ClinVarSet Element
-    :param elem: ClinVarSet
-    :return:    Variant ID
+
+    :param elem:  ClinVarSet
+    :return:      Variant ID
     """
     try:
         # return elem.xpath("ReferenceClinVarAssertion//MeasureSet[@Type='Variant']")[0].attrib['ID']
-        out = elem.find('ReferenceClinVarAssertion').find('MeasureSet').attrib['ID']
-        if out is None:
+        if elem.find('ReferenceClinVarAssertion').find('MeasureSet') is not None:
+            out = elem.find('ReferenceClinVarAssertion').find('MeasureSet').attrib['ID']
+        elif elem.find('ReferenceClinVarAssertion').find('GenotypeSet') is not None:
+            out = elem.find('ReferenceClinVarAssertion').find('GenotypeSet').find('MeasureSet').attrib['ID']
+        else:
             out = ''
         return out
     except:
@@ -40,6 +51,7 @@ def get_variantid_from_clinvarset(elem):
 def get_clinvar_accession_from_clinvarset(elem):
     """
     Gets the Clinvar accession from a ClinVarSet element
+
     :param elem: ClinVarSet Element
     :return: ClinVar Accession
     """
@@ -57,13 +69,17 @@ def get_clinvar_accession_from_clinvarset(elem):
 def get_alleleid_from_clinvarset(elem):
     """
     Gets the allele ID from a ClinVarSet element in Clinvar XML
+
     :param elem: ClinVarSet xml element
     :return: AlleleId
     """
 
     try:
-        out = elem.find('ReferenceClinVarAssertion').find('MeasureSet').find('Measure').attrib['ID']
-        if out is None:
+        if elem.find('ReferenceClinVarAssertion').find('MeasureSet') is not None:
+            out = elem.find('ReferenceClinVarAssertion').find('MeasureSet').find('Measure').attrib['ID']
+        elif elem.find('ReferenceClinVarAssertion').find('GenotypeSet') is not None:
+            out = elem.find('ReferenceClinVarAssertion').find('GenotypeSet').find('MeasureSet').find('Measure').attrib['ID']
+        else:
             out = ''
         return out
     except:
@@ -82,17 +98,16 @@ if __name__ == '__main__':
     context = iter(context)
     event, root = next(context)
     print("Parsing Clinvar XML -- please wait.")
-    fname = mirror_dir + '/clinvar_hgvs.tsv'
-    with codecs.open(fname, 'w', encoding='utf8') as fh:
+    with open( mirror_dir + "/clinvar_hgvs.tsv", 'w' ) as f:
+
         ## get each record
         for event, elem in context:
             if event == "end" and elem.tag == 'ClinVarSet':
                 variantID = get_variantid_from_clinvarset(elem)
                 alleleID = get_alleleid_from_clinvarset(elem)
-                hgvs = get_hgvs_from_clinvarset(elem)
-                clinvarAccession = get_clinvar_accession_from_clinvarset(elem)
-                for item in hgvs:
-                    item = item.replace('"', '')
-                    fh.write("%s\t%s\t%s\t%s\n" % (variantID, alleleID, clinvarAccession, item))
+                hgvs_list = get_hgvs_from_clinvarset(elem)
+                clinvarAccession = get_clinvar_accession_from_clinvarset( elem )
+                for hgvs_text in hgvs_list:
+                    f.write("%s\t%s\t%s\t%s\n"% (variantID, alleleID, clinvarAccession, hgvs_text))
                 root.clear()
 

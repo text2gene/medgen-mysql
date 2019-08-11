@@ -28,7 +28,7 @@ create table           clinvar_hgvs
 	VariationID      integer not null, 	
 	AlleleID	 integer not null,
 	RCVaccession	 varchar(200) not null,
-    hgvs_text        varchar(100) not null
+    HGVS varchar(100) not null
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -41,11 +41,11 @@ drop   table if exists var_citations;
 create table           var_citations
 (
 	AlleleID	 integer not null, 
-	VariationID      integer not null, 
-	rs		 integer null, 
-	nsv		 integer null, 
+	VariationID  integer not null, 
+	rs_id		 integer null, 
+	nsv_id		 integer null, 
 	citation_source  varchar(100),
-	citation_id	 integer
+	citation_id	 varchar(25)          --must accommodate book IDs like "NBK154653"
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 call utf8_unicode('var_citations');
@@ -223,7 +223,7 @@ create table           clinvar_hgvs
   VariationID      integer not null,
   AlleleID     integer not null,
   RCVaccession     varchar(200) not null,
-  hgvs_text        varchar(100) not null
+  HGVS varchar(100) not null
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

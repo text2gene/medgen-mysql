@@ -27,12 +27,12 @@ clinvar: FORCE
 
 # NCBI clinvar-xml : clinvar IDs to HGVS labels . 
 clinvar-xml: FORCE
- #	virtualenv ve
+	pyvenv ve
 	source ve/bin/activate && pip install lxml && python clinvar/clinvar_hgvs.py
 
 # ClinVitae: public variant database aggregated by Invitae 
 ClinVitae: FORCE
-	rm -rf			ClinVitae/mirror
+	rm -rf				ClinVitae/mirror
 	-./mirror.sh		ClinVitae/urls
 	./unpack.sh			ClinVitae
 	./create_database.sh	ClinVitae
@@ -208,11 +208,11 @@ pubmed: FORCE
 
 # all-variants : convenience function  
 all-variants: FORCE
-	-make PubTator
+	make PubTator
 	make  clinvar
 	make  ClinVitae
 	make  GTR
-	make  dbSNP
+	-make  dbSNP
 	make  PersonalGenomes
 
 # all-genes : convenience function  

@@ -1,0 +1,5 @@
+The hgvs library requires libbz2 and liblmza
+
+On Ubuntu you can use apt to fix these dependencies:
+
+sudo apt-get install libbz2-dev liblzma-dev
