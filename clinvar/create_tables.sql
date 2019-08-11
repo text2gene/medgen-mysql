@@ -36,6 +36,7 @@ call utf8_unicode('clinvar_hgvs');
 
 -- begin
 call log('var_citations', 'refresh');
+-- var_citation must accommodate book IDs like "NBK154653"
 
 drop   table if exists var_citations;
 create table           var_citations
@@ -45,7 +46,7 @@ create table           var_citations
 	rs_id		 integer null, 
 	nsv_id		 integer null, 
 	citation_source  varchar(100),
-	citation_id	 varchar(25)          --must accommodate book IDs like "NBK154653"
+	citation_id	 varchar(25)          
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 call utf8_unicode('var_citations');

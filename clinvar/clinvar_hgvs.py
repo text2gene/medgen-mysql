@@ -4,7 +4,21 @@ from lxml import etree
 
 import hgvs.parser
 from hgvs.exceptions import HGVSParseError
-from hgvs.parser import Parser as HGVSParser
+from hgvs.parser import Parser 
+
+HGVSParser = Parser()
+
+
+# Save metrics for questionable hgvs strings...
+hgvs_snafu_header = 'hgvs_text\terror_msg'
+
+fh = open('hgvs_snafus.tsv', 'w')
+fh.write(hgvs_snafu_header + '\n')
+
+def write_hgvs_snafu(hgvs, error):
+    fh.write('"{}"\t"{}"\n'.format(hgvs, error))
+    fh.flush()
+
 
 def get_hgvs_from_clinvarset(elem):
     """
@@ -20,9 +34,8 @@ def get_hgvs_from_clinvarset(elem):
         try:
             hgvs_text = str(HGVSParser.parse_hgvs_variant(hgvs_text))
         except HGVSParseError as err:
-            print(hgvs_text, 'failed hgvs.parser check with error:', err)
-            pass
-        hgvs.append(h)
+            write_hgvs_snafu(hgvs_text, err)
+        hgvs.append(hgvs_text)
     if len(hgvs) == 0:
         hgvs.append('')
     return hgvs
