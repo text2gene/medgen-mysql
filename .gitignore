@@ -1,0 +1,17 @@
+syntax: glob
+
+*~
+*.sh~
+*.swp
+.DS_Store
+README.pdf
+._DATA.pdf
+DATA.pdf
+.idea
+work/umls/
+ve
+*/mirror/
+*/load.sh
+*/create_database.sql
+#*
+
