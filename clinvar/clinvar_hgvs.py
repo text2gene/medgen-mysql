@@ -76,8 +76,8 @@ if __name__ == '__main__':
 
     context = etree.iterparse(xml, events=('start', 'end'))
     context = iter(context)
-    event, root = context.next()
-    print "Parsing Clinvar XML -- please wait."
+    event, root = next(context)
+    print("Parsing Clinvar XML -- please wait.")
     with open( mirror_dir + "/clinvar_hgvs.tsv", 'w' ) as f:
         ## get each record
         for event, elem in context:
