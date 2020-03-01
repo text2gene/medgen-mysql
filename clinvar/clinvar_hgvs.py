@@ -11,7 +11,8 @@ def get_hgvs_from_clinvarset( elem ):
     hgvs = []
     attributes = elem.xpath("ReferenceClinVarAssertion//Attribute[contains(@Type,'HGVS')]")
     for e in attributes:
-        hgvs.append(e.text)
+        if e.text is not None:
+            hgvs.append(e.text)
     if len(hgvs) == 0:
         hgvs.append('')
     return hgvs
@@ -71,7 +72,7 @@ if __name__ == '__main__':
     debug = True
 
     mirror_dir = os.path.dirname( os.path.realpath(__file__) ) + "/mirror/"
-    xml = mirror_dir + "/ClinVarFullRelease_00-latest.xml"
+    xml = mirror_dir + "ClinVarFullRelease_00-latest.xml"
     # xml = mirror_dir + "/test.xml"
 
     context = etree.iterparse(xml, events=('start', 'end'))
