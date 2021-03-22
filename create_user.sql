@@ -5,8 +5,8 @@ DROP USER IF EXISTS 'medgen'@'localhost';
 -- MySQL anonymous user can really screw things up.
 -- http://bugs.mysql.com/bug.php?id=31061
 -- Ensure we delete this user or else you may see strange permissions on Mac OSX. 
-GRANT USAGE ON  mysql.* TO ''@'localhost';
-DROP USER ''@'localhost';
+-- GRANT USAGE ON  mysql.* TO ''@'localhost';
+-- DROP USER ''@'localhost';
 
 create user 'medgen'@'localhost' identified by 'medgen';
 
