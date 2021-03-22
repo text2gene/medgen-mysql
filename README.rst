@@ -1,8 +1,8 @@
-.. contents:: medgen-mysql	      
+.. contents:: medgen-mysql
 
 
 what is medgen-mysql?
-========================
+=====================
 
 This package greatly simplifies the creation of local mirrors for NLM National Library of 
 Medicine sources, which currently includes:
@@ -16,7 +16,7 @@ MySQL database.
 medgen-mysql was made with simplicity and automation in mind. Over 100 URLs (and counting)
 have been rounded up, their data normalized for database manipulation, to provide ease of
 access to as much open access medical genomics data as possible.
-   
+
 ####################################################################################################
 
 support and licensing
@@ -25,7 +25,7 @@ support and licensing
 medgen-mysql is a free and open source library provided by Invitae under the [Apache 2.0 License](http://www.apache.org/licenses/), a copy of which is included within the repository.
 
 All questions, concerns, support, and curse words should be directed to package maintainers
-Andy McMurry ( AndyMC@apache.org ) and medgen-mysql contributors. 
+Naomi Most (@nthmost) and medgen-mysql contributors.
 
 Contributions to this library are encouraged via fork and pull request. Diffs may be accepted
 when attached to nicely written emails.
@@ -63,8 +63,11 @@ a mysql user that will be able to load the medgen databases::
 
 (Note that MySQL must be running and you must have the ability to use the "root" superuser.)
 
+Note for OS X users: when running this script, you should uncomment the two lines in the
+create_user.sh script pertaining to eliminating a default anonymous user.
+
 Makefile usage
-================
+===============
 
 ``make all``
 
@@ -105,7 +108,7 @@ Note also that datasets vary widely in how much disk space they require. Some da
 EXTREMELY LARGE.  Average use is usally ~ 50GB.
 
 all-variants
---------------
+-------------
 
 :PubTator:
    NCBI Text Mined mutations for all PubMed abstracts
@@ -119,9 +122,9 @@ all-variants
 :PersonalGenomes:
    Personal Genomes Project evidence and human annotations
 
-   
+
 all-genes
----------------
+----------
 
 :gene:
    NCBI Entrez Gene database
@@ -137,13 +140,13 @@ all-genes
 
 
 all-phenotypes
------------------
+--------------
 
 :medgen:
    **NCBI Medical Genetics** 
 
 :disgenet:
-   Disease Gene Network 
+   Disease Gene Network
 
 :hpo:
    Human Phenotype Ontology
@@ -152,15 +155,15 @@ all-phenotypes
    Rare diseases
 
 :CHV:
-   Consumer Health Vocabulary     
+   Consumer Health Vocabulary
    
 pubmed
 -------
-   PubMed PMID linkages to the above sources   
+   PubMed PMID linkages to the above sources
 
 
 BASH usage
-============
+==========
 - `mirror.sh`_ mirrors a dataset with wget
 - `create_database.sh`_ creates a mysql database with common loading procedures and logging
 - `unpack.sh`_ unzip and untar mirrored content
@@ -218,7 +221,7 @@ load_database.sh
 
 
 MySQL usage
-=============
+============
 - `$mysql_dataset`_ opens mysql client for the current dataset
 - `processlist`_ show active SQL commands with elapsed time (selects, DML, indexes)
 - `info`_ table schema with load statistics
@@ -226,7 +229,7 @@ MySQL usage
 |
 
 $mysql_dataset
--------------------
+---------------
 *example*: open a mysql client for the PubTator database
 ::
 
@@ -254,12 +257,12 @@ To check on the status of the load see `processlist`_ .
    | PubTator     | InnoDB | README            |         11 | 0.00    | 0.02M    | 0.00M    | utf8_general_ci |
    | PubTator     | InnoDB | species2pubtator  |   16563014 | 16.56   | 805.00M  | 0.00M    | utf8_unicode_ci |
    +--------------+--------+-------------------+------------+---------+----------+----------+-----------------+
-   
+ 
 
 |
 
 processlist
------------------------
+---------------
 show active SQL commands (processlist) running for this dataset. 
 |
 **NOTE:** some datasets take a very long time to load and index. 
